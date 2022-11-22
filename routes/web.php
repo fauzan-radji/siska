@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Models\Kwarran;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//   return view('welcome');
+// });
+
 Route::get('/', function () {
-  return view('welcome');
-});
+  return view('landing');
+})->name('login');
+
+Route::get('/dashboard', function () {
+  return view('dashboard.index', [
+    'kwarrans' => Kwarran::all()
+  ]);
+})->middleware('auth');
+
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');

@@ -1,97 +1,97 @@
 # TODOS
 
--   [x] Migration
+- [x] Migration
 
-    -   [x] Admin
-    -   [x] Kwarran
-    -   [x] Pangkalan
-    -   [x] Pembina
-    -   [x] Peserta Didik
-    -   [x] Poin
-    -   [x] Jadwal
-    -   [x] Agama
+  - [x] Admin
+  - [x] Kwarran
+  - [x] Pangkalan
+  - [x] Pembina
+  - [x] Peserta Didik
+  - [x] Poin
+  - [x] Jadwal
+  - [x] Agama
 
--   [x] Factory
+- [x] Factory
 
-    -   [x] Kwarran
-    -   [x] Pangkalan
-    -   [x] User
-    -   [x] Pembina
-    -   [x] Peserta Didik
+  - [x] Kwarran
+  - [x] Pangkalan
+  - [x] User
+  - [x] Pembina
+  - [x] Peserta Didik
 
--   [x] Seeder
+- [x] Seeder
 
-    -   [x] Admin
-    -   [x] Kwarran
-    -   [x] Pangkalan
-    -   [x] Pembina
-    -   [x] Peserta Didik
-    -   [x] Poin
-    -   [x] Agama
+  - [x] Admin
+  - [x] Kwarran
+  - [x] Pangkalan
+  - [x] Pembina
+  - [x] Peserta Didik
+  - [x] Poin
+  - [x] Agama
 
--   [x] Relations
+- [x] Relations
 
-    -   [x] User - Admin
-    -   [x] User - Pembina
-    -   [x] User - Peserta Didik
-    -   [x] Kwarran - Pangkalan
-    -   [x] Pangkalan - Pembina
-    -   [x] Pangkalan - Peserta Didik
-    -   [x] Pangkalan - Jadwal
-    -   [x] Agama - Pembina
-    -   [x] Agama - Peserta Didik
-    -   [x] Agama - Poin
-    -   [x] Jadwal - Poin
-    -   [x] Jadwal - Pembina
+  - [x] User - Admin
+  - [x] User - Pembina
+  - [x] User - Peserta Didik
+  - [x] Kwarran - Pangkalan
+  - [x] Pangkalan - Pembina
+  - [x] Pangkalan - Peserta Didik
+  - [x] Pangkalan - Jadwal
+  - [x] Agama - Pembina
+  - [x] Agama - Peserta Didik
+  - [x] Agama - Poin
+  - [x] Jadwal - Poin
+  - [x] Jadwal - Pembina
 
--   [ ] Register
--   [ ] Login
--   [ ] Dashboard
+- [ ] Register
+- [x] Login
+- [ ] Dashboard
 
-    -   [ ] Admin
-    -   [ ] Pembina
-    -   [ ] Peserta Didik
+  - [ ] Admin
+  - [ ] Pembina
+  - [ ] Peserta Didik
 
--   [ ] CRUD
+- [ ] CRUD
 
-    -   [ ] Create
+  - [ ] Create
 
-        -   [ ] Admin
-        -   [ ] Kwarran
-        -   [ ] Pangkalan
-        -   [ ] Pembina
-        -   [ ] Peserta Didik
-        -   [ ] Jadwal
+    - [ ] Admin
+    - [ ] Kwarran
+    - [ ] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta Didik
+    - [ ] Jadwal
 
-    -   [ ] Read
+  - [ ] Read
 
-        -   [ ] Admin
-        -   [ ] Kwarran
-        -   [ ] Pangkalan
-        -   [ ] Pembina
-        -   [ ] Peserta Didik
-        -   [ ] Jadwal
-        -   [ ] Poin Uji
-        -   [ ] Agama
+    - [ ] Admin
+    - [ ] Kwarran
+    - [ ] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta Didik
+    - [ ] Jadwal
+    - [ ] Poin Uji
+    - [ ] Agama
 
-    -   [ ] Update
+  - [ ] Update
 
-        -   [ ] Admin
-        -   [ ] Kwarran
-        -   [ ] Pangkalan
-        -   [ ] Pembina
-        -   [ ] Peserta Didik
-        -   [ ] Jadwal
-        -   [ ] Poin Uji
+    - [ ] Admin
+    - [ ] Kwarran
+    - [ ] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta Didik
+    - [ ] Jadwal
+    - [ ] Poin Uji
 
-    -   [ ] Delete
+  - [ ] Delete
 
-        -   [ ] Admin
-        -   [ ] Kwarran
-        -   [ ] Pangkalan
-        -   [ ] Pembina
-        -   [ ] Peserta Didik
-        -   [ ] Jadwal
-        -   [ ] Poin Uji
+    - [ ] Admin
+    - [ ] Kwarran
+    - [ ] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta Didik
+    - [ ] Jadwal
+    - [ ] Poin Uji
 
--   [ ] Landing Page
+- [ ] Landing Page
