@@ -26,7 +26,7 @@ class PembinaFactory extends Factory
       'no_hp' => fake()->phoneNumber(),
       'alamat' => fake()->address(),
       'tanggal_lahir' => fake()->date('Y-m-d', '-30 years'),
-      'foto' => fake()->imageUrl(200, 400, 'profile picture'),
+      'foto' => 'https://api.multiavatar.com/' . fake()->unique()->userName() . '.svg',
       'agama_id' => mt_rand(1, 5)
     ];
   }

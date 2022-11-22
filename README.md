@@ -29,18 +29,21 @@
     -   [x] Poin
     -   [x] Agama
 
--   [ ] Models
+-   [x] Relations
 
-    -   [ ] Admin
-    -   [ ] Kwarran
-    -   [ ] Pangkalan
-    -   [ ] Pembina
-    -   [ ] Peserta Didik
-    -   [ ] Poin
-    -   [ ] Jadwal
-    -   [ ] Agama
+    -   [x] User - Admin
+    -   [x] User - Pembina
+    -   [x] User - Peserta Didik
+    -   [x] Kwarran - Pangkalan
+    -   [x] Pangkalan - Pembina
+    -   [x] Pangkalan - Peserta Didik
+    -   [x] Pangkalan - Jadwal
+    -   [x] Agama - Pembina
+    -   [x] Agama - Peserta Didik
+    -   [x] Agama - Poin
+    -   [x] Jadwal - Poin
+    -   [x] Jadwal - Pembina
 
--   [ ] Landing Page
 -   [ ] Register
 -   [ ] Login
 -   [ ] Dashboard
@@ -90,3 +93,5 @@
         -   [ ] Peserta Didik
         -   [ ] Jadwal
         -   [ ] Poin Uji
+
+-   [ ] Landing Page
