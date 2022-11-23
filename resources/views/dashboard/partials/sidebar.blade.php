@@ -2,7 +2,7 @@
   <div class="position-sticky pt-3 sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link active" href="#" aria-current="page">
+        <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard" aria-current="page">
           <span class="align-text-bottom" data-feather="home"></span>
           Dashboard
         </a>
@@ -10,7 +10,7 @@
       {{-- if admin --}}
       @if (auth()->user()->admin)
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link {{ Request::is('dashboard/kwarran*') ? 'active' : '' }}" href="/dashboard/kwarran">
             <span class="align-text-bottom" data-feather="map-pin"></span>
             Kwartir Ranting
           </a>
@@ -20,7 +20,7 @@
       {{-- if not peserta_didik --}}
       @if (!auth()->user()->peserta_didik)
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link {{ Request::is('dashboard/pangkalan*') ? 'active' : '' }}" href="/dashboard/pangkalan">
             <span class="align-text-bottom" data-feather="home"></span>
             Pangkalan
           </a>
@@ -30,7 +30,13 @@
       {{-- if pembina --}}
       @if (auth()->user()->pembina)
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link {{ Request::is('dashboard/pembina') ? 'active' : '' }}" href="/dashboard/pembina">
+            <span class="align-text-bottom" data-feather="users"></span>
+            Pembina
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/peserta_didik') ? 'active' : '' }}" href="/dashboard/peserta_didik">
             <span class="align-text-bottom" data-feather="users"></span>
             Peserta Didik
           </a>
@@ -56,7 +62,7 @@
       {{-- if admin --}}
       @if (auth()->user()->admin)
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link {{ Request::is('dashboard/admin') ? 'active' : '' }}" href="/dashboard/admin">
             <span class="align-text-bottom" data-feather="users"></span>
             Pengurus
           </a>
@@ -64,7 +70,29 @@
       @endif
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        @php
+          switch (true) {
+              case auth()->user()->admin:
+                  $id = auth()->user()->admin->id;
+                  $route = 'admin';
+                  break;
+          
+              case auth()->user()->pembina:
+                  $id = auth()->user()->pembina->id;
+                  $route = 'pembina';
+                  break;
+          
+              case auth()->user()->peserta_didik:
+                  $id = auth()->user()->peserta_didik->id;
+                  $route = 'peserta_didik';
+                  break;
+          
+              default:
+                  $route = '..';
+                  break;
+          }
+        @endphp
+        <a class="nav-link {{ Request::is('dashboard/' . $route . '/' . $id) ? 'active' : '' }}" href="/dashboard/{{ $route }}/{{ $id }}">
           <span class="align-text-bottom" data-feather="user"></span>
           Akun Saya
         </a>

@@ -17,7 +17,8 @@ class KwarranFactory extends Factory
   public function definition()
   {
     return [
-      'nama' => fake()->city(),
+      'nama' => fake()->unique()->city(),
+      'nomor' => fake()->regexify('\\d{2}'),
       'kamabiran' => fake()->name(),
       'ketua' => fake()->name()
     ];

@@ -4,11 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard Template · Bootstrap v5.2</title>
+  <title>@yield('title')</title>
 
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="/css/dashboard.css" rel="stylesheet">
+
+  @yield('head')
 </head>
 
 <body>
@@ -18,7 +20,9 @@
     <div class="row">
       @include('dashboard.partials.sidebar')
 
-      @yield('main')
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        @yield('main')
+      </main>
     </div>
   </div>
 

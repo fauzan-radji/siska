@@ -56,6 +56,15 @@
 
   - [ ] Create
 
+    - [x] Admin
+    - [x] Kwarran
+    - [x] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta Didik
+    - [ ] Jadwal
+
+  - [ ] Validation
+
     - [ ] Admin
     - [ ] Kwarran
     - [ ] Pangkalan
@@ -65,11 +74,11 @@
 
   - [ ] Read
 
-    - [ ] Admin
-    - [ ] Kwarran
-    - [ ] Pangkalan
-    - [ ] Pembina
-    - [ ] Peserta Didik
+    - [x] Admin
+    - [x] Kwarran
+    - [x] Pangkalan
+    - [x] Pembina
+    - [x] Peserta Didik
     - [ ] Jadwal
     - [ ] Poin Uji
     - [ ] Agama
@@ -95,3 +104,7 @@
     - [ ] Poin Uji
 
 - [ ] Landing Page
+
+# To Be Fixed
+
+- [ ] Menambah no_kwarran di form tambah kwarran

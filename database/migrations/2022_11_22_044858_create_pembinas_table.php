@@ -16,8 +16,8 @@ return new class extends Migration
     Schema::create('pembinas', function (Blueprint $table) {
       $table->id();
       $table->foreignId('user_id');
-      $table->foreignId('pangkalan_id')->nullable();
-      $table->string('jabatan')->nullable();
+      $table->foreignId('pangkalan_id');
+      $table->string('jabatan');
       $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();
       $table->string('no_hp')->nullable();
       $table->string('alamat')->nullable();

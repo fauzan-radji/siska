@@ -16,6 +16,7 @@ return new class extends Migration
     Schema::create('kwarrans', function (Blueprint $table) {
       $table->id();
       $table->string('nama');
+      $table->string('nomor');
       $table->string('kamabiran');
       $table->string('ketua');
       $table->timestamps();
