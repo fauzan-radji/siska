@@ -5,6 +5,8 @@
     <h1>Daftar Pembina</h1>
   </div>
 
+  <a class="btn btn-primary" href="/dashboard/pembina/create"><span data-feather="plus"></span> Tambah Pembina</a>
+
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>

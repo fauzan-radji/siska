@@ -14,6 +14,13 @@
   @auth
     <h1>Anda sudah login</h1>
   @else
+    @if (session()->has('success'))
+      <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+    @if (session()->has('error'))
+      <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+
     <h1>Form Login</h1>
     <form action="/login" method="post">
       @csrf
@@ -94,6 +101,41 @@
       <div class="mb-3">
         <label class="form-label" for="password_admin">Password</label>
         <input class="form-control" id="password_admin" name="password_admin" type="password">
+      </div>
+
+      <button class="btn btn-primary" type="submit">Daftar</button>
+    </form>
+
+    <h1>Form Daftar Peserta</h1>
+    <form action="/peserta_didik" method="post">
+      @csrf
+      <div class="mb-3">
+        <label class="form-label" for="nama">Nama</label>
+        <input class="form-control" id="nama" name="nama" type="text">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="pangkalan">Pangkalan</label>
+        <select class="form-select" id="pangkalan" name="pangkalan_id" required>
+          @foreach ($pangkalans as $pangkalan)
+            <option value="{{ $pangkalan->id }}">{{ $pangkalan->nama }}</option>
+          @endforeach
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="username">Username</label>
+        <input class="form-control" id="username" name="username" type="text">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-control" id="email" name="email" type="email">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="password">Password</label>
+        <input class="form-control" id="password" name="password" type="password">
       </div>
 
       <button class="btn btn-primary" type="submit">Daftar</button>

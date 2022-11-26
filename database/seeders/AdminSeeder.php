@@ -16,15 +16,13 @@ class AdminSeeder extends Seeder
    */
   public function run()
   {
-    $user = new User();
-    $user->nama = 'admin';
-    $user->username = 'admin';
-    $user->email = 'admin@gmail.com';
-    $user->password = bcrypt('12345678');
-    $user->save();
-
     Admin::create([
-      'user_id' => $user->id,
+      'user_id' => User::create([
+        'nama' => 'admin',
+        'username' => 'admin',
+        'email' => 'admin@gmail.com',
+        'password' => bcrypt('12345678')
+      ])->id,
     ]);
   }
 }

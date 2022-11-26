@@ -21,6 +21,13 @@
       @include('dashboard.partials.sidebar')
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        @if (session()->has('success'))
+          <div class="alert alert-success mt-3">{{ session('success') }}</div>
+        @endif
+        @if (session()->has('error'))
+          <div class="alert alert-danger mt-3">{{ session('error') }}</div>
+        @endif
+
         @yield('main')
       </main>
     </div>

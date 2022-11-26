@@ -82,7 +82,7 @@ class PangkalanController extends Controller
       'jabatan' => 'Admin Pangkalan'
     ]);
 
-    return redirect('/')->with('success', 'Berhasil mendaftarkan pangkalan ' . $validated['nama_admin']);
+    return redirect('/')->with('success', 'Berhasil mendaftarkan pangkalan ' . $validated['nama_pangkalan']);
   }
 
   /**
@@ -106,7 +106,21 @@ class PangkalanController extends Controller
    */
   public function edit(Pangkalan $pangkalan)
   {
-    //
+    $no_gudep = explode('-', $pangkalan->no_gudep)[1];
+    $no_gudep = explode('/', $no_gudep);
+    $ambalan = explode('-', $pangkalan->ambalan);
+    return view('dashboard.pangkalan.edit', [
+      'kwarrans' => Kwarran::all(),
+      'pangkalan' => $pangkalan,
+      'no_gudep' => [
+        'putra' => $no_gudep[0],
+        'putri' => $no_gudep[1]
+      ],
+      'ambalan' => [
+        'putra' => $ambalan[0],
+        'putri' => $ambalan[1]
+      ]
+    ]);
   }
 
   /**
@@ -118,7 +132,19 @@ class PangkalanController extends Controller
    */
   public function update(UpdatePangkalanRequest $request, Pangkalan $pangkalan)
   {
-    //
+    $validated = $request->validate([
+      "nama" => 'required',
+      "kwarran_id" => 'required',
+      "no_gudep_putra" => 'required',
+      "no_gudep_putri" => 'required',
+      "ambalan_putra" => 'required',
+      "ambalan_putri" => 'required',
+      "alamat" => 'required',
+    ]);
+
+    $pangkalan->update($validated);
+
+    return redirect('/dashboard/pangkalan/' . $pangkalan->id)->with('success', 'Berhasil mengubah pangkalan ' . $validated['nama']);
   }
 
   /**

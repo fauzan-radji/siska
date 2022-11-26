@@ -16,25 +16,23 @@ class PembinaSeeder extends Seeder
    */
   public function run()
   {
-    $user = new User();
-    $user->nama = 'Shafira Thalib Pembina';
-    $user->username = 'pembina';
-    $user->email = 'pembina@gmail.com';
-    $user->password = bcrypt('12345678');
-    $user->save();
-
     Pembina::create([
-      'user_id' => $user->id,
+      'user_id' => User::create([
+        'nama' => 'Shafira Thalib Pembina',
+        'username' => 'pembina',
+        'email' => 'pembina@gmail.com',
+        'password' => bcrypt('12345678')
+      ])->id,
       'pangkalan_id' => 1,
-      'jabatan' => 'pembina',
+      'jabatan' => 'Admin Pangkalan',
       'gender' => 'Perempuan',
       'no_hp' => '089999999999',
       'alamat' => 'Jalan Jeruk, Kecamatan Dungingi, Kelurahan Huangobotu',
       'tanggal_lahir' => '2003-12-08',
-      'foto' => 'https://api.multiavatar.com/shaphire',
+      'foto' => 'https://api.multiavatar.com/shaphire.svg',
       'agama_id' => 1
     ]);
 
-    Pembina::factory(99)->create();
+    Pembina::factory(74)->create();
   }
 }

@@ -40,6 +40,7 @@ class KwarranController extends Controller
   {
     $validated = $request->validate([
       'nama' => 'required|min:5|max:255',
+      'nomor' => 'required|size:2',
       'kamabiran' => 'required|min:3|max:255',
       'ketua' => "required|min:3|max:255"
     ]);
@@ -70,7 +71,9 @@ class KwarranController extends Controller
    */
   public function edit(Kwarran $kwarran)
   {
-    //
+    return view('dashboard.kwarran.edit', [
+      'kwarran' => $kwarran
+    ]);
   }
 
   /**
@@ -82,7 +85,16 @@ class KwarranController extends Controller
    */
   public function update(UpdateKwarranRequest $request, Kwarran $kwarran)
   {
-    //
+    $validated = $request->validate([
+      'nama' => 'required|min:5|max:255',
+      'nomor' => 'required|size:2',
+      'kamabiran' => 'required|min:3|max:255',
+      'ketua' => "required|min:3|max:255"
+    ]);
+
+    $kwarran->update($validated);
+
+    return redirect('/dashboard/kwarran/' . $kwarran->id)->with('success', 'Berhasil mengubah ranting ' . $validated['nama']);
   }
 
   /**

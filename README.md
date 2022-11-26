@@ -1,7 +1,78 @@
 # TODOS
 
-- [x] Migration
+- [ ] Register
+- [x] Login
+- [ ] Dashboard
+- [ ] Hak Akses
+  - [ ] Admin
+  - [ ] Pembina
+  - [ ] Peserta Didik
+- [ ] CRUD
+  - [ ] Create
+    - [x] Admin
+    - [x] Kwarran
+    - [x] Pangkalan
+    - [x] Pembina
+    - [x] Peserta Didik
+    - [ ] Jadwal
+  - [ ] Validation
+    - [ ] Admin
+    - [ ] Kwarran
+    - [ ] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta Didik
+    - [ ] Jadwal
+  - [ ] Read
+    - [x] Admin
+    - [x] Kwarran
+    - [x] Pangkalan
+    - [x] Pembina
+    - [x] Peserta Didik
+    - [ ] Jadwal
+    - [ ] Poin Uji
+    - [ ] Agama
+  - [ ] Read Specific
+    - [x] Admin
+    - [x] Kwarran
+    - [x] Pangkalan
+    - [x] Pembina
+    - [x] Peserta Didik
+    - [ ] Jadwal
+    - [ ] Poin Uji
+    - [ ] Agama
+  - [ ] Update
+    - [x] Admin
+    - [x] Kwarran
+    - [x] Pangkalan
+    - [x] Pembina
+    - [x] Peserta Didik
+    - [ ] Jadwal
+    - [ ] Poin Uji
+  - [ ] Delete
+    - [x] Admin
+    - [ ] Kwarran
+    - [ ] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta Didik
+    - [ ] Jadwal
+    - [ ] Poin Uji
+- [ ] UIs
+  - [ ] Landing Page
+  - [ ] Form Login
+  - [ ] Form Register
+    - [ ] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta
 
+# To Be Fixed
+
+- [ ] Menambah no_kwarran di form tambah kwarran
+- [ ] Di halaman detail kwarran, ketika diklik jumlah pangkalan maka akan mengarah ke daftar pangkalah di kwarran terkait
+- [ ] Memisahkan field gudep putra dan putri serta ambalan putra dan putri di tabel pangkalan
+
+# Selesai
+
+- [x] Migration
   - [x] Admin
   - [x] Kwarran
   - [x] Pangkalan
@@ -10,17 +81,13 @@
   - [x] Poin
   - [x] Jadwal
   - [x] Agama
-
 - [x] Factory
-
   - [x] Kwarran
   - [x] Pangkalan
   - [x] User
   - [x] Pembina
   - [x] Peserta Didik
-
 - [x] Seeder
-
   - [x] Admin
   - [x] Kwarran
   - [x] Pangkalan
@@ -28,9 +95,7 @@
   - [x] Peserta Didik
   - [x] Poin
   - [x] Agama
-
 - [x] Relations
-
   - [x] User - Admin
   - [x] User - Pembina
   - [x] User - Peserta Didik
@@ -43,68 +108,3 @@
   - [x] Agama - Poin
   - [x] Jadwal - Poin
   - [x] Jadwal - Pembina
-
-- [ ] Register
-- [x] Login
-- [ ] Dashboard
-
-  - [ ] Admin
-  - [ ] Pembina
-  - [ ] Peserta Didik
-
-- [ ] CRUD
-
-  - [ ] Create
-
-    - [x] Admin
-    - [x] Kwarran
-    - [x] Pangkalan
-    - [ ] Pembina
-    - [ ] Peserta Didik
-    - [ ] Jadwal
-
-  - [ ] Validation
-
-    - [ ] Admin
-    - [ ] Kwarran
-    - [ ] Pangkalan
-    - [ ] Pembina
-    - [ ] Peserta Didik
-    - [ ] Jadwal
-
-  - [ ] Read
-
-    - [x] Admin
-    - [x] Kwarran
-    - [x] Pangkalan
-    - [x] Pembina
-    - [x] Peserta Didik
-    - [ ] Jadwal
-    - [ ] Poin Uji
-    - [ ] Agama
-
-  - [ ] Update
-
-    - [ ] Admin
-    - [ ] Kwarran
-    - [ ] Pangkalan
-    - [ ] Pembina
-    - [ ] Peserta Didik
-    - [ ] Jadwal
-    - [ ] Poin Uji
-
-  - [ ] Delete
-
-    - [ ] Admin
-    - [ ] Kwarran
-    - [ ] Pangkalan
-    - [ ] Pembina
-    - [ ] Peserta Didik
-    - [ ] Jadwal
-    - [ ] Poin Uji
-
-- [ ] Landing Page
-
-# To Be Fixed
-
-- [ ] Menambah no_kwarran di form tambah kwarran

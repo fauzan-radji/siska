@@ -18,7 +18,7 @@ class AdminController extends Controller
   public function index()
   {
     return view('dashboard.admin.index', [
-      'admins' => Admin::all()->map(fn ($admin) => $admin->user)
+      'admins' => Admin::all()
     ]);
   }
 
@@ -40,10 +40,9 @@ class AdminController extends Controller
    */
   public function store(StoreAdminRequest $request)
   {
-
     $validated = $request->validate([
       'nama' => 'required|max:255|min:3',
-      'username' => 'required|min:5|max:255',
+      'username' => 'required|min:5|max:255|unique:users',
       'password' => 'required|min:8',
       'email' => 'required|email'
     ]);
@@ -76,7 +75,9 @@ class AdminController extends Controller
    */
   public function edit(Admin $admin)
   {
-    //
+    return view('dashboard.admin.edit', [
+      'admin' => $admin
+    ]);
   }
 
   /**
@@ -88,7 +89,15 @@ class AdminController extends Controller
    */
   public function update(UpdateAdminRequest $request, Admin $admin)
   {
-    //
+    $validated = $request->validate([
+      'nama' => 'required|max:255|min:3',
+      'username' => 'required|min:5|max:255',
+      'email' => 'required|email'
+    ]);
+
+    $admin->user->update($validated);
+
+    return redirect('/dashboard/admin/' . $admin->id)->with('success', 'Berhasil mengubah user ' . $validated['nama']);
   }
 
   /**
@@ -99,6 +108,10 @@ class AdminController extends Controller
    */
   public function destroy(Admin $admin)
   {
-    //
+    $nama = $admin->user->nama;
+    $user_id = $admin->user_id;
+    User::destroy($user_id);
+    $admin->delete();
+    return redirect('/dashboard/admin')->with('success', 'Berhasil menghapus user ' . $nama);
   }
 }

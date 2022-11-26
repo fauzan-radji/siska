@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Agama;
 use App\Models\Jadwal;
 use App\Models\Pangkalan;
-use App\Models\PesertaDidik;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

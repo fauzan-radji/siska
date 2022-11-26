@@ -22,9 +22,9 @@
         @forelse($admins as $admin)
           <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $admin->nama }}</td>
-            <td>{{ $admin->username }}</td>
-            <td>{{ $admin->email }}</td>
+            <td>{{ $admin->user->nama }}</td>
+            <td>{{ $admin->user->username }}</td>
+            <td>{{ $admin->user->email }}</td>
             <td>
               <a class="badge bg-info" href="/dashboard/admin/{{ $admin->id }}"><span data-feather="eye"></span></a>
               <a class="badge bg-warning" href="/dashboard/admin/{{ $admin->id }}/edit"><span data-feather="edit"></span></a>

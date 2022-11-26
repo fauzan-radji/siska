@@ -16,15 +16,13 @@ class PesertaDidikSeeder extends Seeder
    */
   public function run()
   {
-    $user = new User();
-    $user->nama = 'Shafira Thalib Peserta';
-    $user->username = 'pesertadidik';
-    $user->email = 'pesertadidik@gmail.com';
-    $user->password = bcrypt('12345678');
-    $user->save();
-
     PesertaDidik::create([
-      'user_id' => $user->id,
+      'user_id' => User::create([
+        'nama' => 'Shafira Thalib Peserta',
+        'username' => 'pesertadidik',
+        'email' => 'pesertadidik@gmail.com',
+        'password' => bcrypt('12345678')
+      ])->id,
       'pangkalan_id' => 1,
       'gender' => 'Perempuan',
       'no_hp' => '089999999999',

@@ -30,13 +30,13 @@
       {{-- if pembina --}}
       @if (auth()->user()->pembina)
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/pembina') ? 'active' : '' }}" href="/dashboard/pembina">
+          <a class="nav-link {{ Request::is('dashboard/pembina*') ? 'active' : '' }}" href="/dashboard/pembina">
             <span class="align-text-bottom" data-feather="users"></span>
             Pembina
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/peserta_didik') ? 'active' : '' }}" href="/dashboard/peserta_didik">
+          <a class="nav-link {{ Request::is('dashboard/peserta_didik*') ? 'active' : '' }}" href="/dashboard/peserta_didik">
             <span class="align-text-bottom" data-feather="users"></span>
             Peserta Didik
           </a>
