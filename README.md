@@ -3,7 +3,7 @@
 - [ ] Register
 - [x] Login
 - [ ] Dashboard
-- [ ] Hak Akses
+- [ ] Authorization
   - [ ] Admin
   - [ ] Pembina
   - [ ] Peserta Didik
@@ -15,6 +15,10 @@
     - [x] Pembina
     - [x] Peserta Didik
     - [ ] Jadwal
+  - [ ] Upload Foto
+    - [ ] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta Didik
   - [ ] Validation
     - [ ] Admin
     - [ ] Kwarran
@@ -50,7 +54,7 @@
     - [ ] Poin Uji
   - [ ] Delete
     - [x] Admin
-    - [ ] Kwarran
+    - [x] Kwarran
     - [ ] Pangkalan
     - [ ] Pembina
     - [ ] Peserta Didik

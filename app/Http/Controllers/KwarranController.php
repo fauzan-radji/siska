@@ -105,6 +105,10 @@ class KwarranController extends Controller
    */
   public function destroy(Kwarran $kwarran)
   {
-    //
+    $nama = $kwarran->nama;
+    $kwarran->delete();
+    $latest_id = Kwarran::latest()->first()->id;
+    foreach ($kwarran->pangkalans as $pangkalan) $pangkalan->update(['kwarran_id' => $latest_id]);
+    return redirect('/dashboard/kwarran')->with('success', 'Berhasil menghapus kwarran ' . $nama);
   }
 }
