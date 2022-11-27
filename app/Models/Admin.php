@@ -16,4 +16,15 @@ class Admin extends Model
   {
     return $this->belongsTo(User::class);
   }
+
+  // this is a recommended way to declare event handlers
+  public static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function ($admin) { // before delete() method call this
+      $admin->user->delete();
+      // do the rest of the cleanup...
+    });
+  }
 }

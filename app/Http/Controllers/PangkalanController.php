@@ -155,6 +155,7 @@ class PangkalanController extends Controller
    */
   public function destroy(Pangkalan $pangkalan)
   {
-    //
+    $pangkalan->delete();
+    return back()->with('success', 'Berhasil menghapus pangkalan ' . $pangkalan->nama);
   }
 }

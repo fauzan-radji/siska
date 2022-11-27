@@ -28,4 +28,14 @@ class PesertaDidik extends Model
   {
     return $this->belongsTo(Agama::class);
   }
+
+  // this is a recommended way to declare event handlers
+  public static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function ($peserta_didik) { // before delete() method call this
+      $peserta_didik->user->delete();
+    });
+  }
 }

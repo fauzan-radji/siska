@@ -34,4 +34,15 @@ class Pembina extends Model
   {
     return $this->belongsToMany(Jadwal::class);
   }
+
+  // this is a recommended way to declare event handlers
+  public static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function ($pembina) { // before delete() method call this
+      $pembina->user->delete();
+      // do the rest of the cleanup...
+    });
+  }
 }

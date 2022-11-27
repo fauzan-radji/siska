@@ -28,4 +28,15 @@ class Kwarran extends Model
   {
     return $this->hasManyThrough(Pembina::class, Pangkalan::class);
   }
+
+  // this is a recommended way to declare event handlers
+  public static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function ($kwarran) { // before delete() method call this
+      $latest_id = Kwarran::latest()->first()->id;
+      $kwarran->pangkalans->each(fn ($pangkalan) => $pangkalan->update(['kwarran_id' => $latest_id]));
+    });
+  }
 }

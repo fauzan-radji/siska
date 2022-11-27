@@ -137,6 +137,8 @@ class PesertaDidikController extends Controller
    */
   public function destroy(PesertaDidik $pesertaDidik)
   {
-    //
+    $nama = $pesertaDidik->user->nama;
+    $pesertaDidik->delete();
+    return back()->with('success', 'Berhasil menghapus Peserta Didik ' . $nama);
   }
 }

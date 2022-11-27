@@ -133,6 +133,8 @@ class PembinaController extends Controller
    */
   public function destroy(Pembina $pembina)
   {
-    //
+    $nama = $pembina->user->nama;
+    $pembina->delete();
+    return back()->with('success', 'Berhasil menghapus Pembina ' . $nama);
   }
 }

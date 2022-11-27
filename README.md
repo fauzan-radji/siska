@@ -55,9 +55,9 @@
   - [ ] Delete
     - [x] Admin
     - [x] Kwarran
-    - [ ] Pangkalan
-    - [ ] Pembina
-    - [ ] Peserta Didik
+    - [x] Pangkalan
+    - [x] Pembina
+    - [x] Peserta Didik
     - [ ] Jadwal
     - [ ] Poin Uji
 - [ ] UIs

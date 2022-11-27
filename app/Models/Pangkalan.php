@@ -34,4 +34,15 @@ class Pangkalan extends Model
   {
     return $this->hasMany(Jadwal::class);
   }
+
+  // this is a recommended way to declare event handlers
+  public static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function ($pangkalan) { // before delete() method call this
+      $pangkalan->pembinas->each(fn ($pembina) => $pembina->delete());
+      $pangkalan->peserta_didiks->each(fn ($peserta_didik) => $peserta_didik->delete());
+    });
+  }
 }

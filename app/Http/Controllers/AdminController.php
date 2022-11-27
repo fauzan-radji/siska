@@ -109,9 +109,7 @@ class AdminController extends Controller
   public function destroy(Admin $admin)
   {
     $nama = $admin->user->nama;
-    $user_id = $admin->user_id;
-    User::destroy($user_id);
     $admin->delete();
-    return redirect('/dashboard/admin')->with('success', 'Berhasil menghapus user ' . $nama);
+    return back()->with('success', 'Berhasil menghapus user ' . $nama);
   }
 }
