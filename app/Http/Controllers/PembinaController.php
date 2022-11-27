@@ -90,6 +90,7 @@ class PembinaController extends Controller
    */
   public function edit(Pembina $pembina)
   {
+    $this->authorize('update', $pembina);
     return view('dashboard.pembina.edit', [
       'pembina' => $pembina,
       'pangkalans' => Pangkalan::all(),
@@ -106,6 +107,7 @@ class PembinaController extends Controller
    */
   public function update(UpdatePembinaRequest $request, Pembina $pembina)
   {
+    $this->authorize('update', $pembina);
     $validated = $request->validate([
       'nama' => 'required|max:255|min:3',
       'username' => 'required|min:5|max:255',

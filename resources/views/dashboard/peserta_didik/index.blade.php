@@ -5,38 +5,51 @@
     <h1>Daftar Peserta Didik</h1>
   </div>
 
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Foto</th>
-          <th scope="col">Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-        @forelse($peserta_didiks as $peserta_didik)
+  @can('create', \App\Models\PesertaDidik::class)
+    <a class="btn btn-primary" href="/dashboard/peserta_didik/create"><span data-feather="plus"></span> Tambah Peserta Didik</a>
+  @endcan
+
+  @foreach ($pangkalans as $pangkalan)
+    <h2 class="mt-3">{{ $pangkalan->nama }}</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $peserta_didik->user->nama }}</td>
-            <td><img src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->nama }}"></td>
-            <td>
-              <a class="badge bg-info" href="/dashboard/peserta_didik/{{ $peserta_didik->id }}"><span data-feather="eye"></span></a>
-              <a class="badge bg-warning" href="/dashboard/peserta_didik/{{ $peserta_didik->id }}/edit"><span data-feather="edit"></span></a>
-              <form class="d-inline" action="/dashboard/peserta_didik/{{ $peserta_didik->id }}" method="post">
-                @method('delete')
-                @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
-              </form>
-            </td>
+            <th scope="col">#</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Aksi</th>
           </tr>
-        @empty
-          <tr>
-            <td class="text-center" colspan="4">No posts found</td>
-          </tr>
-        @endforelse
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          @forelse($pangkalan->peserta_didiks as $peserta_didik)
+            <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $peserta_didik->user->nama }}</td>
+              <td><img src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->nama }}"></td>
+              <td>
+                @can('view', $peserta_didik)
+                  <a class="badge bg-info" href="/dashboard/peserta_didik/{{ $peserta_didik->id }}"><span data-feather="eye"></span></a>
+                @endcan
+                @can('update', $peserta_didik)
+                  <a class="badge bg-warning" href="/dashboard/peserta_didik/{{ $peserta_didik->id }}/edit"><span data-feather="edit"></span></a>
+                @endcan
+                @can('delete', $peserta_didik)
+                  <form class="d-inline" action="/dashboard/peserta_didik/{{ $peserta_didik->id }}" method="post">
+                    @method('delete')
+                    @csrf
+                    <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
+                  </form>
+                @endcan
+              </td>
+            </tr>
+          @empty
+            <tr>
+              <td class="text-center" colspan="4">No posts found</td>
+            </tr>
+          @endforelse
+        </tbody>
+      </table>
+    </div>
+  @endforeach
 @endsection

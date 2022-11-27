@@ -17,6 +17,7 @@ class AdminController extends Controller
    */
   public function index()
   {
+    $this->authorize('viewAny', Admin::class);
     return view('dashboard.admin.index', [
       'admins' => Admin::all()
     ]);
@@ -29,6 +30,7 @@ class AdminController extends Controller
    */
   public function create()
   {
+    $this->authorize('create', Admin::class);
     return view('dashboard.admin.create');
   }
 
@@ -40,6 +42,7 @@ class AdminController extends Controller
    */
   public function store(StoreAdminRequest $request)
   {
+    $this->authorize('create', Admin::class);
     $validated = $request->validate([
       'nama' => 'required|max:255|min:3',
       'username' => 'required|min:5|max:255|unique:users',
@@ -62,6 +65,7 @@ class AdminController extends Controller
    */
   public function show(Admin $admin)
   {
+    $this->authorize('view', $admin);
     return view('dashboard.admin.show', [
       'admin' => $admin
     ]);
@@ -75,6 +79,7 @@ class AdminController extends Controller
    */
   public function edit(Admin $admin)
   {
+    $this->authorize('update', $admin);
     return view('dashboard.admin.edit', [
       'admin' => $admin
     ]);
@@ -89,6 +94,7 @@ class AdminController extends Controller
    */
   public function update(UpdateAdminRequest $request, Admin $admin)
   {
+    $this->authorize('update', $admin);
     $validated = $request->validate([
       'nama' => 'required|max:255|min:3',
       'username' => 'required|min:5|max:255',
@@ -108,6 +114,7 @@ class AdminController extends Controller
    */
   public function destroy(Admin $admin)
   {
+    $this->authorize('delete', $admin);
     $nama = $admin->user->nama;
     $admin->delete();
     return back()->with('success', 'Berhasil menghapus user ' . $nama);

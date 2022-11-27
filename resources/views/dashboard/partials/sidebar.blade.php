@@ -47,14 +47,14 @@
         </li>
       @endcan
 
-      @if (auth()->user()->isPembina())
+      @can('viewAny', \App\Models\PesertaDidik::class)
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/peserta_didik*') ? 'active' : '' }}" href="/dashboard/peserta_didik">
             <span class="align-text-bottom" data-feather="users"></span>
             Peserta Didik
           </a>
         </li>
-      @endif
+      @endcan
 
       {{-- if not admin --}}
       @if (!auth()->user()->isAdmin())
@@ -72,15 +72,14 @@
         </li>
       @endif
 
-      {{-- if admin --}}
-      @if (auth()->user()->isAdmin())
+      @can('viewAny', \App\Models\Admin::class)
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/admin') ? 'active' : '' }}" href="/dashboard/admin">
             <span class="align-text-bottom" data-feather="users"></span>
             Pengurus
           </a>
         </li>
-      @endif
+      @endcan
 
       <li class="nav-item">
         @if (auth()->user()->isAdmin())

@@ -1,8 +1,10 @@
 # TODOS
 
 - [ ] Register
+  - [ ] Pangkalan
+  - [ ] Pembina
+  - [ ] Peserta Didik
 - [x] Login
-- [ ] Dashboard
 - [ ] Authorization
   - [ ] Admin
     - [x] Create Kwarran
@@ -13,6 +15,7 @@
     - [ ] Verify Pangkalan
     - [x] Delete Pangkalan
     - [x] Read Pembina
+    - [ ] Read Jadwal
   - [ ] Admin Pangkalan
     - [x] Read Kwarran
     - [x] Read Pangkalan
@@ -23,29 +26,40 @@
     - [x] Update Pembina in Related Pangkalan
     - [x] Delete Pembina in Related Pangkalan
     - [ ] Verify Pembina in Related Pangkalan
-    - [ ] Create Peserta Didik in Related Pangkalan
-    - [ ] Read Peserta Didik in Related Pangkalan
-    - [ ] Update Peserta Didik in Related Pangkalan
-    - [ ] Delete Peserta Didik in Related Pangkalan
+    - [x] Create Peserta Didik in Related Pangkalan
+    - [x] Read Peserta Didik in Related Pangkalan
+    - [x] Update Peserta Didik in Related Pangkalan
+    - [x] Delete Peserta Didik in Related Pangkalan
     - [ ] Verify Peserta Didik in Related Pangkalan
+    - [ ] Create Jadwal in Related Pangkalan
+    - [ ] Read Jadwal in Related Pangkalan
+    - [ ] Update Jadwal in Related Pangkalan
+    - [ ] Delete Jadwal in Related Pangkalan
   - [ ] Pembina
     - [x] Read Kwarran
     - [x] Read Related Pangkalan
     - [x] Read Pembina in Related Pangkalan
     - [x] Update Related Pembina
     - [x] Delete Related Pembina
-    - [ ] Read Peserta Didik in Related Pangkalan
+    - [x] Read Peserta Didik in Related Pangkalan
+    - [ ] Read Jadwal in Related Pangkalan
   - [ ] Peserta Didik
     - [x] Read Kwarran
     - [x] Read Related Pangkalan
     - [x] Read Pembina in Related Pangkalan
+    - [ ] Read Jadwal in Related Pangkalan
 - [ ] Policy
-  - [ ] Admin
-    - [ ] View Any
-    - [ ] View
-    - [ ] Create
-    - [ ] Update
-    - [ ] Delete
+  - [x] Admin
+    - [x] View Any
+      - [x] Admin
+    - [x] View
+      - [x] Admin
+    - [x] Create
+      - [x] Admin
+    - [x] Update
+      - [x] Admin
+    - [x] Delete
+      - [x] Admin
   - [x] Kwarran
     - [x] Create
       - [x] Admin
@@ -73,35 +87,43 @@
   - [x] Pembina
     - [x] View Any
       - [x] Admin
+      - [x] Admin Pangkalan
       - [x] Pembina
       - [x] Peserta Didik
     - [x] View
       - [x] Admin
-      - [x] Pembina
-      - [x] Peserta Didik
+      - [x] Admin Pangkalan in Related Pangkalan
+      - [x] Pembina in Related Pangkalan
+      - [x] Peserta Didik in Related Pangkalan
     - [x] Create
       - [x] Admin Pangkalan
+      - [x] Guest
     - [x] Update
+      - [x] Admin Pangkalan in Related Pangkalan
       - [x] Related Pembina
-      - [x] Admin Pangkalan
     - [x] Delete
       - [x] Admin
+      - [x] Admin Pangkalan in Related Pangkalan
       - [x] Related Pembina
+  - [x] Peserta Didik
+    - [x] View Any
+      - [x] Admin
       - [x] Admin Pangkalan
-  - [ ] Peserta Didik
-    - [ ] View Any
-      - [ ] Admin
-      - [ ] Related Pembina in Related Pangkalan
-    - [ ] View
-      - [ ] Admin
-      - [ ] Related Pembina in Related Pangkalan
-    - [ ] Create
-      - [ ] Related Admin Pangkalan in Related Pangkalan
-    - [ ] Update
-      - [ ] Related Admin Pangkalan in Related Pangkalan
-    - [ ] Delete
-      - [ ] Admin
-      - [ ] Related Admin Pangkalan in Related Pangkalan
+      - [x] Pembina
+    - [x] View
+      - [x] Admin
+      - [x] Admin Pangkalan in Related Pangkalan
+      - [x] Pembina in Related Pangkalan
+    - [x] Create
+      - [x] Admin Pangkalan
+      - [x] Guest
+    - [x] Update
+      - [x] Admin Pangkalan in Relaxted Pangkalan
+      - [x] Related Peserta Didik
+    - [x] Delete
+      - [x] Admin
+      - [x] Admin Pangkalan in Related Pangkalan
+      - [x] Related Peserta Didik
   - [ ] Jadwal
     - [ ] View Any
       - [ ] Admin
@@ -123,7 +145,7 @@
     - [x] Kwarran
     - [x] Pangkalan
     - [x] Pembina
-    - [x] Peserta Didik
+    - [ ] Peserta Didik
     - [ ] Jadwal
   - [ ] Upload Foto
     - [ ] Pangkalan

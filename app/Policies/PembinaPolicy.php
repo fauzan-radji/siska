@@ -49,7 +49,7 @@ class PembinaPolicy
    */
   public function create(User $user)
   {
-    return $user->isAdminPangkalan();
+    return $user->isAdminPangkalan() || auth()->guest();
   }
 
   /**
@@ -61,8 +61,9 @@ class PembinaPolicy
    */
   public function update(User $user, Pembina $pembina)
   {
-    return
-      $user->isAdminPangkalan() ||
+    return ($user->isAdminPangkalan() &&
+      $user->pembina->pangkalan_id === $pembina->pangkalan_id
+    ) ||
       $user->id === $pembina->user_id;
   }
 
@@ -77,7 +78,9 @@ class PembinaPolicy
   {
     return
       $user->isAdmin() ||
-      $user->isAdminPangkalan() ||
+      ($user->isAdminPangkalan() &&
+        $user->pembina->pangkalan_id === $pembina->pangkalan_id
+      ) ||
       $user->id === $pembina->user_id;
   }
 

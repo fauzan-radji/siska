@@ -19,9 +19,20 @@ class PesertaDidikController extends Controller
    */
   public function index()
   {
-    return view('dashboard.peserta_didik.index', [
-      'peserta_didiks' => auth()->user()->pembina->pangkalan->peserta_didiks
-    ]);
+    $this->authorize('viewAny', PesertaDidik::class);
+    $data = [];
+    if (auth()->user()->isAdmin())
+      $data['pangkalans'] = Pangkalan::all();
+    else
+      $data['pangkalans'] = collect(
+        [
+          auth()
+            ->user()
+            ->pembina
+            ->pangkalan
+        ]
+      );
+    return view('dashboard.peserta_didik.index', $data);
   }
 
   /**
@@ -31,6 +42,7 @@ class PesertaDidikController extends Controller
    */
   public function create()
   {
+    $this->authorize('create', PesertaDidik::class);
     //
   }
 
@@ -42,6 +54,7 @@ class PesertaDidikController extends Controller
    */
   public function store(StorePesertaDidikRequest $request)
   {
+    $this->authorize('create', PesertaDidik::class);
     // Validasi
     $validated = $request->validate([
       'nama' => 'required|max:255|min:3',
@@ -74,6 +87,7 @@ class PesertaDidikController extends Controller
    */
   public function show(PesertaDidik $pesertaDidik)
   {
+    $this->authorize('view', $pesertaDidik);
     return view('dashboard.peserta_didik.show', [
       'peserta_didik' => $pesertaDidik
     ]);
@@ -87,6 +101,7 @@ class PesertaDidikController extends Controller
    */
   public function edit(PesertaDidik $pesertaDidik)
   {
+    $this->authorize('update', $pesertaDidik);
     return view('dashboard.peserta_didik.edit', [
       'peserta_didik' => $pesertaDidik,
       'pangkalans' => Pangkalan::all(),
@@ -103,6 +118,7 @@ class PesertaDidikController extends Controller
    */
   public function update(UpdatePesertaDidikRequest $request, PesertaDidik $pesertaDidik)
   {
+    $this->authorize('update', $pesertaDidik);
     // Validasi
     $validated = $request->validate([
       'nama' => 'required|max:255|min:3',
@@ -137,6 +153,7 @@ class PesertaDidikController extends Controller
    */
   public function destroy(PesertaDidik $pesertaDidik)
   {
+    $this->authorize('delete', $pesertaDidik);
     $nama = $pesertaDidik->user->nama;
     $pesertaDidik->delete();
     return back()->with('success', 'Berhasil menghapus Peserta Didik ' . $nama);

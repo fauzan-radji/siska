@@ -109,40 +109,42 @@
     @endcan
 
 
-    <h1>Form Daftar Peserta</h1>
-    <form action="/peserta_didik" method="post">
-      @csrf
-      <div class="mb-3">
-        <label class="form-label" for="nama">Nama</label>
-        <input class="form-control" id="nama" name="nama" type="text">
-      </div>
+    @can('create', \App\Models\PesertaDidik::class)
+      <h1>Form Daftar Peserta</h1>
+      <form action="/peserta_didik" method="post">
+        @csrf
+        <div class="mb-3">
+          <label class="form-label" for="nama">Nama</label>
+          <input class="form-control" id="nama" name="nama" type="text">
+        </div>
 
-      <div class="mb-3">
-        <label class="form-label" for="pangkalan">Pangkalan</label>
-        <select class="form-select" id="pangkalan" name="pangkalan_id" required>
-          @foreach ($pangkalans as $pangkalan)
-            <option value="{{ $pangkalan->id }}">{{ $pangkalan->nama }}</option>
-          @endforeach
-        </select>
-      </div>
+        <div class="mb-3">
+          <label class="form-label" for="pangkalan">Pangkalan</label>
+          <select class="form-select" id="pangkalan" name="pangkalan_id" required>
+            @foreach ($pangkalans as $pangkalan)
+              <option value="{{ $pangkalan->id }}">{{ $pangkalan->nama }}</option>
+            @endforeach
+          </select>
+        </div>
 
-      <div class="mb-3">
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control" id="username" name="username" type="text">
-      </div>
+        <div class="mb-3">
+          <label class="form-label" for="username">Username</label>
+          <input class="form-control" id="username" name="username" type="text">
+        </div>
 
-      <div class="mb-3">
-        <label class="form-label" for="email">Email</label>
-        <input class="form-control" id="email" name="email" type="email">
-      </div>
+        <div class="mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" id="email" name="email" type="email">
+        </div>
 
-      <div class="mb-3">
-        <label class="form-label" for="password">Password</label>
-        <input class="form-control" id="password" name="password" type="password">
-      </div>
+        <div class="mb-3">
+          <label class="form-label" for="password">Password</label>
+          <input class="form-control" id="password" name="password" type="password">
+        </div>
 
-      <button class="btn btn-primary" type="submit">Daftar</button>
-    </form>
+        <button class="btn btn-primary" type="submit">Daftar</button>
+      </form>
+    @endcan
   @endauth
 
   <script src="/js/bootstrap.bundle.min.js"></script>

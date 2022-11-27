@@ -5,7 +5,9 @@
     <h1>Daftar Pengurus</h1>
   </div>
 
-  <a class="btn btn-primary" href="/dashboard/admin/create"><span data-feather="plus"></span> Tambah Admin</a>
+  @can('create', \App\Models\Admin::class)
+    <a class="btn btn-primary" href="/dashboard/admin/create"><span data-feather="plus"></span> Tambah Admin</a>
+  @endcan
 
   <div class="table-responsive">
     <table class="table table-striped">
@@ -26,13 +28,19 @@
             <td>{{ $admin->user->username }}</td>
             <td>{{ $admin->user->email }}</td>
             <td>
-              <a class="badge bg-info" href="/dashboard/admin/{{ $admin->id }}"><span data-feather="eye"></span></a>
-              <a class="badge bg-warning" href="/dashboard/admin/{{ $admin->id }}/edit"><span data-feather="edit"></span></a>
-              <form class="d-inline" action="/dashboard/admin/{{ $admin->id }}" method="post">
-                @method('delete')
-                @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
-              </form>
+              @can('view', $admin)
+                <a class="badge bg-info" href="/dashboard/admin/{{ $admin->id }}"><span data-feather="eye"></span></a>
+              @endcan
+              @can('update', $admin)
+                <a class="badge bg-warning" href="/dashboard/admin/{{ $admin->id }}/edit"><span data-feather="edit"></span></a>
+              @endcan
+              @can('delete', $admin)
+                <form class="d-inline" action="/dashboard/admin/{{ $admin->id }}" method="post">
+                  @method('delete')
+                  @csrf
+                  <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
+                </form>
+              @endcan
             </td>
           </tr>
         @empty
