@@ -60,4 +60,26 @@ class User extends Authenticatable
   {
     return $this->hasOne(PesertaDidik::class);
   }
+
+  public function isAdmin()
+  {
+    return $this->admin ? true : false;
+  }
+
+  public function isPembina()
+  {
+    return $this->pembina ? true : false;
+  }
+
+  public function isAdminPangkalan()
+  {
+    return
+      $this->pembina &&
+      $this->pembina->jabatan === 'Admin Pangkalan';
+  }
+
+  public function isPesertaDidik()
+  {
+    return $this->peserta_didik ? true : false;
+  }
 }

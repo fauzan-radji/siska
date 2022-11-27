@@ -57,8 +57,10 @@
           <div class="text-center mt-3">
             <span class="bg-secondary p-1 px-4 rounded text-white">{{ $pembina->jabatan }}</span>
             <h5 class="mt-2 mb-0">{{ $pembina->user->nama }}</h5>
+            <h6 class="my-2">{{ $pembina->pangkalan->nama }}</h6>
             <span>{{ $pembina->user->email }}</span>
             <div class="px-4 mt-1">
+              <p class="mb-1">{{ $pembina->user->username }}</p>
               <p class="mb-1">{{ $pembina->gender }}</p>
               <p class="mb-1">{{ $pembina->alamat }}</p>
               <p class="mb-1">HP: {{ $pembina->no_hp }}</p>

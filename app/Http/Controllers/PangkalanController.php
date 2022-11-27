@@ -19,6 +19,7 @@ class PangkalanController extends Controller
    */
   public function index()
   {
+    $this->authorize('viewAny', Pangkalan::class);
     return view('dashboard.pangkalan.index', [
       'kwarrans' => Kwarran::all()
     ]);
@@ -42,6 +43,7 @@ class PangkalanController extends Controller
    */
   public function store(StorePangkalanRequest $request)
   {
+    $this->authorize('create');
     $validated = $request->validate([
       "nama_pangkalan" => 'required',
       "kwarran_id" => 'required',
@@ -93,6 +95,7 @@ class PangkalanController extends Controller
    */
   public function show(Pangkalan $pangkalan)
   {
+    $this->authorize('view', $pangkalan);
     return view('dashboard.pangkalan.show', [
       'pangkalan' => $pangkalan
     ]);
@@ -106,6 +109,7 @@ class PangkalanController extends Controller
    */
   public function edit(Pangkalan $pangkalan)
   {
+    $this->authorize('update', $pangkalan);
     $no_gudep = explode('-', $pangkalan->no_gudep)[1];
     $no_gudep = explode('/', $no_gudep);
     $ambalan = explode('-', $pangkalan->ambalan);
@@ -132,6 +136,7 @@ class PangkalanController extends Controller
    */
   public function update(UpdatePangkalanRequest $request, Pangkalan $pangkalan)
   {
+    $this->authorize('update', $pangkalan);
     $validated = $request->validate([
       "nama" => 'required',
       "kwarran_id" => 'required',
@@ -155,6 +160,7 @@ class PangkalanController extends Controller
    */
   public function destroy(Pangkalan $pangkalan)
   {
+    $this->authorize('delete', $pangkalan);
     $pangkalan->delete();
     return back()->with('success', 'Berhasil menghapus pangkalan ' . $pangkalan->nama);
   }

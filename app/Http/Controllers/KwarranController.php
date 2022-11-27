@@ -27,6 +27,7 @@ class KwarranController extends Controller
    */
   public function create()
   {
+    $this->authorize('create');
     return view('dashboard.kwarran.create');
   }
 
@@ -38,6 +39,7 @@ class KwarranController extends Controller
    */
   public function store(StoreKwarranRequest $request)
   {
+    $this->authorize('create');
     $validated = $request->validate([
       'nama' => 'required|min:5|max:255',
       'nomor' => 'required|size:2',
@@ -71,6 +73,7 @@ class KwarranController extends Controller
    */
   public function edit(Kwarran $kwarran)
   {
+    $this->authorize('update', $kwarran);
     return view('dashboard.kwarran.edit', [
       'kwarran' => $kwarran
     ]);
@@ -85,9 +88,10 @@ class KwarranController extends Controller
    */
   public function update(UpdateKwarranRequest $request, Kwarran $kwarran)
   {
+    $this->authorize('update', $kwarran);
     $validated = $request->validate([
       'nama' => 'required|min:5|max:255',
-      'nomor' => 'required|size:2',
+      'nomor' => 'required|size:2|unique:kwarran',
       'kamabiran' => 'required|min:3|max:255',
       'ketua' => "required|min:3|max:255"
     ]);
@@ -105,6 +109,7 @@ class KwarranController extends Controller
    */
   public function destroy(Kwarran $kwarran)
   {
+    $this->authorize('delete', $kwarran);
     $nama = $kwarran->nama;
     $kwarran->delete();
     return back()->with('success', 'Berhasil menghapus kwarran ' . $nama);

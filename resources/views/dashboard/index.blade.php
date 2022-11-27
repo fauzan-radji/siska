@@ -10,7 +10,7 @@
   </div>
 
   {{-- if admin --}}
-  @if (auth()->user()->admin)
+  @if (auth()->user()->isAdmin())
     <h2 class="h3">Data Pangkalan</h2>
     <canvas class="my-4 w-100" id="pangkalan" width="900" height="380"></canvas>
 

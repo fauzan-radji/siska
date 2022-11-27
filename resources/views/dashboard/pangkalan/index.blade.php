@@ -24,13 +24,19 @@
               <td>{{ $pangkalan->nama }}</td>
               <td>{{ $pangkalan->no_gudep }}</td>
               <td>
-                <a class="badge bg-info" href="/dashboard/pangkalan/{{ $pangkalan->id }}"><span data-feather="eye"></span></a>
-                <a class="badge bg-warning" href="/dashboard/pangkalan/{{ $pangkalan->id }}/edit"><span data-feather="edit"></span></a>
-                <form class="d-inline" action="/dashboard/pangkalan/{{ $pangkalan->id }}" method="post">
-                  @method('delete')
-                  @csrf
-                  <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
-                </form>
+                @can('view', $pangkalan)
+                  <a class="badge bg-info" href="/dashboard/pangkalan/{{ $pangkalan->id }}"><span data-feather="eye"></span></a>
+                @endcan
+                @can('update', $pangkalan)
+                  <a class="badge bg-warning" href="/dashboard/pangkalan/{{ $pangkalan->id }}/edit"><span data-feather="edit"></span></a>
+                @endcan
+                @can('delete', $pangkalan)
+                  <form class="d-inline" action="/dashboard/pangkalan/{{ $pangkalan->id }}" method="post">
+                    @method('delete')
+                    @csrf
+                    <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
+                  </form>
+                @endcan
               </td>
             </tr>
           @empty

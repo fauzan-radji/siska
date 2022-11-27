@@ -7,34 +7,47 @@
           Dashboard
         </a>
       </li>
-      {{-- if admin --}}
-      @if (auth()->user()->admin)
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/kwarran*') ? 'active' : '' }}" href="/dashboard/kwarran">
-            <span class="align-text-bottom" data-feather="map-pin"></span>
-            Kwartir Ranting
-          </a>
-        </li>
-      @endif
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/kwarran*') ? 'active' : '' }}" href="/dashboard/kwarran">
+          <span class="align-text-bottom" data-feather="map-pin"></span>
+          Kwartir Ranting
+        </a>
+      </li>
 
-      {{-- if not peserta_didik --}}
-      @if (!auth()->user()->peserta_didik)
+      @can('viewAny', \App\Models\Pangkalan::class)
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/pangkalan*') ? 'active' : '' }}" href="/dashboard/pangkalan">
             <span class="align-text-bottom" data-feather="home"></span>
             Pangkalan
           </a>
         </li>
+      @endcan
+      @if (!auth()->user()->isAdmin())
+        <li class="nav-item">
+          @if (auth()->user()->isPembina())
+            <a class="nav-link {{ Request::is('dashboard/pangkalan/' . auth()->user()->pembina->pangkalan_id) ? 'active' : '' }}" href="/dashboard/pangkalan/{{ auth()->user()->pembina->pangkalan_id }}">
+              <span class="align-text-bottom" data-feather="home"></span>
+              Pangkalan Saya
+            </a>
+          @else
+            <a class="nav-link {{ Request::is('dashboard/pangkalan/' . auth()->user()->peserta_didik->pangkalan_id) ? 'active' : '' }}" href="/dashboard/pangkalan/{{ auth()->user()->peserta_didik->pangkalan_id }}">
+              <span class="align-text-bottom" data-feather="home"></span>
+              Pangkalan Saya
+            </a>
+          @endif
+        </li>
       @endif
 
-      {{-- if pembina --}}
-      @if (auth()->user()->pembina)
+      @can('viewAny', \App\Models\Pembina::class)
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/pembina*') ? 'active' : '' }}" href="/dashboard/pembina">
             <span class="align-text-bottom" data-feather="users"></span>
             Pembina
           </a>
         </li>
+      @endcan
+
+      @if (auth()->user()->isPembina())
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/peserta_didik*') ? 'active' : '' }}" href="/dashboard/peserta_didik">
             <span class="align-text-bottom" data-feather="users"></span>
@@ -44,7 +57,7 @@
       @endif
 
       {{-- if not admin --}}
-      @if (!auth()->user()->admin)
+      @if (!auth()->user()->isAdmin())
         <li class="nav-item">
           <a class="nav-link" href="#">
             <span class="align-text-bottom" data-feather="book-open"></span>
@@ -60,7 +73,7 @@
       @endif
 
       {{-- if admin --}}
-      @if (auth()->user()->admin)
+      @if (auth()->user()->isAdmin())
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/admin') ? 'active' : '' }}" href="/dashboard/admin">
             <span class="align-text-bottom" data-feather="users"></span>
@@ -70,32 +83,22 @@
       @endif
 
       <li class="nav-item">
-        @php
-          switch (true) {
-              case auth()->user()->admin:
-                  $id = auth()->user()->admin->id;
-                  $route = 'admin';
-                  break;
-          
-              case auth()->user()->pembina:
-                  $id = auth()->user()->pembina->id;
-                  $route = 'pembina';
-                  break;
-          
-              case auth()->user()->peserta_didik:
-                  $id = auth()->user()->peserta_didik->id;
-                  $route = 'peserta_didik';
-                  break;
-          
-              default:
-                  $route = '..';
-                  break;
-          }
-        @endphp
-        <a class="nav-link {{ Request::is('dashboard/' . $route . '/' . $id) ? 'active' : '' }}" href="/dashboard/{{ $route }}/{{ $id }}">
-          <span class="align-text-bottom" data-feather="user"></span>
-          Akun Saya
-        </a>
+        @if (auth()->user()->isAdmin())
+          <a class="nav-link {{ Request::is('dashboard/admin/' . auth()->user()->admin->id) ? 'active' : '' }}" href="/dashboard/admin/{{ auth()->user()->admin->id }}">
+            <span class="align-text-bottom" data-feather="user"></span>
+            Akun Saya
+          </a>
+        @elseif(auth()->user()->isPembina())
+          <a class="nav-link {{ Request::is('dashboard/pembina/' . auth()->user()->pembina->id) ? 'active' : '' }}" href="/dashboard/pembina/{{ auth()->user()->pembina->id }}">
+            <span class="align-text-bottom" data-feather="user"></span>
+            Akun Saya
+          </a>
+        @elseif(auth()->user()->isPesertaDidik())
+          <a class="nav-link {{ Request::is('dashboard/peserta_didik/' . auth()->user()->peserta_didik->id) ? 'active' : '' }}" href="/dashboard/peserta_didik/{{ auth()->user()->peserta_didik->id }}">
+            <span class="align-text-bottom" data-feather="user"></span>
+            Akun Saya
+          </a>
+        @endif
       </li>
     </ul>
 

@@ -19,9 +19,14 @@ class PembinaController extends Controller
    */
   public function index()
   {
-    return view('dashboard.pembina.index', [
-      'pembinas' => Pembina::where('pangkalan_id', auth()->user()->pembina->pangkalan_id)->get()
-    ]);
+    $this->authorize('viewAny', Pembina::class);
+    $data = [];
+    if (auth()->user()->isAdmin()) $data['pangkalans'] = Pangkalan::all();
+    else {
+      $user = auth()->user()->isPembina() ? auth()->user()->pembina : auth()->user()->peserta_didik;
+      $data['pangkalans'] = collect([Pangkalan::find($user->pangkalan_id)]);
+    }
+    return view('dashboard.pembina.index', $data);
   }
 
   /**
@@ -31,6 +36,7 @@ class PembinaController extends Controller
    */
   public function create()
   {
+    $this->authorize('create', Pembina::class);
     return view('dashboard.pembina.create');
   }
 
@@ -42,6 +48,7 @@ class PembinaController extends Controller
    */
   public function store(StorePembinaRequest $request)
   {
+    $this->authorize('create', Pembina::class);
     $validated = $request->validate([
       'nama' => 'required|max:255|min:3',
       'username' => 'required|min:5|max:255',
@@ -69,6 +76,7 @@ class PembinaController extends Controller
    */
   public function show(Pembina $pembina)
   {
+    $this->authorize('view', $pembina);
     return view('dashboard.pembina.show', [
       'pembina' => $pembina
     ]);
@@ -133,6 +141,7 @@ class PembinaController extends Controller
    */
   public function destroy(Pembina $pembina)
   {
+    $this->authorize('delete', $pembina);
     $nama = $pembina->user->nama;
     $pembina->delete();
     return back()->with('success', 'Berhasil menghapus Pembina ' . $nama);

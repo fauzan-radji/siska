@@ -5,7 +5,9 @@
     <h1>Daftar Kwartir Ranting</h1>
   </div>
 
-  <a class="btn btn-primary" href="/dashboard/kwarran/create"><span data-feather="plus"></span> Tambah Kwarran</a>
+  @can('create', App\Models\Kwarran::class)
+    <a class="btn btn-primary" href="/dashboard/kwarran/create"><span data-feather="plus"></span> Tambah Kwarran</a>
+  @endcan
 
   <div class="table-responsive">
     <table class="table table-striped">
@@ -24,13 +26,20 @@
             <td>{{ $kwarran->nama }}</td>
             <td>{{ $kwarran->ketua }}</td>
             <td>
+              {{-- view --}}
               <a class="badge bg-info" href="/dashboard/kwarran/{{ $kwarran->id }}"><span data-feather="eye"></span></a>
-              <a class="badge bg-warning" href="/dashboard/kwarran/{{ $kwarran->id }}/edit"><span data-feather="edit"></span></a>
-              <form class="d-inline" action="/dashboard/kwarran/{{ $kwarran->id }}" method="post">
-                @method('delete')
-                @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
-              </form>
+              {{-- update --}}
+              @can('update', $kwarran)
+                <a class="badge bg-warning" href="/dashboard/kwarran/{{ $kwarran->id }}/edit"><span data-feather="edit"></span></a>
+              @endcan
+              @can('delete', $kwarran)
+                {{-- delete --}}
+                <form class="d-inline" action="/dashboard/kwarran/{{ $kwarran->id }}" method="post">
+                  @method('delete')
+                  @csrf
+                  <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
+                </form>
+              @endcan
             </td>
           </tr>
         @empty

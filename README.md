@@ -5,8 +5,118 @@
 - [ ] Dashboard
 - [ ] Authorization
   - [ ] Admin
+    - [x] Create Kwarran
+    - [x] Read Kwarran
+    - [x] Update Kwarran
+    - [x] Delete Kwarran
+    - [x] Read Pangkalan
+    - [ ] Verify Pangkalan
+    - [x] Delete Pangkalan
+    - [x] Read Pembina
+  - [ ] Admin Pangkalan
+    - [x] Read Kwarran
+    - [x] Read Pangkalan
+    - [x] Update Related Pangkalan
+    - [x] Delete Related Pangkalan
+    - [x] Create Pembina in Related Pangkalan
+    - [x] Read Pembina in Related Pangkalan
+    - [x] Update Pembina in Related Pangkalan
+    - [x] Delete Pembina in Related Pangkalan
+    - [ ] Verify Pembina in Related Pangkalan
+    - [ ] Create Peserta Didik in Related Pangkalan
+    - [ ] Read Peserta Didik in Related Pangkalan
+    - [ ] Update Peserta Didik in Related Pangkalan
+    - [ ] Delete Peserta Didik in Related Pangkalan
+    - [ ] Verify Peserta Didik in Related Pangkalan
   - [ ] Pembina
+    - [x] Read Kwarran
+    - [x] Read Related Pangkalan
+    - [x] Read Pembina in Related Pangkalan
+    - [x] Update Related Pembina
+    - [x] Delete Related Pembina
+    - [ ] Read Peserta Didik in Related Pangkalan
   - [ ] Peserta Didik
+    - [x] Read Kwarran
+    - [x] Read Related Pangkalan
+    - [x] Read Pembina in Related Pangkalan
+- [ ] Policy
+  - [ ] Admin
+    - [ ] View Any
+    - [ ] View
+    - [ ] Create
+    - [ ] Update
+    - [ ] Delete
+  - [x] Kwarran
+    - [x] Create
+      - [x] Admin
+    - [x] Update
+      - [x] Admin
+    - [x] Delete
+      - [x] Admin
+  - [x] Pangkalan
+    - [x] View Any
+      - [x] Admin
+      - [x] Admin Pangkalan
+      - [x] Pembina
+    - [x] View
+      - [x] Admin
+      - [x] Admin Pangkalan
+      - [x] Pembina
+      - [x] Peserta
+    - [x] Create
+      - [x] Guest
+    - [x] Update
+      - [x] Admin Pangkalan
+    - [x] Delete
+      - [x] Admin
+      - [x] Admin Pangkalan
+  - [x] Pembina
+    - [x] View Any
+      - [x] Admin
+      - [x] Pembina
+      - [x] Peserta Didik
+    - [x] View
+      - [x] Admin
+      - [x] Pembina
+      - [x] Peserta Didik
+    - [x] Create
+      - [x] Admin Pangkalan
+    - [x] Update
+      - [x] Related Pembina
+      - [x] Admin Pangkalan
+    - [x] Delete
+      - [x] Admin
+      - [x] Related Pembina
+      - [x] Admin Pangkalan
+  - [ ] Peserta Didik
+    - [ ] View Any
+      - [ ] Admin
+      - [ ] Related Pembina in Related Pangkalan
+    - [ ] View
+      - [ ] Admin
+      - [ ] Related Pembina in Related Pangkalan
+    - [ ] Create
+      - [ ] Related Admin Pangkalan in Related Pangkalan
+    - [ ] Update
+      - [ ] Related Admin Pangkalan in Related Pangkalan
+    - [ ] Delete
+      - [ ] Admin
+      - [ ] Related Admin Pangkalan in Related Pangkalan
+  - [ ] Jadwal
+    - [ ] View Any
+      - [ ] Admin
+      - [ ] Admin Pangkalan
+    - [ ] View
+      - [ ] Admin
+      - [ ] Pembina
+      - [ ] Admin Pangkalan
+      - [ ] Peserta Didik
+    - [ ] Create
+      - [ ] Admin Pangkalan
+    - [ ] Update
+      - [ ] Admin Pangkalan
+    - [ ] Delete
+      - [ ] Admin Pangkalan
 - [ ] CRUD
   - [ ] Create
     - [x] Admin
