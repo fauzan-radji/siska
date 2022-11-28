@@ -1,0 +1,18 @@
+.form-signup .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signup .form-floating:not(:last-child) :is(input, select) {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signup .form-floating:not(:first-child) :is(input, select) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signup .form-floating:last-child :is(input, select) {
+  margin-bottom: 10px;
+}

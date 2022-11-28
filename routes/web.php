@@ -9,6 +9,7 @@ use App\Http\Controllers\KwarranController;
 use App\Http\Controllers\PembinaController;
 use App\Http\Controllers\PangkalanController;
 use App\Http\Controllers\PesertaDidikController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,20 +26,23 @@ use App\Http\Controllers\PesertaDidikController;
 //   return view('welcome');
 // });
 
-Route::get('/', function () {
-  return view('landing', [
-    'kwarrans' => Kwarran::all(),
-    'pangkalans' => Pangkalan::all()
-  ]);
-})->name('login');
+Route::get('/', fn () => view('landing'));
 
-Route::get('/dashboard', function () {
-  return view('dashboard.index');
-})->middleware('auth');
+Route::get('/register/peserta_didik', [RegisterController::class, 'createPesertaDidik'])->middleware(('guest'));
+Route::post('/register/peserta_didik', [RegisterController::class, 'storePesertaDidik'])->middleware(('guest'));
 
+Route::get('/register/pangkalan', [RegisterController::class, 'createPangkalan'])->middleware(('guest'));
+Route::post('/register/pangkalan', [RegisterController::class, 'postPangkalan'])->middleware(('guest'));
+Route::post('/register/admin_pangkalan', [RegisterController::class, 'storePangkalan'])->middleware(('guest'));
+
+Route::get('/register/pembina', [RegisterController::class, 'createPembina'])->middleware(('guest'));
+Route::post('/register/pembina', [RegisterController::class, 'storePembina'])->middleware(('guest'));
+
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
+Route::get('/dashboard', fn () => view('dashboard.index'))->middleware('auth');
 Route::resource('/dashboard/admin', AdminController::class)->middleware('auth');
 Route::resource('/dashboard/kwarran', KwarranController::class)->middleware('auth');
 

@@ -32,7 +32,7 @@ class PangkalanController extends Controller
    */
   public function create()
   {
-    //
+    $this->authorize('create', Pangkalan::class);
   }
 
   /**
@@ -43,7 +43,7 @@ class PangkalanController extends Controller
    */
   public function store(StorePangkalanRequest $request)
   {
-    $this->authorize('create');
+    $this->authorize('create', Pangkalan::class);
     $validated = $request->validate([
       "nama_pangkalan" => 'required',
       "kwarran_id" => 'required',

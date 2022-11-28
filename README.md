@@ -1,9 +1,9 @@
 # TODOS
 
-- [ ] Register
-  - [ ] Pangkalan
-  - [ ] Pembina
-  - [ ] Peserta Didik
+- [x] Register
+  - [x] Pangkalan
+  - [x] Pembina
+  - [x] Peserta Didik
 - [x] Login
 - [ ] Authorization
   - [ ] Admin

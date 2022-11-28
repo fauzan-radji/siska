@@ -67,7 +67,9 @@
               <p class="mb-1">Tanggal Lahir: {{ $pembina->tanggal_lahir }}</p>
               <p class="mb-1">{{ $pembina->agama ? $pembina->agama->nama : '-' }}</p>
             </div>
-            <a class="btn btn-outline-primary px-4" href="/dashboard/pembina/{{ $pembina->id }}/edit">Edit</a>
+            @can('update', $pembina)
+              <a class="btn btn-outline-primary px-4" href="/dashboard/pembina/{{ $pembina->id }}/edit">Edit</a>
+            @endcan
           </div>
         </div>
       </div>

@@ -49,7 +49,7 @@ class PembinaPolicy
    */
   public function create(User $user)
   {
-    return $user->isAdminPangkalan() || auth()->guest();
+    return $user->isAdminPangkalan();
   }
 
   /**
