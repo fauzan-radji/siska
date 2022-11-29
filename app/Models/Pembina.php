@@ -42,6 +42,8 @@ class Pembina extends Model
 
     static::deleting(function ($pembina) { // before delete() method call this
       $pembina->user->delete();
+
+      $pembina->jadwals()->detach();
       // do the rest of the cleanup...
     });
   }

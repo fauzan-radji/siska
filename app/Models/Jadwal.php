@@ -28,4 +28,16 @@ class Jadwal extends Model
   {
     return $this->belongsToMany(Pembina::class);
   }
+
+  // this is a recommended way to declare event handlers
+  public static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function ($jadwal) { // before delete() method call this
+      $jadwal->poins()->detach();
+      $jadwal->pembinas()->detach();
+      // do the rest of the cleanup...
+    });
+  }
 }

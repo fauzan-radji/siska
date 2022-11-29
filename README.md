@@ -2,148 +2,21 @@
 
 - [ ] Authorization
   - [ ] Admin
-    - [x] Create Kwarran
-    - [x] Read Kwarran
-    - [x] Update Kwarran
-    - [x] Delete Kwarran
-    - [x] Read Pangkalan
     - [ ] Verify Pangkalan
-    - [x] Delete Pangkalan
-    - [x] Read Pembina
-    - [x] Read Jadwal
   - [ ] Admin Pangkalan
-    - [x] Read Kwarran
-    - [x] Read Pangkalan
-    - [x] Update Related Pangkalan
-    - [x] Delete Related Pangkalan
-    - [x] Create Pembina in Related Pangkalan
-    - [x] Read Pembina in Related Pangkalan
-    - [x] Update Pembina in Related Pangkalan
-    - [x] Delete Pembina in Related Pangkalan
     - [ ] Verify Pembina in Related Pangkalan
-    - [x] Create Peserta Didik in Related Pangkalan
-    - [x] Read Peserta Didik in Related Pangkalan
-    - [x] Update Peserta Didik in Related Pangkalan
-    - [x] Delete Peserta Didik in Related Pangkalan
     - [ ] Verify Peserta Didik in Related Pangkalan
-    - [x] Create Jadwal in Related Pangkalan
-    - [x] Read Jadwal in Related Pangkalan
-    - [x] Update Jadwal in Related Pangkalan
-    - [ ] Delete Jadwal in Related Pangkalan
-  - [x] Pembina
-    - [x] Read Kwarran
-    - [x] Read Related Pangkalan
-    - [x] Read Pembina in Related Pangkalan
-    - [x] Update Related Pembina
-    - [x] Delete Related Pembina
-    - [x] Read Peserta Didik in Related Pangkalan
-    - [x] Read Jadwal in Related Pangkalan
-  - [x] Peserta Didik
-    - [x] Read Kwarran
-    - [x] Read Related Pangkalan
-    - [x] Read Pembina in Related Pangkalan
-    - [x] Read Jadwal in Related Pangkalan
 - [ ] Policy
-  - [x] Admin
-    - [x] View Any
-      - [x] Admin
-    - [x] View
-      - [x] Admin
-    - [x] Create
-      - [x] Admin
-    - [x] Update
-      - [x] Admin
-    - [x] Delete
-      - [x] Admin
-  - [x] Kwarran
-    - [x] Create
-      - [x] Admin
-    - [x] Update
-      - [x] Admin
-    - [x] Delete
-      - [x] Admin
-  - [x] Pangkalan
-    - [x] View Any
-      - [x] Admin
-      - [x] Admin Pangkalan
-      - [x] Pembina
-    - [x] View
-      - [x] Admin
-      - [x] Admin Pangkalan
-      - [x] Pembina
-      - [x] Peserta
-    - [x] Create
-      - [x] Guest
-    - [x] Update
-      - [x] Admin Pangkalan
-    - [x] Delete
-      - [x] Admin
-      - [x] Admin Pangkalan
-  - [x] Pembina
-    - [x] View Any
-      - [x] Admin
-      - [x] Admin Pangkalan
-      - [x] Pembina
-      - [x] Peserta Didik
-    - [x] View
-      - [x] Admin
-      - [x] Admin Pangkalan in Related Pangkalan
-      - [x] Pembina in Related Pangkalan
-      - [x] Peserta Didik in Related Pangkalan
-    - [x] Create
-      - [x] Admin Pangkalan
-      - [x] Guest
-    - [x] Update
-      - [x] Admin Pangkalan in Related Pangkalan
-      - [x] Related Pembina
-    - [x] Delete
-      - [x] Admin
-      - [x] Admin Pangkalan in Related Pangkalan
-      - [x] Related Pembina
-  - [x] Peserta Didik
-    - [x] View Any
-      - [x] Admin
-      - [x] Admin Pangkalan
-      - [x] Pembina
-    - [x] View
-      - [x] Admin
-      - [x] Admin Pangkalan in Related Pangkalan
-      - [x] Pembina in Related Pangkalan
-    - [x] Create
-      - [x] Admin Pangkalan
-      - [x] Guest
-    - [x] Update
-      - [x] Admin Pangkalan in Relaxted Pangkalan
-      - [x] Related Peserta Didik
-    - [x] Delete
-      - [x] Admin
-      - [x] Admin Pangkalan in Related Pangkalan
-      - [x] Related Peserta Didik
-  - [ ] Jadwal
-    - [x] View Any
-      - [x] Admin
-      - [x] Admin Pangkalan
-      - [x] Pembina
-      - [x] Peserta Didik
-    - [x] View
-      - [x] Admin
-      - [x] Pembina
-      - [x] Admin Pangkalan
-      - [x] Peserta Didik
-    - [x] Create
-      - [x] Admin Pangkalan
-    - [x] Update
-      - [x] Admin Pangkalan
-    - [ ] Delete
-      - [ ] Admin Pangkalan
+  - [ ] Pangkalan
+    - [ ] Verify
+      - [ ] Admin
+  - [ ] Pembina
+    - [ ] Verify
+      - [ ] Related Admin Pangkalan
+  - [ ] Peserta Didik
+    - [ ] Verify
+      - [ ] Related Admin Pangkalan
 - [ ] CRUD
-  - [x] Create
-    - [x] Admin
-    - [x] Kwarran
-    - [x] Pangkalan
-    - [x] Pembina
-    - [x] Peserta Didik
-    - [x] Jadwal
   - [ ] Upload Foto
     - [ ] Pangkalan
     - [ ] Pembina
@@ -154,34 +27,6 @@
     - [ ] Pangkalan
     - [ ] Pembina
     - [ ] Peserta Didik
-    - [ ] Jadwal
-  - [ ] Read
-    - [x] Admin
-    - [x] Kwarran
-    - [x] Pangkalan
-    - [x] Pembina
-    - [x] Peserta Didik
-    - [x] Jadwal
-  - [ ] Read Specific
-    - [x] Admin
-    - [x] Kwarran
-    - [x] Pangkalan
-    - [x] Pembina
-    - [x] Peserta Didik
-    - [x] Jadwal
-  - [x] Update
-    - [x] Admin
-    - [x] Kwarran
-    - [x] Pangkalan
-    - [x] Pembina
-    - [x] Peserta Didik
-    - [x] Jadwal
-  - [ ] Delete
-    - [x] Admin
-    - [x] Kwarran
-    - [x] Pangkalan
-    - [x] Pembina
-    - [x] Peserta Didik
     - [ ] Jadwal
 - [ ] UIs
   - [ ] Data Potensi Chart
@@ -194,6 +39,7 @@
 
 # To Be Fixed
 
+- [x] Ketika pembina dihapus, maka update juga tabel jadwal
 - [ ] Menambah no_kwarran di form tambah kwarran
 - [ ] Di halaman detail kwarran, ketika diklik jumlah pangkalan maka akan mengarah ke daftar pangkalah di kwarran terkait
 - [ ] Memisahkan field gudep putra dan putri serta ambalan putra dan putri di tabel pangkalan
@@ -202,44 +48,213 @@
 
 # Selesai
 
-- [x] Migration
-  - [x] Admin
-  - [x] Kwarran
-  - [x] Pangkalan
-  - [x] Pembina
-  - [x] Peserta Didik
-  - [x] Poin
-  - [x] Jadwal
-  - [x] Agama
-- [x] Factory
-  - [x] Kwarran
-  - [x] Pangkalan
-  - [x] User
-  - [x] Pembina
-  - [x] Peserta Didik
-- [x] Seeder
-  - [x] Admin
-  - [x] Kwarran
-  - [x] Pangkalan
-  - [x] Pembina
-  - [x] Peserta Didik
-  - [x] Poin
-  - [x] Agama
-- [x] Relations
-  - [x] User - Admin
-  - [x] User - Pembina
-  - [x] User - Peserta Didik
-  - [x] Kwarran - Pangkalan
-  - [x] Pangkalan - Pembina
-  - [x] Pangkalan - Peserta Didik
-  - [x] Pangkalan - Jadwal
-  - [x] Agama - Pembina
-  - [x] Agama - Peserta Didik
-  - [x] Agama - Poin
-  - [x] Jadwal - Poin
-  - [x] Jadwal - Pembina
-- [x] Register
-  - [x] Pangkalan
-  - [x] Pembina
-  - [x] Peserta Didik
-- [x] Login
+- Migration
+  - Admin
+  - Kwarran
+  - Pangkalan
+  - Pembina
+  - Peserta Didik
+  - Poin
+  - Jadwal
+  - Agama
+- Factory
+  - Kwarran
+  - Pangkalan
+  - User
+  - Pembina
+  - Peserta Didik
+- Seeder
+  - Admin
+  - Kwarran
+  - Pangkalan
+  - Pembina
+  - Peserta Didik
+  - Poin
+  - Agama
+- Relations
+  - User - Admin
+  - User - Pembina
+  - User - Peserta Didik
+  - Kwarran - Pangkalan
+  - Pangkalan - Pembina
+  - Pangkalan - Peserta Didik
+  - Pangkalan - Jadwal
+  - Agama - Pembina
+  - Agama - Peserta Didik
+  - Agama - Poin
+  - Jadwal - Poin
+  - Jadwal - Pembina
+- Register
+  - Pangkalan
+  - Pembina
+  - Peserta Didik
+- Login
+- Authorization
+  - Admin
+    - Create Kwarran
+    - Read Kwarran
+    - Update Kwarran
+    - Delete Kwarran
+    - Read Pangkalan
+    - Delete Pangkalan
+    - Read Pembina
+    - Read Jadwal
+  - Admin Pangkalan
+    - Read Kwarran
+    - Read Pangkalan
+    - Update Related Pangkalan
+    - Delete Related Pangkalan
+    - Create Pembina in Related Pangkalan
+    - Read Pembina in Related Pangkalan
+    - Update Pembina in Related Pangkalan
+    - Delete Pembina in Related Pangkalan
+    - Create Peserta Didik in Related
+    - Read Peserta Didik in Related Pangkalan
+    - Update Peserta Didik in Related Pangkalan
+    - Delete Peserta Didik in Related Pangkalan
+    - Create Jadwal in Related Pangkalan
+    - Read Jadwal in Related Pangkalan
+    - Update Jadwal in Related Pangkalan
+    - Delete Jadwal in Related Pangkalan
+  - Pembina
+    - Read Kwarran
+    - Read Related Pangkalan
+    - Read Pembina in Related Pangkalan
+    - Update Related Pembina
+    - Delete Related Pembina
+    - Read Peserta Didik in Related Pangkalan
+    - Read Jadwal in Related Pangkalan
+  - Peserta Didik
+    - Read Kwarran
+    - Read Related Pangkalan
+    - Read Pembina in Related Pangkalan
+    - Read Jadwal in Related Pangkalan
+- Policy
+  - Admin
+    - View Any
+      - Admin
+    - View
+      - Admin
+    - Create
+      - Admin
+    - Update
+      - Admin
+    - Delete
+      - Admin
+  - Kwarran
+    - Create
+      - Admin
+    - Update
+      - Admin
+    - Delete
+      - Admin
+  - Pangkalan
+    - View Any
+      - Admin
+      - Admin Pangkalan
+      - Pembina
+    - View
+      - Admin
+      - Admin Pangkalan
+      - Pembina
+      - Peserta
+    - Create
+      - Guest
+    - Update
+      - Admin Pangkalan
+    - Delete
+      - Admin
+      - Admin Pangkalan
+  - Pembina
+    - View Any
+      - Admin
+      - Admin Pangkalan
+      - Pembina
+      - Peserta Didik
+    - View
+      - Admin
+      - Admin Pangkalan in Related Pangkalan
+      - Pembina in Related Pangkalan
+      - Peserta Didik in Related Pangkalan
+    - Create
+      - Admin Pangkalan
+      - Guest
+    - Update
+      - Admin Pangkalan in Related Pangkalan
+      - Related Pembina
+    - Delete
+      - Admin
+      - Admin Pangkalan in Related Pangkalan
+      - Related Pembina
+  - Peserta Didik
+    - View Any
+      - Admin
+      - Admin Pangkalan
+      - Pembina
+    - View
+      - Admin
+      - Admin Pangkalan in Related Pangkalan
+      - Pembina in Related Pangkalan
+    - Create
+      - Admin Pangkalan
+      - Guest
+    - Update
+      - Admin Pangkalan in Relaxted Pangkalan
+      - Related Peserta Didik
+    - Delete
+      - Admin
+      - Admin Pangkalan in Related Pangkalan
+      - Related Peserta Didik
+  - Jadwal
+    - View Any
+      - Admin
+      - Admin Pangkalan
+      - Pembina
+      - Peserta Didik
+    - View
+      - Admin
+      - Pembina
+      - Admin Pangkalan
+      - Peserta Didik
+    - Create
+      - Admin Pangkalan
+    - Update
+      - Admin Pangkalan
+    - Delete
+      - Admin Pangkalan
+- CRUD
+  - Create
+    - Admin
+    - Kwarran
+    - Pangkalan
+    - Pembina
+    - Peserta Didik
+    - Jadwal
+  - Read
+    - Admin
+    - Kwarran
+    - Pangkalan
+    - Pembina
+    - Peserta Didik
+    - Jadwal
+  - Read Specific
+    - Admin
+    - Kwarran
+    - Pangkalan
+    - Pembina
+    - Peserta Didik
+    - Jadwal
+  - Update
+    - Admin
+    - Kwarran
+    - Pangkalan
+    - Pembina
+    - Peserta Didik
+    - Jadwal
+  - Delete
+    - Admin
+    - Kwarran
+    - Pangkalan
+    - Pembina
+    - Peserta Didik
+    - Jadwal

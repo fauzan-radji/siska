@@ -126,6 +126,8 @@ class JadwalController extends Controller
    */
   public function destroy(Jadwal $jadwal)
   {
-    //
+    $this->authorize('delete', $jadwal);
+    $jadwal->delete();
+    return back()->with('success', 'Berhasil menghapus data jadwal');
   }
 }
