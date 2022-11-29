@@ -29,13 +29,13 @@
     - [ ] Peserta Didik
     - [ ] Jadwal
 - [ ] UIs
-  - [ ] Data Potensi Chart
   - [ ] Landing Page
   - [ ] Form Login
   - [ ] Form Register
     - [ ] Pangkalan
     - [ ] Pembina
     - [ ] Peserta
+  - [ ] Data Potensi Chart
 
 # To Be Fixed
 
