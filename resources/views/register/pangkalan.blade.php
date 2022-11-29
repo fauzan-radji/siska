@@ -84,4 +84,12 @@
 
     <button class="w-100 btn btn-primary" type="submit">Daftar</button>
   </form>
+  <p class="mt-3 mb-0 text-center text-muted">Sudah punya akun? <a href="/login">Login</a></p>
+  <hr class="my-2">
+  <small class="text-muted d-block text-center">Atau daftar sebagai</small>
+  <p class="mt-0 text-center text-muted">
+    <a href="/register/pembina">Pembina</a>
+    |
+    <a href="/register/peserta_didik">Peserta Didik</a>
+  </p>
 @endsection

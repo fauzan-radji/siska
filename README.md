@@ -1,10 +1,5 @@
 # TODOS
 
-- [x] Register
-  - [x] Pangkalan
-  - [x] Pembina
-  - [x] Peserta Didik
-- [x] Login
 - [ ] Authorization
   - [ ] Admin
     - [x] Create Kwarran
@@ -15,7 +10,7 @@
     - [ ] Verify Pangkalan
     - [x] Delete Pangkalan
     - [x] Read Pembina
-    - [ ] Read Jadwal
+    - [x] Read Jadwal
   - [ ] Admin Pangkalan
     - [x] Read Kwarran
     - [x] Read Pangkalan
@@ -31,23 +26,23 @@
     - [x] Update Peserta Didik in Related Pangkalan
     - [x] Delete Peserta Didik in Related Pangkalan
     - [ ] Verify Peserta Didik in Related Pangkalan
-    - [ ] Create Jadwal in Related Pangkalan
-    - [ ] Read Jadwal in Related Pangkalan
+    - [x] Create Jadwal in Related Pangkalan
+    - [x] Read Jadwal in Related Pangkalan
     - [ ] Update Jadwal in Related Pangkalan
     - [ ] Delete Jadwal in Related Pangkalan
-  - [ ] Pembina
+  - [x] Pembina
     - [x] Read Kwarran
     - [x] Read Related Pangkalan
     - [x] Read Pembina in Related Pangkalan
     - [x] Update Related Pembina
     - [x] Delete Related Pembina
     - [x] Read Peserta Didik in Related Pangkalan
-    - [ ] Read Jadwal in Related Pangkalan
-  - [ ] Peserta Didik
+    - [x] Read Jadwal in Related Pangkalan
+  - [x] Peserta Didik
     - [x] Read Kwarran
     - [x] Read Related Pangkalan
     - [x] Read Pembina in Related Pangkalan
-    - [ ] Read Jadwal in Related Pangkalan
+    - [x] Read Jadwal in Related Pangkalan
 - [ ] Policy
   - [x] Admin
     - [x] View Any
@@ -125,28 +120,30 @@
       - [x] Admin Pangkalan in Related Pangkalan
       - [x] Related Peserta Didik
   - [ ] Jadwal
-    - [ ] View Any
-      - [ ] Admin
-      - [ ] Admin Pangkalan
-    - [ ] View
-      - [ ] Admin
-      - [ ] Pembina
-      - [ ] Admin Pangkalan
-      - [ ] Peserta Didik
-    - [ ] Create
-      - [ ] Admin Pangkalan
+    - [x] View Any
+      - [x] Admin
+      - [x] Admin Pangkalan
+      - [x] Pembina
+      - [x] Peserta Didik
+    - [x] View
+      - [x] Admin
+      - [x] Pembina
+      - [x] Admin Pangkalan
+      - [x] Peserta Didik
+    - [x] Create
+      - [x] Admin Pangkalan
     - [ ] Update
       - [ ] Admin Pangkalan
     - [ ] Delete
       - [ ] Admin Pangkalan
 - [ ] CRUD
-  - [ ] Create
+  - [x] Create
     - [x] Admin
     - [x] Kwarran
     - [x] Pangkalan
     - [x] Pembina
-    - [ ] Peserta Didik
-    - [ ] Jadwal
+    - [x] Peserta Didik
+    - [x] Jadwal
   - [ ] Upload Foto
     - [ ] Pangkalan
     - [ ] Pembina
@@ -164,7 +161,7 @@
     - [x] Pangkalan
     - [x] Pembina
     - [x] Peserta Didik
-    - [ ] Jadwal
+    - [x] Jadwal
     - [ ] Poin Uji
     - [ ] Agama
   - [ ] Read Specific
@@ -173,7 +170,7 @@
     - [x] Pangkalan
     - [x] Pembina
     - [x] Peserta Didik
-    - [ ] Jadwal
+    - [x] Jadwal
     - [ ] Poin Uji
     - [ ] Agama
   - [ ] Update
@@ -205,6 +202,8 @@
 - [ ] Menambah no_kwarran di form tambah kwarran
 - [ ] Di halaman detail kwarran, ketika diklik jumlah pangkalan maka akan mengarah ke daftar pangkalah di kwarran terkait
 - [ ] Memisahkan field gudep putra dan putri serta ambalan putra dan putri di tabel pangkalan
+- [ ] Fix judul tiap halaman
+- [ ] Fix locale (bahasa yang digunakan aplikasi)
 
 # Selesai
 
@@ -244,3 +243,8 @@
   - [x] Agama - Poin
   - [x] Jadwal - Poin
   - [x] Jadwal - Pembina
+- [x] Register
+  - [x] Pangkalan
+  - [x] Pembina
+  - [x] Peserta Didik
+- [x] Login

@@ -64,13 +64,14 @@
             Syarat Kecakapan Umum
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span class="align-text-bottom" data-feather="calendar"></span>
-            Jadwal
-          </a>
-        </li>
       @endif
+
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/jadwal*') ? 'active' : '' }}" href="/dashboard/jadwal">
+          <span class="align-text-bottom" data-feather="calendar"></span>
+          Jadwal
+        </a>
+      </li>
 
       @can('viewAny', \App\Models\Admin::class)
         <li class="nav-item">

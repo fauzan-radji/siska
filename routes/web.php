@@ -4,6 +4,7 @@ use App\Models\Kwarran;
 use App\Models\Pangkalan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KwarranController;
 use App\Http\Controllers\PembinaController;
@@ -45,11 +46,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/dashboard', fn () => view('dashboard.index'))->middleware('auth');
 Route::resource('/dashboard/admin', AdminController::class)->middleware('auth');
 Route::resource('/dashboard/kwarran', KwarranController::class)->middleware('auth');
-
-Route::post('/pangkalan', [PangkalanController::class, 'store'])->middleware('guest');
 Route::resource('/dashboard/pangkalan', PangkalanController::class)->middleware('auth');
-
 Route::resource('/dashboard/pembina', PembinaController::class)->middleware('auth');
-
-Route::post('/peserta_didik', [PesertaDidikController::class, 'store'])->middleware('guest');
 Route::resource('/dashboard/peserta_didik', PesertaDidikController::class)->middleware('auth');
+Route::resource('/dashboard/jadwal', JadwalController::class)->middleware('auth');

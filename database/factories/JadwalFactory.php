@@ -9,15 +9,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class JadwalFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition()
-    {
-        return [
-            //
-        ];
-    }
+  /**
+   * Define the model's default state.
+   *
+   * @return array<string, mixed>
+   */
+  public function definition()
+  {
+    return [
+      'tanggal' => fake()->dateTimeBetween('+1 day', '+1 week'),
+      'pangkalan_id' => mt_rand(1, 25)
+    ];
+  }
 }

@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
       PembinaSeeder::class,
       PesertaDidikSeeder::class,
       PoinSeeder::class,
+      JadwalSeeder::class,
       AgamaSeeder::class
     ]);
   }

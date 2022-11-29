@@ -12,7 +12,7 @@
     @csrf
     <div class="group">
       <div class="form-floating">
-        <input class="form-control @error('username') is-invalid @enderror" id="username" name="username" type="text" placeholder="Username">
+        <input class="form-control @error('username') is-invalid @enderror" id="username" name="username" type="text" autofocus placeholder="Username">
         <label for="username">Username</label>
       </div>
       <div class="form-floating">

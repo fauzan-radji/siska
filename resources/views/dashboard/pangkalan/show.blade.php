@@ -32,5 +32,7 @@
     </tr>
   </table>
 
-  <a href="/dashboard/kwarran/{{ $pangkalan->id }}/edit">Edit</a>
+  @can('update', $pangkalan)
+    <a href="/dashboard/pangkalan/{{ $pangkalan->id }}/edit">Edit</a>
+  @endcan
 @endsection
