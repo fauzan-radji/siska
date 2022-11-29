@@ -61,7 +61,7 @@ class JadwalPolicy
    */
   public function update(User $user, Jadwal $jadwal)
   {
-    //
+    return $user->isAdminPangkalan();
   }
 
   /**
@@ -73,7 +73,7 @@ class JadwalPolicy
    */
   public function delete(User $user, Jadwal $jadwal)
   {
-    //
+    return $user->isAdminPangkalan();
   }
 
   /**

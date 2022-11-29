@@ -58,8 +58,8 @@ class JadwalController extends Controller
     $jadwal->tanggal = $validated['tanggal'];
     $jadwal->pangkalan_id = auth()->user()->pembina->pangkalan_id;
     $jadwal->save();
-    $jadwal->poins()->sync($request->poin_ids);
-    $jadwal->pembinas()->sync($request->pembina_ids);
+    $jadwal->poins()->sync($validated['poin_ids']);
+    $jadwal->pembinas()->sync($validated['pembina_ids']);
 
     return redirect('/dashboard/jadwal')->with('success', 'Berhasil menambahkan jadwal baru');
   }
@@ -86,7 +86,12 @@ class JadwalController extends Controller
    */
   public function edit(Jadwal $jadwal)
   {
-    //
+    $this->authorize('update', $jadwal);
+    return view('dashboard.jadwal.edit', [
+      'jadwal' => $jadwal,
+      'poins' => Poin::all(),
+      'pembinas' => Pembina::where('pangkalan_id', auth()->user()->pembina->pangkalan_id)->get()
+    ]);
   }
 
   /**
@@ -98,7 +103,19 @@ class JadwalController extends Controller
    */
   public function update(UpdateJadwalRequest $request, Jadwal $jadwal)
   {
-    //
+    $this->authorize('update', $jadwal);
+    // Do Validation Below
+    $validated = $request->validate([
+      'tanggal' => 'required',
+      'poin_ids' => 'required',
+      'pembina_ids' => 'required'
+    ]);
+
+    $jadwal->update(['tanggal' => $validated['tanggal']]);
+    $jadwal->poins()->sync($validated['poin_ids']);
+    $jadwal->pembinas()->sync($validated['pembina_ids']);
+
+    return redirect('/dashboard/jadwal')->with('success', 'Berhasil mengubah data jadwal');
   }
 
   /**

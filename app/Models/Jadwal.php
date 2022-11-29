@@ -12,6 +12,8 @@ class Jadwal extends Model
 {
   use HasFactory;
 
+  protected $guarded = ['id'];
+
   public function pangkalan()
   {
     return $this->belongsTo(Pangkalan::class);

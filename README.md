@@ -28,7 +28,7 @@
     - [ ] Verify Peserta Didik in Related Pangkalan
     - [x] Create Jadwal in Related Pangkalan
     - [x] Read Jadwal in Related Pangkalan
-    - [ ] Update Jadwal in Related Pangkalan
+    - [x] Update Jadwal in Related Pangkalan
     - [ ] Delete Jadwal in Related Pangkalan
   - [x] Pembina
     - [x] Read Kwarran
@@ -132,8 +132,8 @@
       - [x] Peserta Didik
     - [x] Create
       - [x] Admin Pangkalan
-    - [ ] Update
-      - [ ] Admin Pangkalan
+    - [x] Update
+      - [x] Admin Pangkalan
     - [ ] Delete
       - [ ] Admin Pangkalan
 - [ ] CRUD
@@ -162,8 +162,6 @@
     - [x] Pembina
     - [x] Peserta Didik
     - [x] Jadwal
-    - [ ] Poin Uji
-    - [ ] Agama
   - [ ] Read Specific
     - [x] Admin
     - [x] Kwarran
@@ -171,16 +169,13 @@
     - [x] Pembina
     - [x] Peserta Didik
     - [x] Jadwal
-    - [ ] Poin Uji
-    - [ ] Agama
-  - [ ] Update
+  - [x] Update
     - [x] Admin
     - [x] Kwarran
     - [x] Pangkalan
     - [x] Pembina
     - [x] Peserta Didik
-    - [ ] Jadwal
-    - [ ] Poin Uji
+    - [x] Jadwal
   - [ ] Delete
     - [x] Admin
     - [x] Kwarran
@@ -188,8 +183,8 @@
     - [x] Pembina
     - [x] Peserta Didik
     - [ ] Jadwal
-    - [ ] Poin Uji
 - [ ] UIs
+  - [ ] Data Potensi Chart
   - [ ] Landing Page
   - [ ] Form Login
   - [ ] Form Register
