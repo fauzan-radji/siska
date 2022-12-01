@@ -3,7 +3,7 @@
   <button class="navbar-toggler position-absolute d-md-none collapsed" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" type="button" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" aria-label="Search" placeholder="Search">
+  <input class="form-control form-control-dark w-100 rounded-0 border-0 pointer-events-none" type="text" aria-label="Search" readonly>
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
       <form action="/logout" method="post">

@@ -11,6 +11,8 @@ use App\Http\Controllers\PembinaController;
 use App\Http\Controllers\PangkalanController;
 use App\Http\Controllers\PesertaDidikController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Pembina;
+use App\Models\PesertaDidik;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +45,18 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
-Route::get('/dashboard', fn () => view('dashboard.index'))->middleware('auth');
+Route::get('/dashboard', function () {
+  $data = [];
+
+  if (auth()->user()->isAdmin()) $data['kwarrans'] = Kwarran::all();
+  if (auth()->user()->isPembina()) {
+    $pembina = auth()->user()->pembina;
+    $data['pembinas'] = Pembina::where('pangkalan_id', $pembina->pangkalan_id);
+    $data['peserta_didiks'] = PesertaDidik::where('pangkalan_id', $pembina->pangkalan_id);
+  }
+
+  return view('dashboard.index', $data);
+})->middleware('auth');
 Route::resource('/dashboard/admin', AdminController::class)->middleware('auth');
 Route::resource('/dashboard/kwarran', KwarranController::class)->middleware('auth');
 Route::resource('/dashboard/pangkalan', PangkalanController::class)->middleware('auth');

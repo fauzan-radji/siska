@@ -28,14 +28,14 @@
     - [ ] Pembina
     - [ ] Peserta Didik
     - [ ] Jadwal
-- [ ] UIs
-  - [ ] Landing Page
-  - [ ] Form Login
-  - [ ] Form Register
-    - [ ] Pangkalan
-    - [ ] Pembina
-    - [ ] Peserta
-  - [ ] Data Potensi Chart
+- [x] UIs
+  - [x] Landing Page
+  - [x] Form Login
+  - [x] Form Register
+    - [x] Pangkalan
+    - [x] Pembina
+    - [x] Peserta
+  - [x] Data Potensi Chart
 
 # To Be Fixed
 
