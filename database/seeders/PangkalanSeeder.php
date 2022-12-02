@@ -18,7 +18,7 @@ class PangkalanSeeder extends Seeder
    */
   public function run()
   {
-    Pangkalan::factory(25)->create()->each(function ($pangkalan) {
+    Pangkalan::factory(15)->create()->each(function ($pangkalan) {
       Pembina::create([
         'user_id' => User::create([
           'nama' => 'Admin Pangkalan ' . $pangkalan->nama,

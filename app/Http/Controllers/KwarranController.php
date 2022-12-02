@@ -27,7 +27,7 @@ class KwarranController extends Controller
    */
   public function create()
   {
-    $this->authorize('create');
+    $this->authorize('create', Kwarran::class);
     return view('dashboard.kwarran.create');
   }
 

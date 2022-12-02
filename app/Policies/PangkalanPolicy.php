@@ -65,6 +65,18 @@ class PangkalanPolicy
   }
 
   /**
+   * Determine whether the user can verify the model.
+   *
+   * @param  \App\Models\User  $user
+   * @param  \App\Models\Pangkalan  $pangkalan
+   * @return \Illuminate\Auth\Access\Response|bool
+   */
+  public function verify(User $user, Pangkalan $pangkalan)
+  {
+    return $user->isAdmin();
+  }
+
+  /**
    * Determine whether the user can delete the model.
    *
    * @param  \App\Models\User  $user

@@ -53,16 +53,14 @@ class PembinaController extends Controller
       'nama' => 'required|max:255|min:3',
       'username' => 'required|min:5|max:255',
       'password' => 'required|min:8',
-      'email' => 'required|email',
-      'jabatan' => 'required'
+      'email' => 'required|email'
     ]);
 
     $validated['password'] = Hash::make($validated['password']);
 
     Pembina::create([
       'user_id' => User::create($validated)->id,
-      'pangkalan_id' => auth()->user()->pembina->pangkalan->id,
-      'jabatan' => $validated['jabatan']
+      'pangkalan_id' => auth()->user()->pembina->pangkalan->id
     ]);
 
     return redirect('/dashboard/pembina')->with('success', 'Berhasil mendaftarkan pembina ' . $validated['nama']);
@@ -133,6 +131,19 @@ class PembinaController extends Controller
     ]);
 
     return redirect('/dashboard/pembina/' . $pembina->id)->with('success', 'Berhasil mengubah data ' . $validated['nama']);
+  }
+
+  /**
+   * Verify the specified resource in storage.
+   *
+   * @param  \App\Models\Pembina  $pembina
+   * @return \Illuminate\Http\Response
+   */
+  public function verify(Pembina $pembina)
+  {
+    $this->authorize('verify', $pembina);
+    $pembina->update(['verified' => true]);
+    return back()->with('success', 'Berhasil memferivikasi ' . $pembina->user->nama);
   }
 
   /**

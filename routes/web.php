@@ -57,9 +57,14 @@ Route::get('/dashboard', function () {
 
   return view('dashboard.index', $data);
 })->middleware('auth');
+
 Route::resource('/dashboard/admin', AdminController::class)->middleware('auth');
 Route::resource('/dashboard/kwarran', KwarranController::class)->middleware('auth');
+
+Route::post('/dashboard/pangkalan/{pangkalan}/verify', [PangkalanController::class, 'verify'])->middleware('auth');
 Route::resource('/dashboard/pangkalan', PangkalanController::class)->middleware('auth');
+
+Route::post('/dashboard/pembina/{pembina}/verify', [PembinaController::class, 'verify'])->middleware('auth');
 Route::resource('/dashboard/pembina', PembinaController::class)->middleware('auth');
 Route::resource('/dashboard/peserta_didik', PesertaDidikController::class)->middleware('auth');
 Route::resource('/dashboard/jadwal', JadwalController::class)->middleware('auth');

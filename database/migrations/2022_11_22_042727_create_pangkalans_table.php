@@ -20,6 +20,7 @@ return new class extends Migration
       $table->string('ambalan');
       $table->foreignId('kwarran_id');
       $table->string('alamat');
+      $table->boolean('verified')->default(false);
       $table->timestamps();
     });
   }

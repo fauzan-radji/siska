@@ -28,8 +28,9 @@
     - [ ] Pembina
     - [ ] Peserta Didik
     - [ ] Jadwal
-- [x] UIs
-  - [x] Landing Page
+- [ ] UIs
+  - [ ] Waiting Room Page
+  - [ ] Landing Page
   - [x] Form Login
   - [x] Form Register
     - [x] Pangkalan
@@ -39,12 +40,12 @@
 
 # To Be Fixed
 
-- [x] Ketika pembina dihapus, maka update juga tabel jadwal
 - [ ] Menambah no_kwarran di form tambah kwarran
 - [ ] Di halaman detail kwarran, ketika diklik jumlah pangkalan maka akan mengarah ke daftar pangkalah di kwarran terkait
 - [ ] Memisahkan field gudep putra dan putri serta ambalan putra dan putri di tabel pangkalan
 - [ ] Fix judul tiap halaman
 - [ ] Fix locale (bahasa yang digunakan aplikasi)
+- [ ] Fix kata-kata yang digunakan di forelse empty
 
 # Selesai
 

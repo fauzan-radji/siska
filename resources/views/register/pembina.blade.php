@@ -19,19 +19,6 @@
           <div class="invalid-feedback">{{ $message }}</div>
         @enderror
       </div>
-      {{-- Jabatan --}}
-      <div class="form-floating">
-        <select class="form-select @error('jabatan') is-invalid @enderror" id="jabatan" name="jabatan" type="password" placeholder="Password">
-          <option value="Admin Pangkalan" @if (old('jabatan') === 'Admin Pangkalan') selected @endif>Admin Pangkalan</option>
-          <option value="Kamabigus" @if (old('jabatan') === 'Kamabigus') selected @endif>Kamabigus</option>
-          <option value="Ketua Gugus Depan" @if (old('jabatan') === 'Ketua Gugus Depan') selected @endif>Ketua Gugus Depan</option>
-          <option value="Pembina" @if (old('jabatan') === 'Pembina') selected @endif selected>Pembina</option>
-        </select>
-        <label for="jabatan">Jabatan</label>
-        @error('jabatan')
-          <div class="invalid-feedback">{{ $messsage }}</div>
-        @enderror
-      </div>
       {{-- Pangkalan --}}
       <div class="form-floating">
         <select class="form-select @error('pangkalan_id') is-invalid @enderror" id="pangkalan" name="pangkalan_id">

@@ -153,6 +153,19 @@ class PangkalanController extends Controller
   }
 
   /**
+   * Verify the specified resource in storage.
+   *
+   * @param  \App\Models\Pangkalan  $pangkalan
+   * @return \Illuminate\Http\Response
+   */
+  public function verify(Pangkalan $pangkalan)
+  {
+    $this->authorize('verify', $pangkalan);
+    $pangkalan->update(['verified' => true]);
+    return back()->with('success', 'Berhasil memferivikasi ' . $pangkalan->nama);
+  }
+
+  /**
    * Remove the specified resource from storage.
    *
    * @param  \App\Models\Pangkalan  $pangkalan

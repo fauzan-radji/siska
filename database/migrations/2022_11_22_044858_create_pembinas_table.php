@@ -17,13 +17,14 @@ return new class extends Migration
       $table->id();
       $table->foreignId('user_id');
       $table->foreignId('pangkalan_id');
-      $table->string('jabatan');
+      $table->enum('jabatan', ['Admin Pangkalan', 'Kamabigus', 'Ketua Gugus Depan', 'Pembina'])->default('Pembina');
       $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();
       $table->string('no_hp')->nullable();
       $table->string('alamat')->nullable();
       $table->date('tanggal_lahir')->nullable();
       $table->string('foto')->nullable();
       $table->foreignId('agama_id')->nullable();
+      $table->boolean('verified')->default(false);
       $table->timestamps();
     });
   }

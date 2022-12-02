@@ -24,6 +24,7 @@ return new class extends Migration
       $table->date('tanggal_lahir')->nullable();
       $table->string('foto')->nullable();
       $table->foreignId('agama_id')->nullable();
+      $table->boolean('verified')->default(false);
 
       $table->timestamps();
     });
