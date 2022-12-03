@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
       AdminSeeder::class,
       KwarranSeeder::class,
       PangkalanSeeder::class,
-      // PembinaSeeder::class,
-      // PesertaDidikSeeder::class,
+      PembinaSeeder::class,
+      PesertaDidikSeeder::class,
       PoinSeeder::class,
       // JadwalSeeder::class,
       AgamaSeeder::class

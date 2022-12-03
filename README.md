@@ -1,21 +1,5 @@
 # TODOS
 
-- [ ] Authorization
-  - [ ] Admin
-    - [ ] Verify Pangkalan
-  - [ ] Admin Pangkalan
-    - [ ] Verify Pembina in Related Pangkalan
-    - [ ] Verify Peserta Didik in Related Pangkalan
-- [ ] Policy
-  - [ ] Pangkalan
-    - [ ] Verify
-      - [ ] Admin
-  - [ ] Pembina
-    - [ ] Verify
-      - [ ] Related Admin Pangkalan
-  - [ ] Peserta Didik
-    - [ ] Verify
-      - [ ] Related Admin Pangkalan
 - [ ] CRUD
   - [ ] Upload Foto
     - [ ] Pangkalan
@@ -100,6 +84,7 @@
     - Delete Pangkalan
     - Read Pembina
     - Read Jadwal
+    - Verify Pangkalan
   - Admin Pangkalan
     - Read Kwarran
     - Read Pangkalan
@@ -117,6 +102,8 @@
     - Read Jadwal in Related Pangkalan
     - Update Jadwal in Related Pangkalan
     - Delete Jadwal in Related Pangkalan
+    - Verify Pembina in Related Pangkalan
+    - Verify Peserta Didik in Related Pangkalan
   - Pembina
     - Read Kwarran
     - Read Related Pangkalan
@@ -166,6 +153,8 @@
     - Delete
       - Admin
       - Admin Pangkalan
+    - Verify
+      - Admin
   - Pembina
     - View Any
       - Admin
@@ -187,6 +176,8 @@
       - Admin
       - Admin Pangkalan in Related Pangkalan
       - Related Pembina
+    - Verify
+      - Related Admin Pangkalan
   - Peserta Didik
     - View Any
       - Admin
@@ -206,6 +197,8 @@
       - Admin
       - Admin Pangkalan in Related Pangkalan
       - Related Peserta Didik
+    - Verify
+      - Related Admin Pangkalan
   - Jadwal
     - View Any
       - Admin

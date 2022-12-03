@@ -13,7 +13,7 @@
   @if (auth()->user()->isAdmin())
     <div class="row">
       <div class="col-md-4">
-        <div class="card">
+        <div class="card mb-3">
           <div class="card-body">
             <h2 class="h3 text-center">Data Pangkalan</h2>
             <canvas class="my-4 w-100" id="pangkalan" width="1" height="1"></canvas>
@@ -22,7 +22,7 @@
       </div>
 
       <div class="col-md-4">
-        <div class="card">
+        <div class="card mb-3">
           <div class="card-body">
             <h2 class="h3 text-center">Data Pembina</h2>
             <canvas class="my-4 w-100" id="pembina" width="1" height="1"></canvas>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="col-md-4">
-        <div class="card">
+        <div class="card mb-3">
           <div class="card-body">
             <h2 class="h3 text-center">Data Peserta Didik</h2>
             <canvas class="my-4 w-100" id="pesertaDidik" width="1" height="1"></canvas>

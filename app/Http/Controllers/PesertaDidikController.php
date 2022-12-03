@@ -146,6 +146,19 @@ class PesertaDidikController extends Controller
   }
 
   /**
+   * Verify the specified resource in storage.
+   *
+   * @param  \App\Models\PesertaDidik  $pesertaDidik
+   * @return \Illuminate\Http\Response
+   */
+  public function verify(PesertaDidik $pesertaDidik)
+  {
+    $this->authorize('verify', $pesertaDidik);
+    $pesertaDidik->update(['verified' => true]);
+    return back()->with('success', 'Berhasil memferivikasi ' . $pesertaDidik->user->nama);
+  }
+
+  /**
    * Remove the specified resource from storage.
    *
    * @param  \App\Models\PesertaDidik  $pesertaDidik

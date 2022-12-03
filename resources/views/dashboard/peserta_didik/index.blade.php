@@ -10,7 +10,13 @@
   @endcan
 
   @foreach ($pangkalans as $pangkalan)
-    <h2 class="mt-3">{{ $pangkalan->nama }}</h2>
+    <h2 class="mt-3 ">
+      <span class="position-relative">{{ $pangkalan->nama }}
+        <span class="ms-3 position-absolute top-0 start-100 translate-middle badge rounded-pill bg-{{ $pangkalan->verified ? 'success' : 'danger' }}" style="font-size: 0.2em">
+          <span data-feather="check"></span>
+        </span>
+      </span>
+    </h2>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -18,6 +24,7 @@
             <th scope="col">#</th>
             <th scope="col">Nama</th>
             <th scope="col">Foto</th>
+            <th scope="col">Terverifikasi</th>
             <th scope="col">Aksi</th>
           </tr>
         </thead>
@@ -27,6 +34,13 @@
               <td>{{ $loop->iteration }}</td>
               <td>{{ $peserta_didik->user->nama }}</td>
               <td><img src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->nama }}"></td>
+              <td class="text-center">
+                @if ($peserta_didik->verified)
+                  <span class="badge bg-success">Sudah</span>
+                @else
+                  <span class="badge bg-danger">Belum</span>
+                @endif
+              </td>
               <td>
                 @can('view', $peserta_didik)
                   <a class="badge bg-info" href="/dashboard/peserta_didik/{{ $peserta_didik->id }}"><span data-feather="eye"></span></a>
@@ -38,8 +52,16 @@
                   <form class="d-inline" action="/dashboard/peserta_didik/{{ $peserta_didik->id }}" method="post">
                     @method('delete')
                     @csrf
-                    <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
+                    <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus {{ $peserta_didik->user->nama }}?')"><span data-feather="trash"></span></button>
                   </form>
+                @endcan
+                @can('verify', $peserta_didik)
+                  @if ($pangkalan->verified && !$peserta_didik->verified)
+                    <form class="d-inline" action="/dashboard/peserta_didik/{{ $peserta_didik->id }}/verify" method="post">
+                      @csrf
+                      <button class="badge bg-success border-0" onclick="return confirm('Yakin ingin memverifikasi  {{ $peserta_didik->user->nama }}?')"><span data-feather="check"></span></button>
+                    </form>
+                  @endif
                 @endcan
               </td>
             </tr>

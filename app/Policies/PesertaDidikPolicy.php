@@ -67,6 +67,20 @@ class PesertaDidikPolicy
   }
 
   /**
+   * Determine whether the user can verify the model.
+   *
+   * @param  \App\Models\User  $user
+   * @param  \App\Models\PesertaDidik  $pesertaDidik
+   * @return \Illuminate\Auth\Access\Response|bool
+   */
+  public function verify(User $user, PesertaDidik $pesertaDidik)
+  {
+    return
+      $user->isAdminPangkalan() &&
+      $user->pembina->pangkalan_id === $pesertaDidik->pangkalan_id;
+  }
+
+  /**
    * Determine whether the user can delete the model.
    *
    * @param  \App\Models\User  $user

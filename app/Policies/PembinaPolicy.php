@@ -76,7 +76,9 @@ class PembinaPolicy
    */
   public function verify(User $user, Pembina $pembina)
   {
-    return $user->isAdmin();
+    return
+      $user->isAdminPangkalan() &&
+      $user->pembina->pangkalan_id === $pembina->pangkalan_id;
   }
 
   /**

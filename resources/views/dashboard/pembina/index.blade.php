@@ -1,5 +1,9 @@
 @extends('dashboard.layouts.main')
 
+@section('title')
+  Dashboard | Daftar Pembina
+@endsection
+
 @section('main')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1>Daftar Pembina</h1>
@@ -10,9 +14,11 @@
   @endcan
 
   @foreach ($pangkalans as $pangkalan)
-    <h2 class="mt-3 position-relative d-inline">{{ $pangkalan->nama }}
-      <span class="ms-3 position-absolute top-0 start-100 translate-middle badge rounded-pill bg-{{ $pangkalan->verified ? 'success' : 'danger' }}" style="font-size: 0.2em">
-        <span data-feather="check"></span>
+    <h2 class="mt-3 ">
+      <span class="position-relative">{{ $pangkalan->nama }}
+        <span class="ms-3 position-absolute top-0 start-100 translate-middle badge rounded-pill bg-{{ $pangkalan->verified ? 'success' : 'danger' }}" style="font-size: 0.2em">
+          <span data-feather="check"></span>
+        </span>
       </span>
     </h2>
 
@@ -22,7 +28,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nama</th>
-            <th scope="col">Jabatan</th>
+            <th scope="col">Foto</th>
             <th class="text-center" scope="col">Terverifikasi</th>
             <th class="text-center" scope="col">Aksi</th>
           </tr>
@@ -32,7 +38,7 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $pembina->user->nama }}</td>
-              <td>{{ $pembina->jabatan }}</td>
+              <td><img src="{{ $pembina->foto }}" alt="{{ $pembina->nama }}"></td>
               <td class="text-center">
                 @if ($pembina->verified)
                   <span class="badge bg-success">Sudah</span>
