@@ -1,6 +1,17 @@
 # TODOS
 
+- [x] Relations
+  - [x] Peserta Didik - Poin
+- [ ] Authorization
+  - [ ] Pembina
+    - [ ] Update Poin Teruji Related Peserta Didik
+- [ ] Policy
+  - [ ] Peserta Didik
+    - [ ] Uji
+      - [ ] Related Pembina
 - [ ] CRUD
+  - [ ] Update
+    - [ ] Poin Teruji
   - [ ] Upload Foto
     - [ ] Pangkalan
     - [ ] Pembina
@@ -191,7 +202,7 @@
       - Admin Pangkalan
       - Guest
     - Update
-      - Admin Pangkalan in Relaxted Pangkalan
+      - Admin Pangkalan in Related Pangkalan
       - Related Peserta Didik
     - Delete
       - Admin

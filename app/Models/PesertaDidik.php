@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Poin;
 use App\Models\User;
 use App\Models\Agama;
 use App\Models\Pangkalan;
@@ -27,6 +28,11 @@ class PesertaDidik extends Model
   public function agama()
   {
     return $this->belongsTo(Agama::class);
+  }
+
+  public function poins()
+  {
+    return $this->belongsToMany(Poin::class)->withPivot('teruji');
   }
 
   // this is a recommended way to declare event handlers
