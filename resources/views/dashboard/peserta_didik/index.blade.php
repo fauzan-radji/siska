@@ -23,8 +23,8 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nama</th>
-            <th scope="col">Foto</th>
-            <th scope="col">Terverifikasi</th>
+            <th class="text-center" scope="col">Foto</th>
+            <th class="text-center" scope="col">Terverifikasi</th>
             <th scope="col">Aksi</th>
           </tr>
         </thead>
@@ -33,7 +33,7 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $peserta_didik->user->nama }}</td>
-              <td><img src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->nama }}"></td>
+              <td class="text-center"><img src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->nama }}"></td>
               <td class="text-center">
                 @if ($peserta_didik->verified)
                   <span class="badge bg-success">Sudah</span>
@@ -56,12 +56,10 @@
                   </form>
                 @endcan
                 @can('verify', $peserta_didik)
-                  @if ($pangkalan->verified && !$peserta_didik->verified)
-                    <form class="d-inline" action="/dashboard/peserta_didik/{{ $peserta_didik->id }}/verify" method="post">
-                      @csrf
-                      <button class="badge bg-success border-0" onclick="return confirm('Yakin ingin memverifikasi  {{ $peserta_didik->user->nama }}?')"><span data-feather="check"></span></button>
-                    </form>
-                  @endif
+                  <form class="d-inline" action="/dashboard/peserta_didik/{{ $peserta_didik->id }}/verify" method="post">
+                    @csrf
+                    <button class="badge bg-success border-0" onclick="return confirm('Yakin ingin memverifikasi  {{ $peserta_didik->user->nama }}?')"><span data-feather="check"></span></button>
+                  </form>
                 @endcan
               </td>
             </tr>

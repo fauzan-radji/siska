@@ -1,17 +1,40 @@
 # TODOS
 
-- [x] Relations
-  - [x] Peserta Didik - Poin
-- [ ] Authorization
-  - [ ] Pembina
-    - [ ] Update Poin Teruji Related Peserta Didik
-- [ ] Policy
-  - [ ] Peserta Didik
-    - [ ] Uji
-      - [ ] Related Pembina
+- [x] Authorization
+  - [x] Admin
+    - [x] Read Poin
+    - [x] Read Poin Teruji Peserta Didik
+  - [x] Admin Pangkalan
+    - [x] Read Poin
+    - [x] Update Poin Teruji in Related Peserta Didik
+    - [x] Read Poin Teruji in Related Peserta Didik
+  - [x] Pembina
+    - [x] Read Poin
+    - [x] Update Poin Teruji in Related Peserta Didik
+    - [x] Read Poin Teruji in Related Peserta Didik
+  - [x] Peserta Didik
+    - [x] Read Poin
+    - [x] Read Poin Teruji in Related Peserta Didik
+- [x] Policy
+  - [x] Peserta Didik
+    - [x] Uji
+      - [x] Related Admin Pangkalan
+      - [x] Related Pembina
+  - [x] Poin
+    - [x] View Any
+      - [x] Admin
+      - [x] Admin Pangkalan
+      - [x] Pembina
+      - [x] Peserta Didik
+    - [x] Update
+      - [x] Related Admin Pangkalan
+      - [x] Related Pembina
 - [ ] CRUD
-  - [ ] Update
-    - [ ] Poin Teruji
+  - [x] Read
+    - [x] Poin
+    - [x] Poin Teruji
+  - [x] Update
+    - [x] Poin Teruji
   - [ ] Upload Foto
     - [ ] Pangkalan
     - [ ] Pembina
@@ -80,6 +103,7 @@
   - Agama - Poin
   - Jadwal - Poin
   - Jadwal - Pembina
+  - Peserta Didik - Poin
 - Register
   - Pangkalan
   - Pembina

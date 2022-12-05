@@ -68,7 +68,15 @@
               <p class="mb-1">{{ $pembina->agama ? $pembina->agama->nama : '-' }}</p>
             </div>
             @can('update', $pembina)
-              <a class="btn btn-outline-primary px-4" href="/dashboard/pembina/{{ $pembina->id }}/edit">Edit</a>
+              <a class="btn btn-primary px-4" href="/dashboard/pembina/{{ $pembina->id }}/edit">Edit</a>
+            @endcan
+            @can('verify', $pembina)
+              @if ($pembina->pangkalan->verified && !$pembina->verified)
+                <form class="d-inline" action="/dashboard/pembina/{{ $pembina->id }}/verify" method="post">
+                  @csrf
+                  <button class="btn btn-success px-4" onclick="return confirm('Yakin ingin memverifikasi  {{ $pembina->user->nama }}?')">Verifikasi</button>
+                </form>
+              @endif
             @endcan
           </div>
         </div>

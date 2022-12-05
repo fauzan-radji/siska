@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
 
     $this->call([
       AdminSeeder::class,
+      AgamaSeeder::class,
+      PoinSeeder::class,
       KwarranSeeder::class,
       PangkalanSeeder::class,
       PembinaSeeder::class,
       PesertaDidikSeeder::class,
-      PoinSeeder::class,
       // JadwalSeeder::class,
-      AgamaSeeder::class
     ]);
   }
 }

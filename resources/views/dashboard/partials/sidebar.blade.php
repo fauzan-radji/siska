@@ -57,14 +57,14 @@
       @endcan
 
       {{-- if not admin --}}
-      @if (!auth()->user()->isAdmin())
+      @can('viewAny', \App\Models\Poin::class)
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link {{ Request::is('dashboard/poin') ? 'active' : '' }}" href="/dashboard/poin">
             <span class="align-text-bottom" data-feather="book-open"></span>
             Syarat Kecakapan Umum
           </a>
         </li>
-      @endif
+      @endcan
 
       <li class="nav-item">
         <a class="nav-link {{ Request::is('dashboard/jadwal*') ? 'active' : '' }}" href="/dashboard/jadwal">

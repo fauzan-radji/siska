@@ -155,7 +155,23 @@ class PesertaDidikController extends Controller
   {
     $this->authorize('verify', $pesertaDidik);
     $pesertaDidik->update(['verified' => true]);
-    return back()->with('success', 'Berhasil memferivikasi ' . $pesertaDidik->user->nama);
+    return back()->with('success', 'Berhasil memverifikasi ' . $pesertaDidik->user->nama);
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \App\Http\Requests\UpdatePesertaDidikRequest  $request
+   * @param  \App\Models\PesertaDidik  $pesertaDidik
+   * @return \Illuminate\Http\Response
+   */
+  public function uji(UpdatePesertaDidikRequest $request, PesertaDidik $pesertaDidik)
+  {
+    $this->authorize('uji', $pesertaDidik);
+    $pesertaDidik->poins->each(function ($poin) use ($request) {
+      $poin->pivot->update(['teruji' => $request->has($poin->id)]);
+    });
+    return back()->with('success', 'Berhasil mengupdate poin SKU ' . $pesertaDidik->user->nama);
   }
 
   /**

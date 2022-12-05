@@ -76,7 +76,25 @@ class PesertaDidikPolicy
   public function verify(User $user, PesertaDidik $pesertaDidik)
   {
     return
-      $user->isAdminPangkalan() &&
+      $user->isAdminPangkalan() && //is the user Admin Pangkalan?
+      $user->pembina->pangkalan->verified && // is user pangkalan is verified?
+      !$pesertaDidik->verified && // is peserta didik not verified yet?
+      $user->pembina->pangkalan_id === $pesertaDidik->pangkalan_id; // is user and peserta didik in the same pangkalan?
+  }
+
+  /**
+   * Determine whether the user can uji the model.
+   *
+   * @param  \App\Models\User  $user
+   * @param  \App\Models\PesertaDidik  $pesertaDidik
+   * @return \Illuminate\Auth\Access\Response|bool
+   */
+  public function uji(User $user, PesertaDidik $pesertaDidik)
+  {
+    return
+      $user->isPembina() &&
+      $user->pembina->pangkalan->verified &&
+      $pesertaDidik->verified &&
       $user->pembina->pangkalan_id === $pesertaDidik->pangkalan_id;
   }
 

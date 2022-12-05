@@ -143,7 +143,7 @@ class PembinaController extends Controller
   {
     $this->authorize('verify', $pembina);
     $pembina->update(['verified' => true]);
-    return back()->with('success', 'Berhasil memferivikasi ' . $pembina->user->nama);
+    return back()->with('success', 'Berhasil memverifikasi ' . $pembina->user->nama);
   }
 
   /**

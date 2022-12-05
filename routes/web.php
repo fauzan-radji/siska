@@ -10,6 +10,7 @@ use App\Http\Controllers\KwarranController;
 use App\Http\Controllers\PembinaController;
 use App\Http\Controllers\PangkalanController;
 use App\Http\Controllers\PesertaDidikController;
+use App\Http\Controllers\PoinController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Pembina;
 use App\Models\PesertaDidik;
@@ -68,6 +69,8 @@ Route::post('/dashboard/pembina/{pembina}/verify', [PembinaController::class, 'v
 Route::resource('/dashboard/pembina', PembinaController::class)->middleware('auth');
 
 Route::post('/dashboard/peserta_didik/{pesertaDidik}/verify', [PesertaDidikController::class, 'verify'])->middleware('auth');
+Route::post('/dashboard/peserta_didik/{pesertaDidik}/teruji', [PesertaDidikController::class, 'uji'])->middleware('auth');
 Route::resource('/dashboard/peserta_didik', PesertaDidikController::class)->middleware('auth');
 
 Route::resource('/dashboard/jadwal', JadwalController::class)->middleware('auth');
+Route::resource('/dashboard/poin', PoinController::class)->middleware('auth');
