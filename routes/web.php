@@ -62,6 +62,8 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/admin', AdminController::class)->middleware('auth');
 Route::resource('/dashboard/kwarran', KwarranController::class)->middleware('auth');
 
+Route::get('/dashboard/pangkalan/waitingroom', [PangkalanController::class, 'waitingroom'])->middleware('auth');
+Route::post('/dashboard/pangkalan/verifyall', [PangkalanController::class, 'verifyAll'])->middleware('auth');
 Route::post('/dashboard/pangkalan/{pangkalan}/verify', [PangkalanController::class, 'verify'])->middleware('auth');
 Route::resource('/dashboard/pangkalan', PangkalanController::class)->middleware('auth');
 

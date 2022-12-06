@@ -21,7 +21,20 @@ class PangkalanController extends Controller
   {
     $this->authorize('viewAny', Pangkalan::class);
     return view('dashboard.pangkalan.index', [
-      'kwarrans' => Kwarran::all()
+      'pangkalans' => Pangkalan::where('verified', true)->get()
+    ]);
+  }
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function waitingroom()
+  {
+    $this->authorize('verifyAny', Pangkalan::class);
+    return view('dashboard.pangkalan.waitingroom', [
+      'pangkalans' => Pangkalan::where('verified', false)->get()
     ]);
   }
 
@@ -161,8 +174,27 @@ class PangkalanController extends Controller
   public function verify(Pangkalan $pangkalan)
   {
     $this->authorize('verify', $pangkalan);
-    $pangkalan->update(['verified' => true]);
-    return back()->with('success', 'Berhasil memferivikasi ' . $pangkalan->nama);
+    $pangkalan->update(['verified' => !$pangkalan->verified]);
+    $msg = $pangkalan->verified ? 'memverifikasi ' : 'membatalkan verifikasi ';
+    return back()->with('success', 'Berhasil ' . $msg . $pangkalan->nama);
+  }
+
+  /**
+   * Verify all resource in storage.
+   *
+   * @param  \App\Http\Requests\UpdatePangkalanRequest  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function verifyAll(UpdatePangkalanRequest $request)
+  {
+    $this->authorize('verifyAll', Pangkalan::class);
+    Pangkalan::all()->each(
+      fn ($pangkalan) => $pangkalan->update([
+        'verified' => $request->action === 'verify'
+      ])
+    );
+    $msg = $request->action === 'verify' ? 'memverifikasi semua pangkalan' : 'membatalkan semua verifikasi';
+    return back()->with('success', 'Berhasil ' . $msg);
   }
 
   /**

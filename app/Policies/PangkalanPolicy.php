@@ -65,6 +65,30 @@ class PangkalanPolicy
   }
 
   /**
+   * Determine whether the user can verify any model.
+   *
+   * @param  \App\Models\User  $user
+   * @param  \App\Models\Pangkalan  $pangkalan
+   * @return \Illuminate\Auth\Access\Response|bool
+   */
+  public function verifyAny(User $user)
+  {
+    return $user->isAdmin();
+  }
+
+  /**
+   * Determine whether the user can verify all the model.
+   *
+   * @param  \App\Models\User  $user
+   * @param  \App\Models\Pangkalan  $pangkalan
+   * @return \Illuminate\Auth\Access\Response|bool
+   */
+  public function verifyAll(User $user)
+  {
+    return $user->isAdmin();
+  }
+
+  /**
    * Determine whether the user can verify the model.
    *
    * @param  \App\Models\User  $user

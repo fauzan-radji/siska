@@ -1,40 +1,25 @@
 # TODOS
 
-- [x] Authorization
-  - [x] Admin
-    - [x] Read Poin
-    - [x] Read Poin Teruji Peserta Didik
-  - [x] Admin Pangkalan
-    - [x] Read Poin
-    - [x] Update Poin Teruji in Related Peserta Didik
-    - [x] Read Poin Teruji in Related Peserta Didik
-  - [x] Pembina
-    - [x] Read Poin
-    - [x] Update Poin Teruji in Related Peserta Didik
-    - [x] Read Poin Teruji in Related Peserta Didik
-  - [x] Peserta Didik
-    - [x] Read Poin
-    - [x] Read Poin Teruji in Related Peserta Didik
-- [x] Policy
-  - [x] Peserta Didik
-    - [x] Uji
-      - [x] Related Admin Pangkalan
-      - [x] Related Pembina
-  - [x] Poin
-    - [x] View Any
+- [ ] Policy
+  - [x] Pangkalan
+    - [x] Verify All
       - [x] Admin
-      - [x] Admin Pangkalan
-      - [x] Pembina
-      - [x] Peserta Didik
-    - [x] Update
-      - [x] Related Admin Pangkalan
-      - [x] Related Pembina
+  - [ ] Pembina
+    - [ ] Verify All
+      - [ ] Admin Pangkalan
+  - [ ] Peserta Didik
+    - [ ] Verify All
+      - [ ] Admin Pangkalan
 - [ ] CRUD
-  - [x] Read
-    - [x] Poin
-    - [x] Poin Teruji
-  - [x] Update
-    - [x] Poin Teruji
+  - [ ] Searching
+    - [ ] Admin
+    - [ ] Kwarran
+    - [ ] Pangkalan
+    - [ ] Pembina
+    - [ ] Peserta Didik
+    - [ ] Poin
+    - [ ] Poin Teruji
+    - [ ] Jadwal
   - [ ] Upload Foto
     - [ ] Pangkalan
     - [ ] Pembina
@@ -48,16 +33,21 @@
     - [ ] Jadwal
 - [ ] UIs
   - [ ] Waiting Room Page
-  - [ ] Landing Page
-  - [x] Form Login
-  - [x] Form Register
     - [x] Pangkalan
-    - [x] Pembina
-    - [x] Peserta
-  - [x] Data Potensi Chart
+    - [ ] Pembina
+    - [ ] Peserta Didik
+  - [ ] Landing Page
+    - [ ] Navbar
+    - [ ] Hero Image
+    - [ ] Deskripsi
+    - [ ] Lensa Kegiatan
+    - [ ] Footer
+  - [ ] Register | Tombol kembali ke beranda
+  - [ ] Login | Tombol kembali ke beranda
 
 # To Be Fixed
 
+- [ ] Optimalisasi Query (N+1 Problem)
 - [ ] Menambah no_kwarran di form tambah kwarran
 - [ ] Di halaman detail kwarran, ketika diklik jumlah pangkalan maka akan mengarah ke daftar pangkalah di kwarran terkait
 - [ ] Memisahkan field gudep putra dan putri serta ambalan putra dan putri di tabel pangkalan
@@ -120,6 +110,8 @@
     - Read Pembina
     - Read Jadwal
     - Verify Pangkalan
+    - Read Poin
+    - Read Poin Teruji Peserta Didik
   - Admin Pangkalan
     - Read Kwarran
     - Read Pangkalan
@@ -139,6 +131,9 @@
     - Delete Jadwal in Related Pangkalan
     - Verify Pembina in Related Pangkalan
     - Verify Peserta Didik in Related Pangkalan
+    - Read Poin
+    - Update Poin Teruji in Related Peserta Didik
+    - Read Poin Teruji in Related Peserta Didik
   - Pembina
     - Read Kwarran
     - Read Related Pangkalan
@@ -147,11 +142,16 @@
     - Delete Related Pembina
     - Read Peserta Didik in Related Pangkalan
     - Read Jadwal in Related Pangkalan
+    - Read Poin
+    - Update Poin Teruji in Related Peserta Didik
+    - Read Poin Teruji in Related Peserta Didik
   - Peserta Didik
     - Read Kwarran
     - Read Related Pangkalan
     - Read Pembina in Related Pangkalan
     - Read Jadwal in Related Pangkalan
+    - Read Poin
+    - Read Poin Teruji in Related Peserta Didik
 - Policy
   - Admin
     - View Any
@@ -189,6 +189,8 @@
       - Admin
       - Admin Pangkalan
     - Verify
+      - Admin
+    - Verify All
       - Admin
   - Pembina
     - View Any
@@ -234,6 +236,9 @@
       - Related Peserta Didik
     - Verify
       - Related Admin Pangkalan
+    - Uji
+      - Related Admin Pangkalan
+      - Related Pembina
   - Jadwal
     - View Any
       - Admin
@@ -251,6 +256,15 @@
       - Admin Pangkalan
     - Delete
       - Admin Pangkalan
+  - Poin
+    - View Any
+      - Admin
+      - Admin Pangkalan
+      - Pembina
+      - Peserta Didik
+    - Update
+      - Related Admin Pangkalan
+      - Related Pembina
 - CRUD
   - Create
     - Admin
@@ -266,6 +280,8 @@
     - Pembina
     - Peserta Didik
     - Jadwal
+    - Poin
+    - Poin Teruji
   - Read Specific
     - Admin
     - Kwarran
@@ -280,6 +296,7 @@
     - Pembina
     - Peserta Didik
     - Jadwal
+    - Poin Teruji
   - Delete
     - Admin
     - Kwarran
@@ -287,3 +304,10 @@
     - Pembina
     - Peserta Didik
     - Jadwal
+- UIs
+  - Form Login
+  - Form Register
+    - Pangkalan
+    - Pembina
+    - Peserta
+  - Data Potensi Chart

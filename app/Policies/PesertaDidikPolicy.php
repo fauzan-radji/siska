@@ -67,6 +67,18 @@ class PesertaDidikPolicy
   }
 
   /**
+   * Determine whether the user can verify any model.
+   *
+   * @param  \App\Models\User  $user
+   * @param  \App\Models\PesertaDidik  $pesertaDidik
+   * @return \Illuminate\Auth\Access\Response|bool
+   */
+  public function verifyAny(User $user)
+  {
+    return $user->isAdminPangkalan();
+  }
+
+  /**
    * Determine whether the user can verify the model.
    *
    * @param  \App\Models\User  $user

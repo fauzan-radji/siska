@@ -16,7 +16,7 @@
 
       @can('viewAny', \App\Models\Pangkalan::class)
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/pangkalan*') ? 'active' : '' }}" href="/dashboard/pangkalan">
+          <a class="nav-link {{ Request::is('dashboard/pangkalan') ? 'active' : '' }}" href="/dashboard/pangkalan">
             <span class="align-text-bottom" data-feather="home"></span>
             Pangkalan
           </a>
@@ -56,7 +56,6 @@
         </li>
       @endcan
 
-      {{-- if not admin --}}
       @can('viewAny', \App\Models\Poin::class)
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/poin') ? 'active' : '' }}" href="/dashboard/poin">
@@ -100,6 +99,34 @@
           </a>
         @endif
       </li>
+    </ul>
+
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">Ruang Tunggu</h6>
+    <ul class="nav flex-column mb-2">
+      @can('verifyAny', \App\Models\Pangkalan::class)
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/pangkalan/waitingroom') ? 'active' : '' }}" href="/dashboard/pangkalan/waitingroom">
+            <span class="align-text-bottom" data-feather="home"></span>
+            Pangkalan
+          </a>
+        </li>
+      @endcan
+      @can('verifyAny', \App\Models\Pembina::class)
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/pembina/waitingroom') ? 'active' : '' }}" href="/dashboard/pembina/waitingroom">
+            <span class="align-text-bottom" data-feather="users"></span>
+            Pembina
+          </a>
+        </li>
+      @endcan
+      @can('verifyAny', \App\Models\PesertaDidik::class)
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/peserta_didik/waitingroom') ? 'active' : '' }}" href="/dashboard/peserta_didik/waitingroom">
+            <span class="align-text-bottom" data-feather="users"></span>
+            Peserta Didik
+          </a>
+        </li>
+      @endcan
     </ul>
 
     {{-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">

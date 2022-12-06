@@ -2,8 +2,7 @@
 
 @section('main')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    {{-- <h1>Daftar Pangkalan</h1> --}}
-    <h2 class="mt-3">Daftar Pangkalan Terverifikasi</h2>
+    <h2 class="mt-3">Daftar Pangkalan Belum Terverifikasi</h2>
   </div>
 
   <div class="table-responsive">
@@ -19,7 +18,8 @@
               @if ($pangkalans->count() > 0)
                 | <form class="d-inline" action="/dashboard/pangkalan/verifyall" method="post">
                   @csrf
-                  <button class="btn btn-danger border-0" title="Verifikasi" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" onclick="return confirm('Yakin ingin membatalkan verifikasi semua pangkalan?')">Batalkan semua verifikasi</button>
+                  <input name="action" type="hidden" value="verify">
+                  <button class="btn btn-success border-0" title="Verifikasi" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" onclick="return confirm('Yakin ingin memverifikasi semua pangkalan?')">Verifikasi Semua</button>
                 </form>
               @endif
             @endcan
@@ -49,14 +49,14 @@
               @can('verify', $pangkalan)
                 <form class="d-inline" action="/dashboard/pangkalan/{{ $pangkalan->id }}/verify" method="post">
                   @csrf
-                  <button class="badge bg-danger border-0" title="Batal Verifikasi" onclick="return confirm('Yakin ingin membatalkan verifikasi {{ $pangkalan->nama }}?')"><span data-feather="x"></span></button>
+                  <button class="badge bg-success border-0" title="Verifikasi" onclick="return confirm('Yakin ingin memverifikasi {{ $pangkalan->nama }}?')"><span data-feather="check"></span></button>
                 </form>
               @endcan
             </td>
           </tr>
         @empty
           <tr>
-            <td class="text-center" colspan="4">Belum ada pangkalan terverifikasi. <a href="/dashboard/pangkalan/waitingroom">Cek di sini</a></td>
+            <td class="text-center" colspan="4">Tidak ada pangkalan yang menunggu verifikasi. <a href="/dashboard/pangkalan">Cek di sini</a></td>
           </tr>
         @endforelse
       </tbody>
