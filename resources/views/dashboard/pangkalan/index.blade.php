@@ -19,7 +19,12 @@
               @if ($pangkalans->count() > 0)
                 | <form class="d-inline" action="/dashboard/pangkalan/verifyall" method="post">
                   @csrf
-                  <button class="btn btn-danger border-0" title="Verifikasi" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" onclick="return confirm('Yakin ingin membatalkan verifikasi semua pangkalan?')">Batalkan semua verifikasi</button>
+                  @if ($pangkalans->first()->verified)
+                    <button class="btn btn-danger border-0" title="Verifikasi" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" onclick="return confirm('Yakin ingin membatalkan verifikasi semua pangkalan?')">Batalkan semua verifikasi</button>
+                  @else
+                    <input name="action" type="hidden" value="verify">
+                    <button class="btn btn-success border-0" title="Verifikasi" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" onclick="return confirm('Yakin ingin memverifikasi semua pangkalan?')">Verifikasi Semua</button>
+                  @endif
                 </form>
               @endif
             @endcan
@@ -49,14 +54,22 @@
               @can('verify', $pangkalan)
                 <form class="d-inline" action="/dashboard/pangkalan/{{ $pangkalan->id }}/verify" method="post">
                   @csrf
-                  <button class="badge bg-danger border-0" title="Batal Verifikasi" onclick="return confirm('Yakin ingin membatalkan verifikasi {{ $pangkalan->nama }}?')"><span data-feather="x"></span></button>
+                  @if ($pangkalan->verified)
+                    <button class="badge bg-danger border-0" title="Batal Verifikasi" onclick="return confirm('Yakin ingin membatalkan verifikasi {{ $pangkalan->nama }}?')"><span data-feather="x"></span></button>
+                  @else
+                    <button class="badge bg-success border-0" title="Verifikasi" onclick="return confirm('Yakin ingin memverifikasi {{ $pangkalan->nama }}?')"><span data-feather="check"></span></button>
+                  @endif
                 </form>
               @endcan
             </td>
           </tr>
         @empty
           <tr>
-            <td class="text-center" colspan="4">Belum ada pangkalan terverifikasi. <a href="/dashboard/pangkalan/waitingroom">Cek di sini</a></td>
+            @if (Request::is('dashboard/pangkalan/waitingroom'))
+              <td class="text-center" colspan="4">Tidak ada pangkalan yang menunggu verifikasi. <a href="/dashboard/pangkalan">Cek di sini</a></td>
+            @else
+              <td class="text-center" colspan="4">Belum ada pangkalan terverifikasi. <a href="/dashboard/pangkalan/waitingroom">Cek di sini</a></td>
+            @endif
           </tr>
         @endforelse
       </tbody>

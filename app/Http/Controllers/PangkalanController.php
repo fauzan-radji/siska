@@ -30,10 +30,10 @@ class PangkalanController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function waitingroom()
+  public function waitingRoom()
   {
     $this->authorize('verifyAny', Pangkalan::class);
-    return view('dashboard.pangkalan.waitingroom', [
+    return view('dashboard.pangkalan.index', [
       'pangkalans' => Pangkalan::where('verified', false)->get()
     ]);
   }

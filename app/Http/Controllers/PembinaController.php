@@ -21,10 +21,27 @@ class PembinaController extends Controller
   {
     $this->authorize('viewAny', Pembina::class);
     $data = [];
-    if (auth()->user()->isAdmin()) $data['pangkalans'] = Pangkalan::all();
+    if (auth()->user()->isAdmin()) $data['pembinas'] = Pembina::where('verified', true)->get();
     else {
       $user = auth()->user()->isPembina() ? auth()->user()->pembina : auth()->user()->peserta_didik;
-      $data['pangkalans'] = collect([Pangkalan::find($user->pangkalan_id)]);
+      $data['pembinas'] = Pembina::where('pangkalan_id', $user->pangkalan_id)->where('verified', true)->get();
+    }
+    return view('dashboard.pembina.index', $data);
+  }
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function waitingRoom()
+  {
+    $this->authorize('viewAny', Pembina::class);
+    $data = [];
+    if (auth()->user()->isAdmin()) $data['pembinas'] = Pembina::where('verified', false)->get();
+    else {
+      $user = auth()->user()->isPembina() ? auth()->user()->pembina : auth()->user()->peserta_didik;
+      $data['pembinas'] = Pembina::where('pangkalan_id', $user->pangkalan_id)->where('verified', false)->get();
     }
     return view('dashboard.pembina.index', $data);
   }
@@ -142,8 +159,34 @@ class PembinaController extends Controller
   public function verify(Pembina $pembina)
   {
     $this->authorize('verify', $pembina);
-    $pembina->update(['verified' => true]);
-    return back()->with('success', 'Berhasil memverifikasi ' . $pembina->user->nama);
+    $pembina->update(['verified' => !$pembina->verified]);
+    $msg = $pembina->verified ? 'memverifikasi ' : 'membatalkan verifikasi ';
+    return back()->with('success', 'Berhasil ' . $msg . $pembina->nama);
+  }
+
+  /**
+   * Verify all resource in storage.
+   *
+   * @param  \App\Http\Requests\UpdatePembinaRequest  $request
+   * @param  \App\Models\Pembina  $pembina
+   * @return \Illuminate\Http\Response
+   */
+  public function verifyAll(UpdatePembinaRequest $request)
+  {
+    $this->authorize('verifyAll', Pembina::class);
+    Pembina::where(
+      'pangkalan_id',
+      auth()
+        ->user()
+        ->pembina
+        ->pangkalan_id
+    )->get()->each(
+      fn ($pembina) => $pembina->update([
+        'verified' => $request->action === 'verify'
+      ])
+    );
+    $msg = $request->action === 'verify' ? 'memverifikasi semua pembina' : 'membatalkan semua verifikasi';
+    return back()->with('success', 'Berhasil ' . $msg);
   }
 
   /**

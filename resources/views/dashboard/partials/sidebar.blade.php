@@ -40,7 +40,7 @@
 
       @can('viewAny', \App\Models\Pembina::class)
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/pembina*') ? 'active' : '' }}" href="/dashboard/pembina">
+          <a class="nav-link {{ Request::is('dashboard/pembina') ? 'active' : '' }}" href="/dashboard/pembina">
             <span class="align-text-bottom" data-feather="users"></span>
             Pembina
           </a>

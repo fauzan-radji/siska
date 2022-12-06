@@ -80,6 +80,20 @@ class PembinaPolicy
   }
 
   /**
+   * Determine whether the user can verify all the model.
+   *
+   * @param  \App\Models\User  $user
+   * @param  \App\Models\Pembina  $pembina
+   * @return \Illuminate\Auth\Access\Response|bool
+   */
+  public function verifyAll(User $user)
+  {
+    return
+      $user->isAdminPangkalan() &&
+      $user->pembina->pangkalan->verified;
+  }
+
+  /**
    * Determine whether the user can verify the model.
    *
    * @param  \App\Models\User  $user
@@ -90,6 +104,7 @@ class PembinaPolicy
   {
     return
       $user->isAdminPangkalan() &&
+      $user->pembina->pangkalan->verified &&
       $user->pembina->pangkalan_id === $pembina->pangkalan_id;
   }
 
