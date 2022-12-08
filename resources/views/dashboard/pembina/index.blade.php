@@ -1,8 +1,6 @@
 @extends('dashboard.layouts.main')
 
-@section('title')
-  Dashboard | Daftar Pembina
-@endsection
+@section('title', 'Dashboard | Daftar Pembina')
 
 @section('main')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -13,13 +11,8 @@
     <a class="btn btn-primary" href="/dashboard/pembina/create"><span data-feather="plus"></span> Tambah Pembina</a>
   @endcan
 
-  {{-- @foreach ($pangkalans as $pangkalan) --}}
   <h2 class="mt-3 ">
-    <span class="position-relative">Daftar Pembina
-      {{-- <span class="ms-3 position-absolute top-0 start-100 translate-middle badge rounded-pill bg-{{ $pangkalan->verified ? 'success' : 'danger' }}" style="font-size: 0.2em">
-        <span data-feather="check"></span>
-      </span> --}}
-    </span>
+    <span class="position-relative">Daftar Pembina</span>
   </h2>
 
   <div class="table-responsive">
@@ -28,7 +21,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nama</th>
-          <th scope="col">Foto</th>
+          <th class="text-center" scope="col">Foto</th>
           <th class="text-center" scope="col">
             Aksi
             @can('verifyAll', \App\Models\Pembina::class)
@@ -52,7 +45,7 @@
           <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $pembina->user->nama }}</td>
-            <td><img src="{{ $pembina->foto }}" alt="{{ $pembina->nama }}"></td>
+            <td class="text-center"><img src="{{ $pembina->foto }}" alt="{{ $pembina->nama }}"></td>
             <td class="text-center">
               @can('view', $pembina)
                 <a class="badge bg-info" href="/dashboard/pembina/{{ $pembina->id }}" title="Detail"><span data-feather="eye"></span></a>
@@ -91,5 +84,4 @@
       </tbody>
     </table>
   </div>
-  {{-- @endforeach --}}
 @endsection

@@ -34,10 +34,5 @@ class PesertaDidikSeeder extends Seeder
     ]);
 
     PesertaDidik::factory(120)->create();
-
-    PesertaDidik::all()->each(function ($peserta_didik) {
-      $poins = Poin::where('agama_id', $peserta_didik->agama_id)->orWhereNull('agama_id')->get();
-      $peserta_didik->poins()->attach($poins);
-    });
   }
 }

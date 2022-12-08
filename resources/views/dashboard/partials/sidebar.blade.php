@@ -49,7 +49,7 @@
 
       @can('viewAny', \App\Models\PesertaDidik::class)
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/peserta_didik*') ? 'active' : '' }}" href="/dashboard/peserta_didik">
+          <a class="nav-link {{ Request::is('dashboard/peserta_didik') ? 'active' : '' }}" href="/dashboard/peserta_didik">
             <span class="align-text-bottom" data-feather="users"></span>
             Peserta Didik
           </a>
@@ -101,65 +101,35 @@
       </li>
     </ul>
 
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">Ruang Tunggu</h6>
-    <ul class="nav flex-column mb-2">
-      @can('verifyAny', \App\Models\Pangkalan::class)
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/pangkalan/waitingroom') ? 'active' : '' }}" href="/dashboard/pangkalan/waitingroom">
-            <span class="align-text-bottom" data-feather="home"></span>
-            Pangkalan
-          </a>
-        </li>
-      @endcan
-      @can('verifyAny', \App\Models\Pembina::class)
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/pembina/waitingroom') ? 'active' : '' }}" href="/dashboard/pembina/waitingroom">
-            <span class="align-text-bottom" data-feather="users"></span>
-            Pembina
-          </a>
-        </li>
-      @endcan
-      @can('verifyAny', \App\Models\PesertaDidik::class)
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/peserta_didik/waitingroom') ? 'active' : '' }}" href="/dashboard/peserta_didik/waitingroom">
-            <span class="align-text-bottom" data-feather="users"></span>
-            Peserta Didik
-          </a>
-        </li>
-      @endcan
-    </ul>
-
-    {{-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-      <span>Saved reports</span>
-      <a class="link-secondary" href="#" aria-label="Add a new report">
-        <span data-feather="plus-circle" class="align-text-bottom"></span>
-      </a>
-    </h6>
-    <ul class="nav flex-column mb-2">
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text" class="align-text-bottom"></span>
-          Current month
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text" class="align-text-bottom"></span>
-          Last quarter
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text" class="align-text-bottom"></span>
-          Social engagement
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text" class="align-text-bottom"></span>
-          Year-end sale
-        </a>
-      </li>
-    </ul> --}}
+    @if (auth()->user()->isAdmin() ||
+        auth()->user()->isPembina())
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">Ruang Tunggu</h6>
+      <ul class="nav flex-column mb-2">
+        @can('verifyAny', \App\Models\Pangkalan::class)
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('dashboard/pangkalan/waitingroom') ? 'active' : '' }}" href="/dashboard/pangkalan/waitingroom">
+              <span class="align-text-bottom" data-feather="home"></span>
+              Pangkalan
+            </a>
+          </li>
+        @endcan
+        @can('verifyAny', \App\Models\Pembina::class)
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('dashboard/pembina/waitingroom') ? 'active' : '' }}" href="/dashboard/pembina/waitingroom">
+              <span class="align-text-bottom" data-feather="users"></span>
+              Pembina
+            </a>
+          </li>
+        @endcan
+        @can('verifyAny', \App\Models\PesertaDidik::class)
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('dashboard/peserta_didik/waitingroom') ? 'active' : '' }}" href="/dashboard/peserta_didik/waitingroom">
+              <span class="align-text-bottom" data-feather="users"></span>
+              Peserta Didik
+            </a>
+          </li>
+        @endcan
+      </ul>
+    @endif
   </div>
 </nav>

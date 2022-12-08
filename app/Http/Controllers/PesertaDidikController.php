@@ -22,16 +22,39 @@ class PesertaDidikController extends Controller
     $this->authorize('viewAny', PesertaDidik::class);
     $data = [];
     if (auth()->user()->isAdmin())
-      $data['pangkalans'] = Pangkalan::all();
+      $data['peserta_didiks'] = PesertaDidik::where('verified', true)->get();
     else
-      $data['pangkalans'] = collect(
-        [
-          auth()
-            ->user()
-            ->pembina
-            ->pangkalan
-        ]
-      );
+      $data['peserta_didiks'] = PesertaDidik::where(
+        'pangkalan_id',
+        auth()
+          ->user()
+          ->pembina
+          ->pangkalan_id
+      )->where('verified', true)->get();
+
+    return view('dashboard.peserta_didik.index', $data);
+  }
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function waitingRoom()
+  {
+    $this->authorize('viewAny', PesertaDidik::class);
+    $data = [];
+    if (auth()->user()->isAdmin())
+      $data['peserta_didiks'] = PesertaDidik::where('verified', false)->get();
+    else
+      $data['peserta_didiks'] = PesertaDidik::where(
+        'pangkalan_id',
+        auth()
+          ->user()
+          ->pembina
+          ->pangkalan_id
+      )->where('verified', false)->get();
+
     return view('dashboard.peserta_didik.index', $data);
   }
 
@@ -43,7 +66,7 @@ class PesertaDidikController extends Controller
   public function create()
   {
     $this->authorize('create', PesertaDidik::class);
-    //
+    return view('dashboard.peserta_didik.create');
   }
 
   /**
@@ -55,14 +78,24 @@ class PesertaDidikController extends Controller
   public function store(StorePesertaDidikRequest $request)
   {
     $this->authorize('create', PesertaDidik::class);
-    // Validasi
-    $validated = $request->validate([
+    $rules = [
       'nama' => 'required|max:255|min:3',
       'username' => 'required|min:5|max:255',
       'password' => 'required|min:8',
-      'email' => 'required|email',
-      'pangkalan_id' => 'required'
-    ]);
+      'email' => 'required|email'
+    ];
+
+    // if not logged in then validate the pangkalan_id
+    if (auth()->guest()) $rules['pangkalan_id'] = 'required';
+
+    $validated = $request->validate($rules);
+
+    // if logged in then use pangkalan_id from the logged in user
+    if (auth()->user())
+      $validated['pangkalan_id'] = auth()
+        ->user()
+        ->pembina
+        ->pangkalan_id;
 
     // Create Peserta Didik
     PesertaDidik::create([
@@ -76,7 +109,7 @@ class PesertaDidikController extends Controller
     ]);
 
     // redirect to landing
-    return redirect('/')->with('success', 'Berhasil mendaftarkan user ' . $validated['nama']);
+    return redirect('/dashboard/peserta_didik')->with('success', 'Berhasil mendaftarkan user ' . $validated['nama']);
   }
 
   /**
@@ -154,8 +187,33 @@ class PesertaDidikController extends Controller
   public function verify(PesertaDidik $pesertaDidik)
   {
     $this->authorize('verify', $pesertaDidik);
-    $pesertaDidik->update(['verified' => true]);
-    return back()->with('success', 'Berhasil memverifikasi ' . $pesertaDidik->user->nama);
+    $pesertaDidik->update(['verified' => !$pesertaDidik->verified]);
+    $msg = $pesertaDidik->verified ? 'memverifikasi ' : 'membatalkan verifikasi ';
+    return back()->with('success', 'Berhasil ' . $msg . $pesertaDidik->nama);
+  }
+
+  /**
+   * Verify all resource in storage.
+   *
+   * @param  \App\Http\Requests\UpdatePesertaDidikRequest  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function verifyAll(UpdatePesertaDidikRequest $request)
+  {
+    $this->authorize('verifyAll', PesertaDidik::class);
+    PesertaDidik::where(
+      'pangkalan_id',
+      auth()
+        ->user()
+        ->pembina
+        ->pangkalan_id
+    )->get()->each(
+      fn ($peserta_didik) => $peserta_didik->update([
+        'verified' => $request->action === 'verify'
+      ])
+    );
+    $msg = $request->action === 'verify' ? 'memverifikasi semua peserta didik' : 'membatalkan semua verifikasi';
+    return back()->with('success', 'Berhasil ' . $msg);
   }
 
   /**

@@ -40,7 +40,15 @@ class PesertaDidik extends Model
   {
     parent::boot();
 
-    static::deleting(function ($peserta_didik) { // before delete() method call this
+    $poins = Poin::all();
+
+    //after create() method call this
+    static::created(function ($peserta_didik) use ($poins) {
+      $peserta_didik->poins()->attach($poins);
+    });
+
+    // before delete() method call this
+    static::deleting(function ($peserta_didik) {
       $peserta_didik->user->delete();
     });
   }

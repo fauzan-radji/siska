@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Kwarran;
-use App\Models\Pangkalan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JadwalController;
@@ -72,6 +71,8 @@ Route::post('/dashboard/pembina/verifyall', [PembinaController::class, 'verifyAl
 Route::post('/dashboard/pembina/{pembina}/verify', [PembinaController::class, 'verify'])->middleware('auth');
 Route::resource('/dashboard/pembina', PembinaController::class)->middleware('auth');
 
+Route::get('/dashboard/peserta_didik/waitingroom', [PesertaDidikController::class, 'waitingRoom'])->middleware('auth');
+Route::post('/dashboard/peserta_didik/verifyall', [PesertaDidikController::class, 'verifyAll'])->middleware('auth');
 Route::post('/dashboard/peserta_didik/{pesertaDidik}/verify', [PesertaDidikController::class, 'verify'])->middleware('auth');
 Route::post('/dashboard/peserta_didik/{pesertaDidik}/teruji', [PesertaDidikController::class, 'uji'])->middleware('auth');
 Route::resource('/dashboard/peserta_didik', PesertaDidikController::class)->middleware('auth');

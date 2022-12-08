@@ -21,10 +21,17 @@ class PembinaController extends Controller
   {
     $this->authorize('viewAny', Pembina::class);
     $data = [];
-    if (auth()->user()->isAdmin()) $data['pembinas'] = Pembina::where('verified', true)->get();
+    if (auth()->user()->isAdmin())
+      $data['pembinas'] = Pembina::where('verified', true)->get();
     else {
-      $user = auth()->user()->isPembina() ? auth()->user()->pembina : auth()->user()->peserta_didik;
-      $data['pembinas'] = Pembina::where('pangkalan_id', $user->pangkalan_id)->where('verified', true)->get();
+      $user = auth()->user()->isPembina() ?
+        auth()->user()->pembina :
+        auth()->user()->peserta_didik;
+
+      $data['pembinas'] = Pembina::where(
+        'pangkalan_id',
+        $user->pangkalan_id
+      )->where('verified', true)->get();
     }
     return view('dashboard.pembina.index', $data);
   }
@@ -38,7 +45,8 @@ class PembinaController extends Controller
   {
     $this->authorize('viewAny', Pembina::class);
     $data = [];
-    if (auth()->user()->isAdmin()) $data['pembinas'] = Pembina::where('verified', false)->get();
+    if (auth()->user()->isAdmin())
+      $data['pembinas'] = Pembina::where('verified', false)->get();
     else {
       $user = auth()->user()->isPembina() ? auth()->user()->pembina : auth()->user()->peserta_didik;
       $data['pembinas'] = Pembina::where('pangkalan_id', $user->pangkalan_id)->where('verified', false)->get();
@@ -66,18 +74,30 @@ class PembinaController extends Controller
   public function store(StorePembinaRequest $request)
   {
     $this->authorize('create', Pembina::class);
-    $validated = $request->validate([
+    $rules = [
       'nama' => 'required|max:255|min:3',
       'username' => 'required|min:5|max:255',
       'password' => 'required|min:8',
       'email' => 'required|email'
-    ]);
+    ];
+
+    // if not logged in then validate the pangkalan_id
+    if (auth()->guest()) $rules['pangkalan_id'] = 'required';
+
+    $validated = $request->validate($rules);
 
     $validated['password'] = Hash::make($validated['password']);
 
+    // if logged in then use pangkalan_id from the logged in user
+    if (auth()->user())
+      $validated['pangkalan_id'] = auth()
+        ->user()
+        ->pembina
+        ->pangkalan_id;
+
     Pembina::create([
       'user_id' => User::create($validated)->id,
-      'pangkalan_id' => auth()->user()->pembina->pangkalan->id
+      'pangkalan_id' => $validated['pangkalan_id']
     ]);
 
     return redirect('/dashboard/pembina')->with('success', 'Berhasil mendaftarkan pembina ' . $validated['nama']);
@@ -168,7 +188,6 @@ class PembinaController extends Controller
    * Verify all resource in storage.
    *
    * @param  \App\Http\Requests\UpdatePembinaRequest  $request
-   * @param  \App\Models\Pembina  $pembina
    * @return \Illuminate\Http\Response
    */
   public function verifyAll(UpdatePembinaRequest $request)
