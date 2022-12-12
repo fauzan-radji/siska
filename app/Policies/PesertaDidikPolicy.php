@@ -104,7 +104,6 @@ class PesertaDidikPolicy
     return
       $user->isAdminPangkalan() && //is the user Admin Pangkalan?
       $user->pembina->pangkalan->verified && // is user pangkalan is verified?
-      !$pesertaDidik->verified && // is peserta didik not verified yet?
       $user->pembina->pangkalan_id === $pesertaDidik->pangkalan_id; // is user and peserta didik in the same pangkalan?
   }
 

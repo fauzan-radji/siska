@@ -11,8 +11,10 @@ use App\Http\Controllers\PangkalanController;
 use App\Http\Controllers\PesertaDidikController;
 use App\Http\Controllers\PoinController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Pangkalan;
 use App\Models\Pembina;
 use App\Models\PesertaDidik;
+use App\Models\Poin;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,12 +49,19 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/dashboard', function () {
   $data = [];
+  $user = auth()->user();
 
-  if (auth()->user()->isAdmin()) $data['kwarrans'] = Kwarran::all();
-  if (auth()->user()->isPembina()) {
-    $pembina = auth()->user()->pembina;
-    $data['pembinas'] = Pembina::where('pangkalan_id', $pembina->pangkalan_id);
-    $data['peserta_didiks'] = PesertaDidik::where('pangkalan_id', $pembina->pangkalan_id);
+  if ($user->isAdmin()) {
+    $data['kwarrans'] = Kwarran::all();
+    $data['pangkalans'] = Pangkalan::all();
+    $data['peserta_didiks'] = PesertaDidik::all();
+    $data['pembinas'] = Pembina::all();
+  } else if ($user->isPembina()) {
+    $pembina = $user->pembina;
+    $data['pembinas'] = Pembina::where('pangkalan_id', $pembina->pangkalan_id)->get();
+    $data['peserta_didiks'] = PesertaDidik::where('pangkalan_id', $pembina->pangkalan_id)->get();
+  } else if ($user->isPesertaDidik()) {
+    $data['poins'] = $user->peserta_didik->poins;
   }
 
   return view('dashboard.index', $data);

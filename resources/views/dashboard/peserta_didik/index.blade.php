@@ -1,19 +1,11 @@
 @extends('dashboard.layouts.main')
 
-@section('title', 'Dashboard | Daftar Peserta Didik')
+@section('title', 'Daftar Peserta Didik')
 
 @section('main')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1>Daftar Peserta Didik</h1>
-  </div>
-
   @can('create', \App\Models\PesertaDidik::class)
     <a class="btn btn-primary" href="/dashboard/peserta_didik/create"><span data-feather="plus"></span> Tambah Peserta Didik</a>
   @endcan
-
-  <h2 class="mt-3 ">
-    <span class="position-relative">Daftar Peserta Didik</span>
-  </h2>
 
   <div class="table-responsive">
     <table class="table table-striped">

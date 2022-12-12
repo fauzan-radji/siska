@@ -1,18 +1,8 @@
 @extends('dashboard.layouts.main')
 
-@section('title')
-  Tambah Admin
-@endsection
-
-@section('head')
-  <style></style>
-@endsection
+@section('title', 'Tambah Admin')
 
 @section('main')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1>Tambah Admin</h1>
-  </div>
-
   <form action="/dashboard/admin" method="post">
     @csrf
     <div class="mb-3">

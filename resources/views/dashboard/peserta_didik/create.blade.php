@@ -1,12 +1,8 @@
 @extends('dashboard.layouts.main')
 
-@section('title', 'Dashboard | Tambah Peserta Didik')
+@section('title', 'Tambah Peserta Didik')
 
 @section('main')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1>Tambah Peserta Didik</h1>
-  </div>
-
   <form action="/dashboard/peserta_didik" method="post">
     @csrf
     <div class="mb-3">

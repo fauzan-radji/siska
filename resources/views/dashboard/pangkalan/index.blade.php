@@ -1,11 +1,8 @@
 @extends('dashboard.layouts.main')
 
-@section('main')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    {{-- <h1>Daftar Pangkalan</h1> --}}
-    <h2 class="mt-3">Daftar Pangkalan Terverifikasi</h2>
-  </div>
+@section('title', 'Daftar Pangkalan')
 
+@section('main')
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>

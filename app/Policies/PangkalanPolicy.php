@@ -46,7 +46,6 @@ class PangkalanPolicy
    */
   public function create(User $user)
   {
-    dd(auth()->guest());
     return auth()->guest();
   }
 

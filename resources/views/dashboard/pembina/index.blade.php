@@ -1,19 +1,11 @@
 @extends('dashboard.layouts.main')
 
-@section('title', 'Dashboard | Daftar Pembina')
+@section('title', 'Daftar Pembina')
 
 @section('main')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1>Daftar Pembina</h1>
-  </div>
-
   @can('create', \App\Models\Pembina::class)
     <a class="btn btn-primary" href="/dashboard/pembina/create"><span data-feather="plus"></span> Tambah Pembina</a>
   @endcan
-
-  <h2 class="mt-3 ">
-    <span class="position-relative">Daftar Pembina</span>
-  </h2>
 
   <div class="table-responsive">
     <table class="table table-striped">

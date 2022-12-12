@@ -30,6 +30,32 @@
 
 ## UIs
 
+- Dashboard
+  - [x] Dashboard
+  - Kwartir Ranting
+    - [ ] Daftar Kwarran
+    - [ ] Tambah Kwarran
+  - Pangkalan
+    - [ ] Daftar Pangkalan
+    - [ ] Tambah Pangkalan
+    - [ ] Pangkalan Saya
+    - [ ] Ruang Tunggu
+  - Pembina
+    - [ ] Daftar Pembina
+    - [ ] Tambah Pembina
+    - [ ] Ruang Tunggu
+  - Peserta Didik
+    - [ ] Daftar Peserta Didik
+    - [ ] Tambah Peserta Didik
+    - [ ] Ruang Tunggu
+  - [ ] Syarat Kecakapan Umum
+  - [ ] Jadwal
+  - Pengurus
+    - [ ] Daftar Pengurus
+    - [ ] Tambah Pengurus
+  - Profile
+    - [ ] Akun Saya
+    - [ ] Logout
 - Details Page
   - [ ] Admin
   - [ ] Kwarran

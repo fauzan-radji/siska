@@ -2,41 +2,82 @@
 <html lang="id">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title')</title>
 
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="/css/dashboard.css" rel="stylesheet">
+  <link href="/mazer/css/main/app.css" rel="stylesheet">
+  <link href="/mazer/css/main/app-dark.css" rel="stylesheet">
+  <link type="image/x-icon" href="/mazer/images/logo/favicon.svg" rel="shortcut icon">
+  <link type="image/png" href="/mazer/images/logo/favicon.png" rel="shortcut icon">
+
+  <link href="/mazer/css/shared/iconly.css" rel="stylesheet">
+
+  <!-- Toastify -->
+  <link href="/mazer/extensions/toastify-js/src/toastify.css" rel="stylesheet">
 
   @yield('head')
 </head>
 
 <body>
-  @include('dashboard.partials.navbar')
+  <div id="app">
+    @include('dashboard.partials.sidebar')
 
-  <div class="container-fluid">
-    <div class="row">
-      @include('dashboard.partials.sidebar')
+    <div id="main">
+      <header class="mb-3">
+        <a class="burger-btn d-block d-xl-none" href="#">
+          <i class="bi bi-justify fs-3"></i>
+        </a>
+      </header>
 
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        @if (session()->has('success'))
-          <div class="alert alert-success mt-3">{{ session('success') }}</div>
-        @endif
-        @if (session()->has('error'))
-          <div class="alert alert-danger mt-3">{{ session('error') }}</div>
-        @endif
-
+      <div class="page-heading">
+        <h3>@yield('title')</h3>
+      </div>
+      <div class="page-content">
         @yield('main')
-      </main>
+      </div>
+
+      <footer>
+        <div class="footer clearfix mb-0 text-muted">
+          <div class="float-start">
+            <p>2021 &copy; Mazer</p>
+          </div>
+          <div class="float-end">
+            <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="https://github.com/fauzan-radji">Fauzan Radji</a></p>
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
-
   <script src="/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/feather.min.js"></script>
-  <script src="/js/Chart.min.js"></script>
-  <script src="/js/dashboard.js"></script>
+  <script src="/mazer/js/app.js"></script>
+
+  <!-- Toastify -->
+  <script src="/mazer/extensions/toastify-js/src/toastify.js"></script>
+  <script>
+    const colors = {
+      danger: "#dc3545",
+      success: "#198754"
+    };
+
+    @if (session()->has('success'))
+      Toastify({
+        text: "{{ session('success') }}",
+        duration: 3000,
+        close: true,
+        backgroundColor: colors.success,
+      }).showToast();
+    @endif
+
+    @if (session()->has('error'))
+      Toastify({
+        text: "{{ session('error') }}",
+        duration: 3000,
+        close: true,
+        backgroundColor: colors.danger,
+      }).showToast();
+    @endif
+  </script>
 
   @yield('script')
 </body>
