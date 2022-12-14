@@ -34,10 +34,12 @@
   - [x] Dashboard
   - Kwartir Ranting
     - [x] Daftar Kwarran
+    - [x] Detail Kwarran
     - [x] Tambah Kwarran | Edit Kwarran
   - Pangkalan
     - [x] Daftar Pangkalan
     - [ ] Tambah Pangkalan | Edit Pangkalan
+    - [ ] Detail Pangkalan
     - [ ] Pangkalan Saya
     - [x] Ruang Tunggu
   - Pembina

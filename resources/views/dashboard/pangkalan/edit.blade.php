@@ -1,15 +1,9 @@
 @extends('dashboard.layouts.main')
 
-@section('title')
-  Edit Data Pangkalan
-@endsection
+@section('title', 'Edit Data Pangkalan')
 
 @section('main')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1>Edit Data {{ $pangkalan->nama }}</h1>
-  </div>
-
-  <form action="/dashboard/pangkalan/{{ $pangkalan->id }}" method="post">
+  {{-- <form action="/dashboard/pangkalan/{{ $pangkalan->id }}" method="post">
     @method('put')
     @csrf
     <div class="mb-3">
@@ -80,5 +74,22 @@
     </div>
 
     <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
+  </form> --}}
+  @include('dashboard.partials.forms.pangkalan', [
+      'title' => $pangkalan->nama,
+      'pangkalan_id' => $pangkalan->id,
+      'edit' => true,
+      'nama' => $pangkalan->nama,
+      'kwarran_nomor' => $pangkalan->kwarran->nomor,
+      'kwarran_id' => $pangkalan->kwarran_id,
+      'alamat' => $pangkalan->alamat,
+      'no_gudep' => $no_gudep,
+      'ambalan' => $ambalan,
+  ])
+@endsection
+
+@section('script')
+  <script src="/mazer/extensions/jquery/jquery.min.js"></script>
+  <script src="/mazer/extensions/parsleyjs/parsley.min.js"></script>
+  <script src="/mazer/js/pages/parsley.js"></script>
 @endsection

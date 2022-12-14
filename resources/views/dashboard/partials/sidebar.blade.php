@@ -101,12 +101,12 @@
         @endphp
 
         @can('viewAny', \App\Models\Pangkalan::class)
-          <li class="sidebar-item has-sub {{ Request::is('dashboard/pangkalan', 'dashboard/pangkalan/create', 'dashboard/pangkalan/waitingroom', 'dashboard/pangkalan/' . $user->pangkalan_id) ? 'active' : '' }}">
+          <li class="sidebar-item has-sub {{ Request::is('dashboard/pangkalan', 'dashboard/pangkalan/*') ? 'active' : '' }}">
             <a class="sidebar-link" href="#">
               <i class="bi bi-house-fill"></i>
               <span>Pangkalan</span>
             </a>
-            <ul class="submenu {{ Request::is('dashboard/pangkalan', 'dashboard/pangkalan/create', 'dashboard/pangkalan/waitingroom', 'dashboard/pangkalan/' . $user->pangkalan_id) ? 'active' : '' }}">
+            <ul class="submenu {{ Request::is('dashboard/pangkalan', 'dashboard/pangkalan/*') ? 'active' : '' }}">
               <li class="submenu-item {{ Request::is('dashboard/pangkalan') ? 'active' : '' }}">
                 <a href="/dashboard/pangkalan">Daftar Pangkalan</a>
               </li>
