@@ -7,7 +7,7 @@
       <div class="card-body">
         <form data-parsley-validate action="/dashboard/pangkalan{{ $edit ? '/' . $pangkalan_id : '' }}" method="post">
           @if ($edit)
-            @method('put')`
+            @method('put')
           @endif
           @csrf
 
@@ -77,7 +77,7 @@
                 <select class="form-select @error('kwarran_id') is-invalid @enderror" id="kwarran" name="kwarran_id" data-parsley-required>
                   <option value=''>Pilih Kwartir Ranting</option>
                   @foreach ($kwarrans as $kwarran)
-                    <option value="{{ $kwarran->id }}" {{ $kwarran->id === $pangkalan->kwarran_id ? 'selected' : '' }}>{{ $kwarran->nama }}</option>
+                    <option value="{{ $kwarran->id }}" {{ $kwarran->id === $kwarran_id ? 'selected' : '' }}>{{ $kwarran->nama }}</option>
                   @endforeach
                 </select>
                 @error('kwarran_id')
@@ -89,7 +89,7 @@
             <div class="col-md-6">
               <div class="form-group mandatory @error('alamat') is-invalid @enderror">
                 <label class="form-label" for="alamat">Alamat</label>
-                <input class="form-control" id="alamat" name="alamat" data-parsley-required type="text" value="{{ $pangkalan->alamat }}" placeholder="Alamat">
+                <input class="form-control" id="alamat" name="alamat" data-parsley-required type="text" value="{{ $alamat }}" placeholder="Alamat">
                 @error('alamat')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

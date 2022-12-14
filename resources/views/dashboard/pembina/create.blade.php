@@ -1,17 +1,20 @@
 @extends('dashboard.layouts.main')
 
-@section('title', 'Dashboard | Tambah Pembina')
-
-@section('head')
-  <style></style>
-@endsection
+@section('title', 'Tambah Pembina')
 
 @section('main')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1>Tambah Pembina</h1>
-  </div>
-
-  <form action="/dashboard/pembina" method="post">
+  @include('dashboard.partials.forms.pembina', [
+      'edit' => false,
+      'title' => 'Data Pembina',
+      'pembina_id' => '',
+      'nama' => old('nama'),
+      'jabatan_id' => old('jabatan_id'),
+      'username' => old('username'),
+      'email' => old('email'),
+      'password' => old('password'),
+      'jabatan' => old('jabatan'),
+  ])
+  {{-- <form action="/dashboard/pembina" method="post">
     @csrf
     <div class="mb-3">
       <label class="form-label" for="nama">Nama</label>
@@ -56,5 +59,11 @@
       @enderror
     </div>
     <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
+  </form> --}}
+@endsection
+
+@section('script')
+  <script src="/mazer/extensions/jquery/jquery.min.js"></script>
+  <script src="/mazer/extensions/parsleyjs/parsley.min.js"></script>
+  <script src="/mazer/js/pages/parsley.js"></script>
 @endsection

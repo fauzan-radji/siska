@@ -51,8 +51,7 @@
           <h4>Pangkalan</h4>
         </div>
         <div class="card-body">
-          @php $pangkalans = $kwarran->pangkalans @endphp
-          @include('dashboard.partials.tables.pangkalan')
+          @include('dashboard.partials.tables.pangkalan', ['pangkalans' => $kwarran->pangkalans])
         </div>
       </div>
     </div>

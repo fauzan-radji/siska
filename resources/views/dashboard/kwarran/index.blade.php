@@ -9,10 +9,10 @@
 
 @section('main')
   @can('create', App\Models\Kwarran::class)
-    <a class="btn btn-primary" href="/dashboard/kwarran/create"><i class="bi bi-plus-lg"></i> Tambah Kwarran</a>
+    <a class="btn btn-primary mb-3" href="/dashboard/kwarran/create"><i class="bi bi-plus-lg"></i> Tambah Kwarran</a>
   @endcan
 
-  <div class="row mt-3">
+  <div class="row">
     <div class="col">
       <div class="card">
         <div class="card-body">

@@ -1,15 +1,24 @@
 @extends('dashboard.layouts.main')
 
-@section('title')
-  Edit Data Pembina
-@endsection
+@section('title', 'Edit Data Pembina')
 
 @section('main')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1>Edit Data {{ $pembina->user->nama }}</h1>
-  </div>
-
-  <form action="/dashboard/pembina/{{ $pembina->id }}" method="post">
+  @include('dashboard.partials.forms.pembina', [
+      'edit' => true,
+      'title' => $pembina->user->nama,
+      'pembina_id' => $pembina->id,
+      'nama' => $pembina->user->nama,
+      'jabatan' => $pembina->jabatan,
+      'username' => $pembina->user->username,
+      'email' => $pembina->user->email,
+      'no_hp' => $pembina->no_hp,
+      'alamat' => $pembina->alamat,
+      'gender' => $pembina->gender,
+      'agamas' => $agamas,
+      'agama_id' => $pembina->agama_id,
+      'tanggal_lahir' => $pembina->tanggal_lahir,
+  ])
+  {{-- <form action="/dashboard/pembina/{{ $pembina->id }}" method="post">
     @method('put')
     @csrf
     <div class="mb-3">
@@ -113,5 +122,11 @@
     </div>
 
     <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
+  </form> --}}
+@endsection
+
+@section('script')
+  <script src="/mazer/extensions/jquery/jquery.min.js"></script>
+  <script src="/mazer/extensions/parsleyjs/parsley.min.js"></script>
+  <script src="/mazer/js/pages/parsley.js"></script>
 @endsection
