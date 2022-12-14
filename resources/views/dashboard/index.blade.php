@@ -2,10 +2,12 @@
 
 @section('title', 'Dashboard')
 
-@section('head')
-  <link href="/mazer/extensions/simple-datatables/style.css" rel="stylesheet">
-  <link href="/mazer/css/pages/simple-datatables.css" rel="stylesheet">
-@endsection
+@if (auth()->user()->isPesertaDidik())
+  @section('head')
+    <link href="/mazer/extensions/simple-datatables/style.css" rel="stylesheet">
+    <link href="/mazer/css/pages/simple-datatables.css" rel="stylesheet">
+  @endsection
+@endif
 
 @section('main')
   @if (auth()->user()->isAdmin())
@@ -256,6 +258,9 @@
     </script>
   @elseif(auth()->user()->isPesertaDidik())
     <script src="/mazer/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script>
+      const dataTable = new simpleDatatables.DataTable(document.getElementById("tabel-poin"));
+    </script>
     <script src="/mazer/js/pages/simple-datatables.js"></script>
   @endif
 @endsection

@@ -5,8 +5,8 @@
 ### Searching
 
 - [ ] Admin
-- [ ] Kwarran
-- [ ] Pangkalan
+- [x] Kwarran
+- [x] Pangkalan
 - [ ] Pembina
 - [ ] Peserta Didik
 - [ ] Poin
@@ -33,13 +33,13 @@
 - Dashboard
   - [x] Dashboard
   - Kwartir Ranting
-    - [ ] Daftar Kwarran
-    - [ ] Tambah Kwarran
+    - [x] Daftar Kwarran
+    - [x] Tambah Kwarran | Edit Kwarran
   - Pangkalan
-    - [ ] Daftar Pangkalan
-    - [ ] Tambah Pangkalan
+    - [x] Daftar Pangkalan
+    - [ ] Tambah Pangkalan | Edit Pangkalan
     - [ ] Pangkalan Saya
-    - [ ] Ruang Tunggu
+    - [x] Ruang Tunggu
   - Pembina
     - [ ] Daftar Pembina
     - [ ] Tambah Pembina
@@ -76,7 +76,6 @@
 
 - [ ] Optimalisasi Query (N+1 Problem)
 - [ ] Menambah no_kwarran di form tambah kwarran
-- [ ] Di halaman detail kwarran, ketika diklik jumlah pangkalan maka akan mengarah ke daftar pangkalah di kwarran terkait
 - [ ] Memisahkan field gudep putra dan putri serta ambalan putra dan putri di tabel pangkalan
 - [ ] Fix judul tiap halaman
 - [ ] Fix locale (bahasa yang digunakan aplikasi)

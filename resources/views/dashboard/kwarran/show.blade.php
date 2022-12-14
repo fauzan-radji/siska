@@ -1,69 +1,68 @@
 @extends('dashboard.layouts.main')
 
-@section('title')
-  Dashboard | {{ $kwarran->nama }}
-@endsection
+@section('title', $kwarran->nama)
 
 @section('head')
-  <style></style>
+  <link href="/mazer/extensions/simple-datatables/style.css" rel="stylesheet">
+  <link href="/mazer/css/pages/simple-datatables.css" rel="stylesheet">
 @endsection
 
 @section('main')
-  <table>
-    <tr>
-      <td>Nama</td>
-      <td>{{ $kwarran->nama }}</td>
-    </tr>
-    <tr>
-      <td>Kamabiran</td>
-      <td>{{ $kwarran->kamabiran }}</td>
-    </tr>
-    <tr>
-      <td>Ketua Kwarran</td>
-      <td>{{ $kwarran->ketua }}</td>
-    </tr>
-    <tr>
-      <td>Jumlah Pangkalan</td>
-      <td>{{ $kwarran->pangkalans->count() }}</td>
-    </tr>
-  </table>
-
-  <a href="/dashboard/kwarran/{{ $kwarran->id }}/edit">Edit</a>
-
-
-  <h2 class="mt-3">Pangkalan</h2>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nama</th>
-          <th scope="col">No Gudep</th>
-          <th scope="col">Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-        @forelse($kwarran->pangkalans as $pangkalan)
-          <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $pangkalan->nama }}</td>
-            <td>{{ $pangkalan->no_gudep }}</td>
-            <td>
-              <a class="badge bg-info" href="/dashboard/pangkalan/{{ $pangkalan->id }}"><span data-feather="eye"></span></a>
-              <a class="badge bg-warning" href="/dashboard/pangkalan/{{ $pangkalan->id }}/edit"><span data-feather="edit"></span></a>
-              <form class="d-inline" action="/dashboard/pangkalan/{{ $pangkalan->id }}" method="post">
-                @method('delete')
-                @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus post ini?')"><span data-feather="trash"></span></button>
-              </form>
-            </td>
-          </tr>
-        @empty
-          <tr>
-            <td class="text-center" colspan="4">No posts found</td>
-          </tr>
-        @endforelse
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        @can('update', $kwarran)
+          <div class="card-header">
+            <a class="btn btn-info" href="/dashboard/kwarran/{{ $kwarran->id }}/edit"><i class="bi bi-pencil-square"></i> Edit</a>
+          </div>
+        @endcan
+        <div class="card-body">
+          <table class="table">
+            <tr>
+              <th>Nama</th>
+              <th class="text-center">:</th>
+              <td>{{ $kwarran->nama }}</td>
+            </tr>
+            <tr>
+              <th>Nomor</th>
+              <th class="text-center">:</th>
+              <td>{{ $kwarran->nomor }}</td>
+            </tr>
+            <tr>
+              <th>Kamabiran</th>
+              <th class="text-center">:</th>
+              <td>{{ $kwarran->kamabiran }}</td>
+            </tr>
+            <tr>
+              <th>Ketua Kwarran</th>
+              <th class="text-center">:</th>
+              <td>{{ $kwarran->ketua }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header">
+          <h4>Pangkalan</h4>
+        </div>
+        <div class="card-body">
+          @php $pangkalans = $kwarran->pangkalans @endphp
+          @include('dashboard.partials.tables.pangkalan')
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+
+@section('script')
+  <script src="/mazer/extensions/simple-datatables/umd/simple-datatables.js"></script>
+  <script>
+    const dataTable = new simpleDatatables.DataTable(document.getElementById("tabel-pangkalan"));
+  </script>
+  <script src="/mazer/js/pages/simple-datatables.js"></script>
 @endsection

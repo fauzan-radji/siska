@@ -31,7 +31,7 @@
       </header>
 
       <div class="page-heading">
-        <h3>@yield('title')</h3>
+        <h2>@yield('title')</h2>
       </div>
       <div class="page-content">
         @yield('main')

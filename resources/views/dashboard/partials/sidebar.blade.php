@@ -47,12 +47,12 @@
         </li>
 
         @can('viewAny', \App\Models\Admin::class)
-          <li class="sidebar-item has-sub {{ Request::is('dashboard/admin') || Request::is('dashboard/admin/create') ? 'active' : '' }}">
+          <li class="sidebar-item has-sub {{ Request::is('dashboard/admin', 'dashboard/admin/create') ? 'active' : '' }}">
             <a class="sidebar-link" href="#">
-              <i class="bi bi-geo-alt-fill"></i>
+              <i class="bi bi-people-fill"></i>
               <span>Pengurus</span>
             </a>
-            <ul class="submenu {{ Request::is('dashboard/admin') || Request::is('dashboard/admin/create') ? 'active' : '' }}">
+            <ul class="submenu {{ Request::is('dashboard/admin', 'dashboard/admin/create') ? 'active' : '' }}">
               <li class="submenu-item {{ Request::is('dashboard/admin') ? 'active' : '' }}">
                 <a href="/dashboard/admin">Daftar Pengurus</a>
               </li>
@@ -65,12 +65,12 @@
           </li>
         @endcan
 
-        <li class="sidebar-item has-sub {{ Request::is('dashboard/kwarran') || Request::is('dashboard/kwarran/create') ? 'active' : '' }}">
+        <li class="sidebar-item has-sub {{ Request::is('dashboard/kwarran', 'dashboard/kwarran/*') ? 'active' : '' }}">
           <a class="sidebar-link" href="#">
             <i class="bi bi-geo-alt-fill"></i>
             <span>Kwartir Ranting</span>
           </a>
-          <ul class="submenu {{ Request::is('dashboard/kwarran') || Request::is('dashboard/kwarran/create') ? 'active' : '' }}">
+          <ul class="submenu {{ Request::is('dashboard/kwarran', 'dashboard/kwarran/*') ? 'active' : '' }}">
             <li class="submenu-item {{ Request::is('dashboard/kwarran') ? 'active' : '' }}">
               <a href="/dashboard/kwarran">Daftar Kwarran</a>
             </li>
@@ -101,12 +101,12 @@
         @endphp
 
         @can('viewAny', \App\Models\Pangkalan::class)
-          <li class="sidebar-item has-sub {{ Request::is('dashboard/pangkalan') || Request::is('dashboard/pangkalan/create') || Request::is('dashboard/pangkalan/waitingroom') || Request::is('dashboard/pangkalan/' . $user->pangkalan_id) ? 'active' : '' }}">
+          <li class="sidebar-item has-sub {{ Request::is('dashboard/pangkalan', 'dashboard/pangkalan/create', 'dashboard/pangkalan/waitingroom', 'dashboard/pangkalan/' . $user->pangkalan_id) ? 'active' : '' }}">
             <a class="sidebar-link" href="#">
               <i class="bi bi-house-fill"></i>
               <span>Pangkalan</span>
             </a>
-            <ul class="submenu {{ Request::is('dashboard/pangkalan') || Request::is('dashboard/pangkalan/create') || Request::is('dashboard/pangkalan/waitingroom') || Request::is('dashboard/pangkalan/' . $user->pangkalan_id) ? 'active' : '' }}">
+            <ul class="submenu {{ Request::is('dashboard/pangkalan', 'dashboard/pangkalan/create', 'dashboard/pangkalan/waitingroom', 'dashboard/pangkalan/' . $user->pangkalan_id) ? 'active' : '' }}">
               <li class="submenu-item {{ Request::is('dashboard/pangkalan') ? 'active' : '' }}">
                 <a href="/dashboard/pangkalan">Daftar Pangkalan</a>
               </li>
@@ -130,12 +130,12 @@
         @endcan
 
         @can('viewAny', \App\Models\Pembina::class)
-          <li class="sidebar-item has-sub {{ Request::is('dashboard/pembina') || Request::is('dashboard/pembina/create') ? 'active' : '' }}">
+          <li class="sidebar-item has-sub {{ Request::is('dashboard/pembina', 'dashboard/pembina/create') ? 'active' : '' }}">
             <a class="sidebar-link" href="#">
               <i class="bi bi-people-fill"></i>
               <span>Pembina</span>
             </a>
-            <ul class="submenu {{ Request::is('dashboard/pembina') || Request::is('dashboard/pembina/create') || Request::is('dashboard/pembina/waitingroom') ? 'active' : '' }}">
+            <ul class="submenu {{ Request::is('dashboard/pembina', 'dashboard/pembina/create', 'dashboard/pembina/waitingroom') ? 'active' : '' }}">
               <li class="submenu-item {{ Request::is('dashboard/pembina') ? 'active' : '' }}">
                 <a href="/dashboard/pembina">Daftar Pembina</a>
               </li>
@@ -154,12 +154,12 @@
         @endcan
 
         @can('viewAny', \App\Models\PesertaDidik::class)
-          <li class="sidebar-item has-sub {{ Request::is('dashboard/peserta_didik') || Request::is('dashboard/peserta_didik/create') ? 'active' : '' }}">
+          <li class="sidebar-item has-sub {{ Request::is('dashboard/peserta_didik', 'dashboard/peserta_didik/create') ? 'active' : '' }}">
             <a class="sidebar-link" href="#">
               <i class="bi bi-people-fill"></i>
               <span>Peserta Didik</span>
             </a>
-            <ul class="submenu {{ Request::is('dashboard/peserta_didik') || Request::is('dashboard/peserta_didik/create') || Request::is('dashboard/peserta_didik/waitingroom') ? 'active' : '' }}">
+            <ul class="submenu {{ Request::is('dashboard/peserta_didik', 'dashboard/peserta_didik/create', 'dashboard/peserta_didik/waitingroom') ? 'active' : '' }}">
               <li class="submenu-item {{ Request::is('dashboard/peserta_didik') ? 'active' : '' }}">
                 <a href="/dashboard/peserta_didik">Daftar Peserta Didik</a>
               </li>
@@ -177,12 +177,12 @@
           </li>
         @endcan
 
-        <li class="sidebar-item has-sub {{ Request::is('dashboard/admin/' . $id) || Request::is('dashboard/pembina/' . $id) || Request::is('dashboard/peserta_didik/' . $id) ? 'active' : '' }}">
+        <li class="sidebar-item has-sub {{ Request::is('dashboard/admin/' . $id, 'dashboard/pembina/' . $id, 'dashboard/peserta_didik/' . $id) ? 'active' : '' }}">
           <a class='sidebar-link' href="#">
             <i class="bi bi-person-badge-fill"></i>
             <span>Profile</span>
           </a>
-          <ul class="submenu {{ Request::is('dashboard/admin/' . $id) || Request::is('dashboard/pembina/' . $id) || Request::is('dashboard/peserta_didik/' . $id) ? 'active' : '' }}">
+          <ul class="submenu {{ Request::is('dashboard/admin/' . $id, 'dashboard/pembina/' . $id, 'dashboard/peserta_didik/' . $id) ? 'active' : '' }}">
             @if ($isAdmin)
               <li class="submenu-item {{ Request::is('dashboard/admin/' . $id) ? 'active' : '' }}">
                 <a href="/dashboard/admin/{{ $id }}">Akun Saya</a>

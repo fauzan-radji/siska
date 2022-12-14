@@ -39,10 +39,10 @@ class KwarranController extends Controller
    */
   public function store(StoreKwarranRequest $request)
   {
-    $this->authorize('create');
+    $this->authorize('create', Kwarran::class);
     $validated = $request->validate([
       'nama' => 'required|min:5|max:255',
-      'nomor' => 'required|size:2',
+      'nomor' => 'required|size:2|unique:kwarrans',
       'kamabiran' => 'required|min:3|max:255',
       'ketua' => "required|min:3|max:255"
     ]);
@@ -89,12 +89,13 @@ class KwarranController extends Controller
   public function update(UpdateKwarranRequest $request, Kwarran $kwarran)
   {
     $this->authorize('update', $kwarran);
-    $validated = $request->validate([
+    $rule = [
       'nama' => 'required|min:5|max:255',
-      'nomor' => 'required|size:2|unique:kwarran',
       'kamabiran' => 'required|min:3|max:255',
       'ketua' => "required|min:3|max:255"
-    ]);
+    ];
+    if ($request->nomor !== $kwarran->nomor) $rule['nomor'] = 'required|size:2|unique:kwarrans';
+    $validated = $request->validate($rule);
 
     $kwarran->update($validated);
 
