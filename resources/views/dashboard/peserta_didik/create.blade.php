@@ -13,7 +13,7 @@
       'jabatan' => old('jabatan'),
   ])
 
-  <form action="/dashboard/peserta_didik" method="post">
+  {{-- <form action="/dashboard/peserta_didik" method="post">
     @csrf
     <div class="mb-3">
       <label class="form-label" for="nama">Nama</label>
@@ -48,7 +48,7 @@
     </div>
 
     <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
+  </form> --}}
 @endsection
 
 @section('script')

@@ -34,32 +34,34 @@
   - [x] Dashboard
   - [x] Kwartir Ranting
   - [x] Pangkalan
-  - [x] Pembina
+  - [ ] Pembina
   - [ ] Peserta Didik
-  - [ ] Syarat Kecakapan Umum
+  - [x] Syarat Kecakapan Umum
   - [ ] Jadwal
   - [ ] Pengurus
   - [ ] Profil
 - Forms
   - [ ] Admin
-  - [x] Kwarran
+  - [x] Kwartir Ranting
   - [x] Pangkalan
   - [x] Pembina
   - [x] Peserta Didik
   - [ ] Jadwal
 - Tables
   - [ ] Admin
-  - [x] Kwarran
+  - [x] Kwartir Ranting
   - [x] Pangkalan
   - [x] Pembina
   - [x] Peserta Didik
+  - [x] Poin
   - [ ] Jadwal
 - Details Page
   - [ ] Admin
-  - [ ] Kwarran
+  - [ ] Kwartir Ranting
   - [x] Pangkalan
   - [ ] Pembina
   - [ ] Peserta Didik
+  - [x] Poin
   - [ ] Jadwal
 - Landing Page
   - [ ] Navbar

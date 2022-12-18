@@ -8,7 +8,15 @@
 @endsection
 
 @section('main')
-  @include('dashboard.partials.tables.poin', ['poins' => $poins])
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          @include('dashboard.partials.tables.poin', ['poins' => $poins])
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('script')

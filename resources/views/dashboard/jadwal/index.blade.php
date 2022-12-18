@@ -4,7 +4,7 @@
 
 @section('main')
   @can('create', \App\Models\Jadwal::class)
-    <a class="btn btn-primary" href="/dashboard/jadwal/create"><span data-feather="plus"></span> Tambah Jadwal</a>
+    <a class="btn btn-primary mb-3" href="/dashboard/jadwal/create"><span data-feather="plus"></span> Tambah Jadwal</a>
   @endcan
 
   <div class="row">

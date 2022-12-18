@@ -15,9 +15,6 @@
   <div class="row">
     <div class="col">
       <div class="card">
-        <div class="card-header">
-          <h4>Pembina</h4>
-        </div>
         <div class="card-body">
           @include('dashboard.partials.tables.pembina', ['pembinas' => $pembinas])
         </div>

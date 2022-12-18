@@ -4,7 +4,7 @@
 
 @section('main')
   <div class="row">
-    <div class="col-md-8">
+    <div class="col">
       <div class="card">
         <div class="card-header">
           <h5>Poin {{ $poin->nomor }}</h5>
