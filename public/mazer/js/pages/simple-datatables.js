@@ -1,13 +1,13 @@
 // Move "per page dropdown" selector element out of label
 // to make it work with bootstrap 5. Add bs5 classes.
-function adaptPageDropdown() {
+function adaptPageDropdown(dataTable) {
   const selector = dataTable.wrapper.querySelector(".dataTable-selector");
   selector.parentNode.parentNode.insertBefore(selector, selector.parentNode);
   selector.classList.add("form-select");
 }
 
 // Add bs5 classes to pagination elements
-function adaptPagination() {
+function adaptPagination(dataTable) {
   const paginations = dataTable.wrapper.querySelectorAll(
     "ul.dataTable-pagination-list"
   );
@@ -33,11 +33,15 @@ function adaptPagination() {
   }
 }
 
-// Patch "per page dropdown" and pagination after table rendered
-dataTable.on("datatable.init", function () {
-  adaptPageDropdown();
-  adaptPagination();
-});
+dataTables.forEach((dataTable) => {
+  // Patch "per page dropdown" and pagination after table rendered
+  dataTable.on("datatable.init", function () {
+    adaptPageDropdown(dataTable);
+    adaptPagination(dataTable);
+  });
 
-// Re-patch pagination after the page was changed
-dataTable.on("datatable.page", adaptPagination);
+  // Re-patch pagination after the page was changed
+  dataTable.on("datatable.page", function () {
+    adaptPagination(dataTable);
+  });
+});

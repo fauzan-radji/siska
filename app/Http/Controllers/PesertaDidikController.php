@@ -137,7 +137,6 @@ class PesertaDidikController extends Controller
     $this->authorize('update', $pesertaDidik);
     return view('dashboard.peserta_didik.edit', [
       'peserta_didik' => $pesertaDidik,
-      'pangkalans' => Pangkalan::all(),
       'agamas' => Agama::all()
     ]);
   }
@@ -156,8 +155,7 @@ class PesertaDidikController extends Controller
     $validated = $request->validate([
       'nama' => 'required|max:255|min:3',
       'username' => 'required|min:5|max:255',
-      'email' => 'required|email',
-      'pangkalan_id' => 'required'
+      'email' => 'required|email'
     ]);
 
     $pesertaDidik->user->update([
@@ -189,7 +187,7 @@ class PesertaDidikController extends Controller
     $this->authorize('verify', $pesertaDidik);
     $pesertaDidik->update(['verified' => !$pesertaDidik->verified]);
     $msg = $pesertaDidik->verified ? 'memverifikasi ' : 'membatalkan verifikasi ';
-    return back()->with('success', 'Berhasil ' . $msg . $pesertaDidik->nama);
+    return back()->with('success', 'Berhasil ' . $msg . $pesertaDidik->user->nama);
   }
 
   /**

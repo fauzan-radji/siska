@@ -8,10 +8,8 @@
       'title' => 'Data Pembina',
       'pembina_id' => '',
       'nama' => old('nama'),
-      'jabatan_id' => old('jabatan_id'),
       'username' => old('username'),
       'email' => old('email'),
-      'password' => old('password'),
       'jabatan' => old('jabatan'),
   ])
   {{-- <form action="/dashboard/pembina" method="post">

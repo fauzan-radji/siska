@@ -59,7 +59,7 @@
 @section('script')
   <script src="/mazer/extensions/simple-datatables/umd/simple-datatables.js"></script>
   <script>
-    const dataTable = new simpleDatatables.DataTable(document.getElementById("tabel-kwarran"));
+    const dataTables = [new simpleDatatables.DataTable(document.getElementById("tabel-kwarran"))];
   </script>
   <script src="/mazer/js/pages/simple-datatables.js"></script>
 @endsection

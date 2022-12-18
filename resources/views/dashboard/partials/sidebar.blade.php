@@ -130,12 +130,12 @@
         @endcan
 
         @can('viewAny', \App\Models\Pembina::class)
-          <li class="sidebar-item has-sub {{ Request::is('dashboard/pembina', 'dashboard/pembina/create') ? 'active' : '' }}">
+          <li class="sidebar-item has-sub {{ Request::is('dashboard/pembina*') ? 'active' : '' }}">
             <a class="sidebar-link" href="#">
               <i class="bi bi-people-fill"></i>
               <span>Pembina</span>
             </a>
-            <ul class="submenu {{ Request::is('dashboard/pembina', 'dashboard/pembina/create', 'dashboard/pembina/waitingroom') ? 'active' : '' }}">
+            <ul class="submenu {{ Request::is('dashboard/pembina*') ? 'active' : '' }}">
               <li class="submenu-item {{ Request::is('dashboard/pembina') ? 'active' : '' }}">
                 <a href="/dashboard/pembina">Daftar Pembina</a>
               </li>
@@ -177,10 +177,26 @@
           </li>
         @endcan
 
+        @can('viewAny', \App\Models\Poin::class)
+          <li class="sidebar-item {{ Request::is('dashboard/poin/*') ? 'active' : '' }}">
+            <a class="sidebar-link" href="/dashboard/poin">
+              <i class="bi bi-list-ol"></i>
+              <span>Syarat Kecakapan Umum</span>
+            </a>
+          </li>
+        @endcan
+
+        <li class="sidebar-item {{ Request::is('dashboard/jadwal*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="/dashboard/jadwal">
+            <i class="bi bi-calendar-event"></i>
+            <span>Jadwal</span>
+          </a>
+        </li>
+
         <li class="sidebar-item has-sub {{ Request::is('dashboard/admin/' . $id, 'dashboard/pembina/' . $id, 'dashboard/peserta_didik/' . $id) ? 'active' : '' }}">
           <a class='sidebar-link' href="#">
             <i class="bi bi-person-badge-fill"></i>
-            <span>Profile</span>
+            <span>Profil</span>
           </a>
           <ul class="submenu {{ Request::is('dashboard/admin/' . $id, 'dashboard/pembina/' . $id, 'dashboard/peserta_didik/' . $id) ? 'active' : '' }}">
             @if ($isAdmin)

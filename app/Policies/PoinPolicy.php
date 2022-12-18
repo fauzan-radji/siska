@@ -31,7 +31,7 @@ class PoinPolicy
    */
   public function view(User $user, Poin $poin)
   {
-    //
+    return true;
   }
 
   /**

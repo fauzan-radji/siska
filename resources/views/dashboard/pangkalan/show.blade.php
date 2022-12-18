@@ -2,9 +2,14 @@
 
 @section('title', $pangkalan->nama)
 
+@section('head')
+  <link href="/mazer/extensions/simple-datatables/style.css" rel="stylesheet">
+  <link href="/mazer/css/pages/simple-datatables.css" rel="stylesheet">
+@endsection
+
 @section('main')
   <div class="row">
-    <div class="col-md-10">
+    <div class="col">
       <div class="card">
         @can('update', $pangkalan)
           <div class="card-header">
@@ -43,4 +48,38 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4>Pembina</h4>
+        </div>
+        <div class="card-body">
+          @include('dashboard.partials.tables.pembina', ['pembinas' => $pangkalan->pembinas])
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4>Peserta Didik</h4>
+        </div>
+        <div class="card-body">
+          @include('dashboard.partials.tables.peserta_didik', ['peserta_didiks' => $pangkalan->peserta_didiks])
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+
+@section('script')
+  <script src="/mazer/extensions/simple-datatables/umd/simple-datatables.js"></script>
+  <script>
+    const dataTables = [
+      new simpleDatatables.DataTable(document.getElementById("tabel-pembina")),
+      new simpleDatatables.DataTable(document.getElementById("tabel-peserta_didik"))
+    ];
+  </script>
+  <script src="/mazer/js/pages/simple-datatables.js"></script>
 @endsection

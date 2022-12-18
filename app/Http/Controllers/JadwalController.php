@@ -18,9 +18,12 @@ class JadwalController extends Controller
    */
   public function index()
   {
-    return view('dashboard.jadwal.index', [
-      'pangkalans' => Pangkalan::all()
-    ]);
+    $data = [];
+    $user = auth()->user();
+    if ($user->isAdmin()) $data['jadwals'] = Jadwal::all();
+    else if ($user->isPembina()) $data['jadwals'] = Jadwal::where('pangkalan_id', $user->pembina->pangkalan_id)->get();
+    else if ($user->isPesertaDidik()) $data['jadwals'] = Jadwal::where('pangkalan_id', $user->peserta_didik->pangkalan_id)->get();
+    return view('dashboard.jadwal.index', $data);
   }
 
   /**

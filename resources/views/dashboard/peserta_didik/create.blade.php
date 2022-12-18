@@ -3,6 +3,16 @@
 @section('title', 'Tambah Peserta Didik')
 
 @section('main')
+  @include('dashboard.partials.forms.peserta_didik', [
+      'edit' => false,
+      'title' => 'Data Peserta Didik',
+      'peserta_didik_id' => '',
+      'nama' => old('nama'),
+      'username' => old('username'),
+      'email' => old('email'),
+      'jabatan' => old('jabatan'),
+  ])
+
   <form action="/dashboard/peserta_didik" method="post">
     @csrf
     <div class="mb-3">
@@ -39,4 +49,10 @@
 
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
+@endsection
+
+@section('script')
+  <script src="/mazer/extensions/jquery/jquery.min.js"></script>
+  <script src="/mazer/extensions/parsleyjs/parsley.min.js"></script>
+  <script src="/mazer/js/pages/parsley.js"></script>
 @endsection

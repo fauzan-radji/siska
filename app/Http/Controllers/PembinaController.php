@@ -148,7 +148,6 @@ class PembinaController extends Controller
       'username' => 'required|min:5|max:255',
       'email' => 'required|email',
       'jabatan' => 'required',
-      'pangkalan_id' => 'required'
     ]);
 
     $pembina->user->update([
@@ -158,7 +157,7 @@ class PembinaController extends Controller
     ]);
 
     $pembina->update([
-      'pangkalan_id' => $validated['pangkalan_id'],
+      'pangkalan_id' => auth()->user()->pembina->pangkalan_id,
       'jabatan' => $validated['jabatan'],
       'gender' => $request->gender,
       'no_hp' => $request->no_hp,
@@ -181,7 +180,7 @@ class PembinaController extends Controller
     $this->authorize('verify', $pembina);
     $pembina->update(['verified' => !$pembina->verified]);
     $msg = $pembina->verified ? 'memverifikasi ' : 'membatalkan verifikasi ';
-    return back()->with('success', 'Berhasil ' . $msg . $pembina->nama);
+    return back()->with('success', 'Berhasil ' . $msg . $pembina->user->nama);
   }
 
   /**

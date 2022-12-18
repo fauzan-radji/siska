@@ -7,8 +7,8 @@
 - [ ] Admin
 - [x] Kwarran
 - [x] Pangkalan
-- [ ] Pembina
-- [ ] Peserta Didik
+- [x] Pembina
+- [x] Peserta Didik
 - [ ] Poin
 - [ ] Poin Teruji
 - [ ] Jadwal
@@ -32,36 +32,32 @@
 
 - Dashboard
   - [x] Dashboard
-  - Kwartir Ranting
-    - [x] Daftar Kwarran
-    - [x] Detail Kwarran
-    - [x] Tambah Kwarran | Edit Kwarran
-  - Pangkalan
-    - [x] Daftar Pangkalan
-    - [ ] Tambah Pangkalan | Edit Pangkalan
-    - [ ] Detail Pangkalan
-    - [ ] Pangkalan Saya
-    - [x] Ruang Tunggu
-  - Pembina
-    - [ ] Daftar Pembina
-    - [ ] Tambah Pembina
-    - [ ] Ruang Tunggu
-  - Peserta Didik
-    - [ ] Daftar Peserta Didik
-    - [ ] Tambah Peserta Didik
-    - [ ] Ruang Tunggu
+  - [x] Kwartir Ranting
+  - [x] Pangkalan
+  - [x] Pembina
+  - [ ] Peserta Didik
   - [ ] Syarat Kecakapan Umum
   - [ ] Jadwal
-  - Pengurus
-    - [ ] Daftar Pengurus
-    - [ ] Tambah Pengurus
-  - Profile
-    - [ ] Akun Saya
-    - [ ] Logout
+  - [ ] Pengurus
+  - [ ] Profil
+- Forms
+  - [ ] Admin
+  - [x] Kwarran
+  - [x] Pangkalan
+  - [x] Pembina
+  - [x] Peserta Didik
+  - [ ] Jadwal
+- Tables
+  - [ ] Admin
+  - [x] Kwarran
+  - [x] Pangkalan
+  - [x] Pembina
+  - [x] Peserta Didik
+  - [ ] Jadwal
 - Details Page
   - [ ] Admin
   - [ ] Kwarran
-  - [ ] Pangkalan
+  - [x] Pangkalan
   - [ ] Pembina
   - [ ] Peserta Didik
   - [ ] Jadwal
@@ -77,6 +73,7 @@
 # To Be Fixed
 
 - [ ] Optimalisasi Query (N+1 Problem)
+- [ ] Fix sidebar active
 - [ ] Menambah no_kwarran di form tambah kwarran
 - [ ] Memisahkan field gudep putra dan putri serta ambalan putra dan putri di tabel pangkalan
 - [ ] Fix judul tiap halaman

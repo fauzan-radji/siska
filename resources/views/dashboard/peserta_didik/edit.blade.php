@@ -5,11 +5,23 @@
 @endsection
 
 @section('main')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1>Edit Data {{ $peserta_didik->user->nama }}</h1>
-  </div>
+  @include('dashboard.partials.forms.peserta_didik', [
+      'edit' => true,
+      'title' => $peserta_didik->user->nama,
+      'peserta_didik_id' => $peserta_didik->id,
+      'nama' => $peserta_didik->user->nama,
+      'jabatan' => $peserta_didik->jabatan,
+      'username' => $peserta_didik->user->username,
+      'email' => $peserta_didik->user->email,
+      'no_hp' => $peserta_didik->no_hp,
+      'alamat' => $peserta_didik->alamat,
+      'gender' => $peserta_didik->gender,
+      'agamas' => $agamas,
+      'agama_id' => $peserta_didik->agama_id,
+      'tanggal_lahir' => $peserta_didik->tanggal_lahir,
+  ])
 
-  <form action="/dashboard/peserta_didik/{{ $peserta_didik->id }}" method="post">
+  {{-- <form action="/dashboard/peserta_didik/{{ $peserta_didik->id }}" method="post">
     @method('put')
     @csrf
     <div class="mb-3">
@@ -100,5 +112,11 @@
     </div>
 
     <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
+  </form> --}}
+@endsection
+
+@section('script')
+  <script src="/mazer/extensions/jquery/jquery.min.js"></script>
+  <script src="/mazer/extensions/parsleyjs/parsley.min.js"></script>
+  <script src="/mazer/js/pages/parsley.js"></script>
 @endsection

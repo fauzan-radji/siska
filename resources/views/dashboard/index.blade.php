@@ -259,7 +259,7 @@
   @elseif(auth()->user()->isPesertaDidik())
     <script src="/mazer/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script>
-      const dataTable = new simpleDatatables.DataTable(document.getElementById("tabel-poin"));
+      const dataTables = [new simpleDatatables.DataTable(document.getElementById("tabel-poin"))];
     </script>
     <script src="/mazer/js/pages/simple-datatables.js"></script>
   @endif

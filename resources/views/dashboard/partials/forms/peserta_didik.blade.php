@@ -5,43 +5,23 @@
         <h4 class="card-title">{{ $title }}</h4>
       </div>
       <div class="card-body">
-        <form data-parsley-validate action="/dashboard/pembina{{ $edit ? '/' . $pembina_id : '' }}" method="post">
+        <form data-parsley-validate action="/dashboard/peserta_didik{{ $edit ? '/' . $peserta_didik_id : '' }}" method="post">
           @if ($edit)
             @method('put')
           @endif
           @csrf
 
           <div class="row">
-            <div class="{{ $edit ? 'col' : 'col-md-6' }}">
+            <div class="col-md-6">
               <div class="form-group mandatory @error('nama') is-invalid @enderror">
                 <label class="form-label" for="nama">Nama</label>
-                <input class="form-control" id="nama" name="nama" data-parsley-required type="text" value="{{ $nama }}" placeholder="Nama Pembina">
+                <input class="form-control" id="nama" name="nama" data-parsley-required type="text" value="{{ $nama }}" placeholder="Nama Peserta Didik">
                 @error('nama')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
             </div>
 
-            @if (!$edit)
-              <div class="col-md-6">
-                <div class="form-group mandatory @error('jabatan') is-invalid @enderror">
-                  <label class="form-label" for="jabatan">Jabatan</label>
-                  <select class="form-select" id="jabatan" name="jabatan" data-parsley-required>
-                    <option value="">Pilih Jabatan</option>
-                    <option value="Admin Pangkalan" {{ $jabatan === 'Admin Pangkalan' ? 'selected' : '' }}>Admin Pangkalan</option>
-                    <option value="Kamabigus" {{ $jabatan === 'Kamabigus' ? 'selected' : '' }}>Kamabigus</option>
-                    <option value="Ketua Gugus Depan" {{ $jabatan === 'Ketua Gugus Depan' ? 'selected' : '' }}>Ketua Gugus Depan</option>
-                    <option value="Pembina" {{ $jabatan === 'Pembina' ? 'selected' : '' }}>Pembina</option>
-                  </select>
-                  @error('jabatan')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
-                </div>
-              </div>
-            @endif
-          </div>
-
-          <div class="row">
             <div class="col-md-6">
               <div class="form-group mandatory @error('username') is-invalid @enderror">
                 <label class="form-label" for="username">Username</label>
@@ -51,16 +31,30 @@
                 @enderror
               </div>
             </div>
+          </div>
 
-            <div class="col-md-6">
+          <div class="row">
+            <div class="{{ $edit ? 'col-md-6' : 'col' }}">
               <div class="form-group mandatory @error('email') is-invalid @enderror">
                 <label class="form-label" for="email">Email</label>
-                <input class="form-control" id="email" name="email" data-parsley-required data-parsley-type="email" type="email" value="{{ $email }}" placeholder="Email Pembina">
+                <input class="form-control" id="email" name="email" data-parsley-required data-parsley-type="email" type="email" value="{{ $email }}" placeholder="Email Peserta Didik">
                 @error('email')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
             </div>
+
+            @if ($edit)
+              <div class="col-md-6">
+                <div class="form-group mandatory @error('no_hp') is-invalid @enderror">
+                  <label class="form-label" for="no_hp">Nomor HP</label>
+                  <input class="form-control" id="no_hp" name="no_hp" data-parsley-required data-parsley-pattern="\(?\+?\d{1,3}\)?[-. ]?\d{3,4}[-. ]?\d{3,7}[-. ]?\d{0,5}" type="text" value="{{ $no_hp }}" placeholder="Nomor HP">
+                  @error('no_hp')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
+                </div>
+              </div>
+            @endif
           </div>
 
           @if (!$edit)
@@ -102,34 +96,6 @@
                   </div>
                   @error('gender')
                     <p class="text-danger">{{ $message }}</p>
-                  @enderror
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group mandatory @error('jabatan') is-invalid @enderror">
-                  <label class="form-label" for="jabatan">Jabatan</label>
-                  <select class="form-select" id="jabatan" name="jabatan" data-parsley-required>
-                    <option value="">Pilih Jabatan</option>
-                    <option value="Admin Pangkalan" {{ $jabatan === 'Admin Pangkalan' ? 'selected' : '' }}>Admin Pangkalan</option>
-                    <option value="Kamabigus" {{ $jabatan === 'Kamabigus' ? 'selected' : '' }}>Kamabigus</option>
-                    <option value="Ketua Gugus Depan" {{ $jabatan === 'Ketua Gugus Depan' ? 'selected' : '' }}>Ketua Gugus Depan</option>
-                    <option value="Pembina" {{ $jabatan === 'Pembina' ? 'selected' : '' }}>Pembina</option>
-                  </select>
-                  @error('jabatan')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group mandatory @error('no_hp') is-invalid @enderror">
-                  <label class="form-label" for="no_hp">Nomor HP</label>
-                  <input class="form-control" id="no_hp" name="no_hp" data-parsley-required data-parsley-pattern="\(?\+?\d{1,3}\)?[-. ]?\d{3,4}[-. ]?\d{3,7}[-. ]?\d{0,5}" type="text" value="{{ $no_hp }}" placeholder="Nomor HP">
-                  @error('no_hp')
-                    <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                 </div>
               </div>

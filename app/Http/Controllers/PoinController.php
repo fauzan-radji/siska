@@ -48,7 +48,7 @@ class PoinController extends Controller
    */
   public function show(Poin $poin)
   {
-    //
+    return view('dashboard.poin.show', ['poin' => $poin]);
   }
 
   /**
