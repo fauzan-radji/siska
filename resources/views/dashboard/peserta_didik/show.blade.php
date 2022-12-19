@@ -1,47 +1,9 @@
 @extends('dashboard.layouts.main')
 
-@section('title', "Dashboard | {$peserta_didik->user->nama}")
+@section('title', $peserta_didik->user->nama)
 
 @section('head')
   <style>
-    .card {
-      border-radius: 8px;
-      cursor: pointer;
-      @if ($peserta_didik->gender === 'Perempuan')background-color: #fdd;
-    @elseif($peserta_didik->gender === 'Laki-laki') background-color: #aff;
-      @endif
-    }
-
-    .card:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 4px;
-      height: 100%;
-      background-color: #E1BEE7;
-      transform: scaleY(1);
-      transition: all 0.5s;
-      transform-origin: bottom
-    }
-
-    .card:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 4px;
-      height: 100%;
-      background-color: #8E24AA;
-      transform: scaleY(0);
-      transition: all 0.5s;
-      transform-origin: bottom
-    }
-
-    .card:hover::after {
-      transform: scaleY(1);
-    }
-
     .poin-check {
       display: none;
     }
@@ -54,13 +16,15 @@
       display: none;
     }
   </style>
+
+  <link href="/css/kartu-anggota.css" rel="stylesheet">
 @endsection
 
 @section('main')
   <div class="container my-5">
     <div class="row d-flex justify-content-center">
-      <div class="col-md-7">
-        <div class="card p-3 py-4 border-0 position-relative overflow-hidden">
+      <div class="col-md-5">
+        <div class="card h-100 p-3 py-4 border-0 position-relative overflow-hidden">
           <div class="text-center">
             <img class="rounded-circle" src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->user->nama }}" width="100">
           </div>
@@ -86,6 +50,27 @@
               @endif
             @endcan
           </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card h-100 d-flex justify-content-center align-items-center">
+          @include('dashboard.partials.kta', [
+              'foto' => $peserta_didik->foto,
+              'no_anggota' => '05.02.00-000.008',
+              'nama' => $peserta_didik->user->nama,
+              'tempat_lahir' => 'Konoha',
+              'tanggal_lahir' => $peserta_didik->tanggal_lahir,
+              'alamat' => $peserta_didik->alamat,
+              'no_hp' => $peserta_didik->no_hp,
+              'agama' => $peserta_didik->agama->nama,
+              'gol_darah' => '-',
+              'golongan' => 'Penegak Bantara',
+              'jabatan' => 'Pinru',
+              'kwarcab' => 'Kota&nbsp;Gorontalo',
+              'kwarda' => 'Gorontalo',
+              'nama_ketua' => 'Hj. Jusmiati Kiai Demak',
+              'nta_ketua' => '05.02.00-000.008',
+          ])
         </div>
       </div>
     </div>

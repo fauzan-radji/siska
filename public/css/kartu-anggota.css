@@ -1,0 +1,117 @@
+.debug,
+.debug * {
+  outline: 1px solid red;
+}
+
+.kartu-anggota {
+  /*   width: 1011px !important; */
+  /*   height: 638px !important; */
+  /* --width: 1011px !important; */
+  --width: 30em !important;
+  font-size: calc(var(--width) / 30) !important;
+  width: 30em !important;
+  color: black !important;
+  aspect-ratio: 8 / 5 !important;
+  overflow: hidden !important;
+  --padding-x: 1.4em !important;
+  --padding-y: 1em !important;
+  padding: var(--padding-y) var(--padding-x) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  background-image: linear-gradient(#cb8d5e, white) !important;
+  line-height: 1 !important;
+}
+
+/* === HEADER === */
+.kartu-anggota__header {
+  height: 3em !important;
+  text-align: center;
+}
+
+.kartu-anggota__header > * {
+  display: inline-block !important;
+}
+
+.kartu-anggota__header img {
+  width: 3em !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+.kartu-anggota__header img:first-child {
+  float: left;
+}
+.kartu-anggota__header img:last-child {
+  float: right;
+}
+
+.kartu-anggota__header .kartu-anggota__title {
+  width: calc(100% - 7em) !important;
+  height: 3em;
+}
+
+.kartu-anggota__header .kartu-anggota__title > * {
+  margin: 0 !important;
+}
+
+.kartu-anggota__header .kartu-anggota__title h2 {
+  font-size: 1em !important;
+  color: inherit !important;
+}
+
+.kartu-anggota__header .kartu-anggota__title h1 {
+  font-size: 1.2em !important;
+  color: inherit !important;
+}
+
+.kartu-anggota__header .kartu-anggota__title hr {
+  border: none !important;
+  border-top: 0.2em solid red !important;
+  height: 0.1em !important;
+  background-color: transparent !important;
+  border-bottom: 0.2em solid white !important;
+  opacity: 1 !important;
+}
+
+/* === BODY === */
+.kartu-anggota__body {
+  height: calc(100% - 3em - var(--padding-y)) !important;
+  /* display: flex !important; */
+  /* align-items: center !important; */
+  font-size: 0.8em !important;
+  margin-top: 0.5em !important;
+  /* gap: 1em !important; */
+}
+
+.kartu-anggota__body .kartu-anggota__side {
+  width: 20% !important;
+  height: 100% !important;
+  padding-top: 3em;
+  float: left;
+}
+
+.kartu-anggota__body .kartu-anggota__side img {
+  object-fit: cover !important;
+  width: 100% !important;
+  aspect-ratio: 3 / 4 !important;
+}
+
+.kartu-anggota__body .kartu-anggota__main {
+  width: calc(80% - 1em) !important;
+  margin-left: auto;
+  height: 100% !important;
+  float: right;
+}
+
+.kartu-anggota__body .kartu-anggota__main table {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.kartu-anggota__body .kartu-anggota__main .kartu-anggota__ttd {
+  height: 2em !important;
+}
+
+.kartu-anggota__body .kartu-anggota__main .kartu-anggota__nama-ketua {
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
