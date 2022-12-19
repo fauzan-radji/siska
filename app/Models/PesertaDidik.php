@@ -40,11 +40,16 @@ class PesertaDidik extends Model
   {
     parent::boot();
 
-    $poins = Poin::all();
-
     //after create() method call this
-    static::created(function ($peserta_didik) use ($poins) {
+    static::created(function ($peserta_didik) {
+      $poins = Poin::where('agama_id', $peserta_didik->agama_id)->orWhereNull('agama_id')->get();
       $peserta_didik->poins()->attach($poins);
+    });
+
+    //after update() method call this
+    static::updated(function ($peserta_didik) {
+      $poins = Poin::where('agama_id', $peserta_didik->agama_id)->orWhereNull('agama_id')->get();
+      $peserta_didik->poins()->sync($poins);
     });
 
     // before delete() method call this

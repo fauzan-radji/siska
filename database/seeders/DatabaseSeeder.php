@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
       PangkalanSeeder::class,
       PembinaSeeder::class,
       PesertaDidikSeeder::class,
-      // JadwalSeeder::class,
+      JadwalSeeder::class,
     ]);
   }
 }

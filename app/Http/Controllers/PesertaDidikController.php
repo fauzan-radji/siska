@@ -165,7 +165,6 @@ class PesertaDidikController extends Controller
     ]);
 
     $pesertaDidik->update([
-      'pangkalan_id' => $validated['pangkalan_id'],
       'gender' => $request->gender,
       'no_hp' => $request->no_hp,
       'alamat' => $request->alamat,

@@ -3,7 +3,6 @@ $.extend(window.Parsley.options, {
   excluded:
     "input[type=button], input[type=submit], input[type=reset], .search, .ignore",
   triggerAfterFailure: "change blur",
-  errorsContainer: function (element) {},
   trigger: "change",
   successClass: "is-valid",
   errorClass: "is-invalid",
@@ -20,10 +19,10 @@ $.extend(window.Parsley.options, {
 Parsley.on("field:validated", function (el) {
   var elNode = $(el)[0];
   if (elNode && !elNode.isValid()) {
-    var rqeuiredValResult = elNode.validationResult.filter(function (vr) {
+    var requiredValResult = elNode.validationResult.filter(function (vr) {
       return vr.assert.name === "required";
     });
-    if (rqeuiredValResult.length > 0) {
+    if (requiredValResult.length > 0) {
       var fieldNode = $(elNode.element);
       var formGroupNode = fieldNode.closest(".form-group");
       var lblNode = formGroupNode.find(".form-label:first");

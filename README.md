@@ -9,9 +9,9 @@
 - [x] Pangkalan
 - [x] Pembina
 - [x] Peserta Didik
-- [ ] Poin
+- [x] Poin
 - [ ] Poin Teruji
-- [ ] Jadwal
+- [x] Jadwal
 
 ### Upload Foto
 
@@ -46,7 +46,7 @@
   - [x] Pangkalan
   - [x] Pembina
   - [x] Peserta Didik
-  - [ ] Jadwal
+  - [x] Jadwal
 - Tables
   - [ ] Admin
   - [x] Kwartir Ranting
@@ -54,7 +54,7 @@
   - [x] Pembina
   - [x] Peserta Didik
   - [x] Poin
-  - [ ] Jadwal
+  - [x] Jadwal
 - Details Page
   - [ ] Admin
   - [ ] Kwartir Ranting
@@ -62,7 +62,7 @@
   - [ ] Pembina
   - [ ] Peserta Didik
   - [x] Poin
-  - [ ] Jadwal
+  - [x] Jadwal
 - Landing Page
   - [ ] Navbar
   - [ ] Hero Image

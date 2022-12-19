@@ -186,11 +186,19 @@
           </li>
         @endcan
 
-        <li class="sidebar-item {{ Request::is('dashboard/jadwal*') ? 'active' : '' }}">
-          <a class="sidebar-link" href="/dashboard/jadwal">
+        <li class="sidebar-item has-sub {{ Request::is('dashboard/jadwal*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="#">
             <i class="bi bi-calendar-event"></i>
             <span>Jadwal</span>
           </a>
+          <ul class="submenu {{ Request::is('dashboard/jadwal*') ? 'active' : '' }}">
+            <li class="submenu-item {{ Request::is('dashboard/jadwal') ? 'active' : '' }}">
+              <a href="/dashboard/jadwal">Daftar Jadwal</a>
+            </li>
+            <li class="submenu-item {{ Request::is('dashboard/jadwal/create') ? 'active' : '' }}">
+              <a href="/dashboard/jadwal/create">Tambah Jadwal</a>
+            </li>
+          </ul>
         </li>
 
         <li class="sidebar-item has-sub {{ Request::is('dashboard/admin/' . $id, 'dashboard/pembina/' . $id, 'dashboard/peserta_didik/' . $id) ? 'active' : '' }}">

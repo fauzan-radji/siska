@@ -8,13 +8,17 @@
 @endsection
 
 @section('main')
-  @can('update', $jadwal)
-    <a href="/dashboard/jadwal/{{ $jadwal->id }}/edit">Edit</a>
-  @endcan
-
   <div class="row">
-    <div class="col-md-10">
+    <div class="col">
       <div class="card">
+        @can('update', $jadwal)
+          <div class="card-header">
+            <a class="btn btn-primary" href="/dashboard/jadwal/{{ $jadwal->id }}/edit">
+              <i class="bi bi-pencil-square"></i>
+              Edit
+            </a>
+          </div>
+        @endcan
         <div class="card-body">
           <table class="table">
             <tr>
@@ -51,7 +55,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-10">
+    <div class="col">
       <div class="card">
         <div class="card-body">
           @include('dashboard.partials.tables.poin', ['poins' => $jadwal->poins])

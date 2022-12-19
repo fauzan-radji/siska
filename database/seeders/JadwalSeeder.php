@@ -30,7 +30,7 @@ class JadwalSeeder extends Seeder
       );
       $jadwal->poins()->attach(
         $poins->random(
-          mt_rand(1, $poins->count())
+          mt_rand(1, 5)
         )
       );
     });

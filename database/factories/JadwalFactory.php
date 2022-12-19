@@ -18,7 +18,7 @@ class JadwalFactory extends Factory
   {
     return [
       'tanggal' => fake()->dateTimeBetween('+1 day', '+1 week'),
-      'pangkalan_id' => mt_rand(1, 25)
+      'pangkalan_id' => mt_rand(1, 15)
     ];
   }
 }
