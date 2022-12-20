@@ -18,6 +18,7 @@ return new class extends Migration
       $table->foreignId('user_id');
       $table->foreignId('pangkalan_id');
 
+      $table->string('no_anggota')->nullable();
       $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();
       $table->string('no_hp')->nullable();
       $table->string('alamat')->nullable();

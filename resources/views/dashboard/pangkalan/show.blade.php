@@ -43,6 +43,17 @@
               <td class="text-center">:</td>
               <td>{{ $pangkalan->kwarran->nama }}</td>
             </tr>
+            <tr>
+              <th>Terverifikasi</th>
+              <td class="text-center">:</td>
+              <td>
+                @if ($pangkalan->verified)
+                  <div class="badge bg-success">Sudah</div>
+                @else
+                  <div class="badge bg-danger">Belum</div>
+                @endif
+              </td>
+            </tr>
           </table>
         </div>
       </div>

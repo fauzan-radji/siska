@@ -19,7 +19,7 @@ class PesertaDidikFactory extends Factory
   {
     return [
       'user_id' => User::factory()->create()->id,
-      'pangkalan_id' => mt_rand(1, 25), // jumlah pangkalan = jumlah kwarran (5) * jumlah pangkalan per kwarran (5) = 5 * 5 = 25
+      'pangkalan_id' => mt_rand(1, 15), // jumlah pangkalan = jumlah kwarran (5) * jumlah pangkalan per kwarran (5) = 5 * 5 = 25
       'gender' => fake()->regexify('(Laki-laki|Perempuan)'),
       'no_hp' => fake()->phoneNumber(),
       'alamat' => fake()->address(),

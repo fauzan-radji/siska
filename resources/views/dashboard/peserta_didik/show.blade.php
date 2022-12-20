@@ -3,7 +3,7 @@
 @section('title', $peserta_didik->user->nama)
 
 @section('head')
-  <style>
+  {{-- <style>
     .poin-check {
       display: none;
     }
@@ -15,7 +15,7 @@
     .poin-check:not(:checked)~.sudah-check {
       display: none;
     }
-  </style>
+  </style> --}}
 
   <link href="/css/kartu-anggota.css" rel="stylesheet">
 @endsection
@@ -24,9 +24,9 @@
   <div class="row">
     <div class="col-md-10">
       <div class="card p-3">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-2">
-            <img class="w-100" src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->user->nama }}">
+        <div class="row gap-3 align-items-center justify-content-center">
+          <div class="col-md-2 text-center">
+            <img class="w-100" src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->user->nama }}" style="max-width: 20vw;">
           </div>
           <div class="col-md-8">
             <table class="table">
@@ -45,11 +45,13 @@
                 <td>:</td>
                 <td>{{ $peserta_didik->user->email }}</td>
               </tr>
-              <tr>
-                <th>No Anggota</th>
-                <td>:</td>
-                <td>05.02.00-000.008</td>
-              </tr>
+              @if ($peserta_didik->verified)
+                <tr>
+                  <th>No Anggota</th>
+                  <td>:</td>
+                  <td>05.02.00-000.008</td>
+                </tr>
+              @endif
               <tr>
                 <th>Terverifikasi</th>
                 <td>:</td>
@@ -113,7 +115,6 @@
       </div>
     </div>
   @endif
-
 
   {{-- Tabel Poin Teruji --}}
   {{-- <div class="table-responsive mb-5">

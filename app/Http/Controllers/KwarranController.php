@@ -15,6 +15,7 @@ class KwarranController extends Controller
    */
   public function index()
   {
+    $this->authorize('viewAll', Kwarran::class);
     return view('dashboard.kwarran.index', [
       'kwarrans' => Kwarran::all()
     ]);
@@ -60,6 +61,7 @@ class KwarranController extends Controller
    */
   public function show(Kwarran $kwarran)
   {
+    $this->authorize('view', $kwarran);
     return view('dashboard.kwarran.show', [
       'kwarran' => $kwarran
     ]);

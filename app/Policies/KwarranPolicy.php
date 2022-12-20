@@ -19,7 +19,7 @@ class KwarranPolicy
   public function viewAny(User $user)
   {
     // siapapun bisa liat models kwarran apapun
-    return true;
+    return $user->isAdmin();
   }
 
   /**
@@ -32,7 +32,7 @@ class KwarranPolicy
   public function view(User $user, Kwarran $kwarran)
   {
     // siapapun bisa liat model kwarran spesifik
-    return true;
+    return $user->isAdmin();
   }
 
   /**

@@ -2,12 +2,12 @@
 
 @section('title', 'Dashboard')
 
-@if (auth()->user()->isPesertaDidik())
+{{-- @if (auth()->user()->isPesertaDidik())
   @section('head')
     <link href="/mazer/extensions/simple-datatables/style.css" rel="stylesheet">
     <link href="/mazer/css/pages/simple-datatables.css" rel="stylesheet">
   @endsection
-@endif
+@endif --}}
 
 @section('main')
   @if (auth()->user()->isAdmin())
@@ -138,7 +138,7 @@
         </div>
       </div>
     </section>
-  @else
+    {{-- @else
     <section class="row">
       <div class="col">
         <table class="table table-striped" id="tabel-poin">
@@ -166,7 +166,7 @@
           </tbody>
         </table>
       </div>
-    </section>
+    </section> --}}
   @endif
 @endsection
 
@@ -256,11 +256,11 @@
         colors: [colors.success, colors.danger]
       });
     </script>
-  @elseif(auth()->user()->isPesertaDidik())
+    {{-- @elseif(auth()->user()->isPesertaDidik())
     <script src="/mazer/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script>
       const dataTables = [new simpleDatatables.DataTable(document.getElementById("tabel-poin"))];
     </script>
-    <script src="/mazer/js/pages/simple-datatables.js"></script>
+    <script src="/mazer/js/pages/simple-datatables.js"></script> --}}
   @endif
 @endsection

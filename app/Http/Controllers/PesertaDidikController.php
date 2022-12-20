@@ -184,6 +184,9 @@ class PesertaDidikController extends Controller
   public function verify(PesertaDidik $pesertaDidik)
   {
     $this->authorize('verify', $pesertaDidik);
+    // verify the pangkalan first before verify the peserta didik
+    if (!$pesertaDidik->pangkalan->verified) $pesertaDidik->pangkalan->update(['verified' => true]);
+
     $pesertaDidik->update(['verified' => !$pesertaDidik->verified]);
     $msg = $pesertaDidik->verified ? 'memverifikasi ' : 'membatalkan verifikasi ';
     return back()->with('success', 'Berhasil ' . $msg . $pesertaDidik->user->nama);

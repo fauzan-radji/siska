@@ -51,6 +51,8 @@ Route::get('/dashboard', function () {
   $data = [];
   $user = auth()->user();
 
+  if ($user->isPesertaDidik()) return view('dashboard.peserta_didik.show', ['peserta_didik' => $user->peserta_didik]);
+
   if ($user->isAdmin()) {
     $data['kwarrans'] = Kwarran::all();
     $data['pangkalans'] = Pangkalan::all();

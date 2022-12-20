@@ -75,7 +75,7 @@ class PesertaDidikPolicy
    */
   public function verifyAny(User $user)
   {
-    return $user->isAdminPangkalan();
+    return $user->isAdmin() || $user->isAdminPangkalan();
   }
 
   /**
@@ -102,9 +102,11 @@ class PesertaDidikPolicy
   public function verify(User $user, PesertaDidik $pesertaDidik)
   {
     return
-      $user->isAdminPangkalan() && //is the user Admin Pangkalan?
-      $user->pembina->pangkalan->verified && // is user pangkalan is verified?
-      $user->pembina->pangkalan_id === $pesertaDidik->pangkalan_id; // is user and peserta didik in the same pangkalan?
+      $user->isAdmin() ||
+      ($user->isAdminPangkalan() && //is the user Admin Pangkalan?
+        $user->pembina->pangkalan->verified && // is user pangkalan is verified?
+        $user->pembina->pangkalan_id === $pesertaDidik->pangkalan_id // is user and peserta didik in the same pangkalan?
+      );
   }
 
   /**

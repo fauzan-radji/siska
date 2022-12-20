@@ -26,7 +26,7 @@
       <tr>
         <td>{{ $loop->iteration }}</td>
         <td>{{ $peserta_didik->user->nama }}</td>
-        <td class="text-center"><img src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->nama }}"></td>
+        <td class="text-center"><img src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->nama }}" width="100"></td>
         <td class="text-center">
           @can('view', $peserta_didik)
             <a class="btn btn-sm icon btn-info" href="/dashboard/peserta_didik/{{ $peserta_didik->id }}"><span data-feather="eye"></span></a>
