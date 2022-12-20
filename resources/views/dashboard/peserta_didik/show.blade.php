@@ -21,23 +21,47 @@
 @endsection
 
 @section('main')
-  <div class="container my-5">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-5">
-        <div class="card h-100 p-3 py-4 border-0 position-relative overflow-hidden">
-          <div class="text-center">
-            <img class="rounded-circle" src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->user->nama }}" width="100">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card p-3">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-2">
+            <img class="w-100" src="{{ $peserta_didik->foto }}" alt="{{ $peserta_didik->user->nama }}">
           </div>
-          <div class="text-center mt-3">
-            <span class="bg-secondary p-1 px-4 rounded text-white">Peserta Didik</span>
-            <h5 class="mt-2 mb-0">{{ $peserta_didik->user->nama }}</h5>
-            <span>{{ $peserta_didik->user->email }}</span>
-            <div class="px-4 mt-1">
-              <p class="mb-1">{{ $peserta_didik->alamat }}</p>
-              <p class="mb-1">HP: {{ $peserta_didik->no_hp }}</p>
-              <p class="mb-1">Tanggal Lahir: {{ $peserta_didik->tanggal_lahir }}</p>
-              <p class="mb-1">{{ $peserta_didik->agama ? $peserta_didik->agama->nama : '-' }}</p>
-            </div>
+          <div class="col-md-8">
+            <table class="table">
+              <tr>
+                <th>Nama</th>
+                <td>:</td>
+                <td>{{ $peserta_didik->user->nama }}</td>
+              </tr>
+              <tr>
+                <th>Username</th>
+                <td>:</td>
+                <td>{{ $peserta_didik->user->username }}</td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>:</td>
+                <td>{{ $peserta_didik->user->email }}</td>
+              </tr>
+              <tr>
+                <th>No Anggota</th>
+                <td>:</td>
+                <td>05.02.00-000.008</td>
+              </tr>
+              <tr>
+                <th>Terverifikasi</th>
+                <td>:</td>
+                <td>
+                  @if ($peserta_didik->verified)
+                    <div class="badge bg-success">Sudah</div>
+                  @else
+                    <div class="badge bg-danger">Belum</div>
+                  @endif
+                </td>
+              </tr>
+            </table>
             @can('update', $peserta_didik)
               <a class="btn btn-primary px-4" href="/dashboard/peserta_didik/{{ $peserta_didik->id }}/edit">Edit</a>
             @endcan
@@ -52,31 +76,47 @@
           </div>
         </div>
       </div>
-      <div class="col-md-7">
-        <div class="card h-100 d-flex justify-content-center align-items-center">
-          @include('dashboard.partials.kta', [
-              'foto' => $peserta_didik->foto,
-              'no_anggota' => '05.02.00-000.008',
-              'nama' => $peserta_didik->user->nama,
-              'tempat_lahir' => 'Konoha',
-              'tanggal_lahir' => $peserta_didik->tanggal_lahir,
-              'alamat' => $peserta_didik->alamat,
-              'no_hp' => $peserta_didik->no_hp,
-              'agama' => $peserta_didik->agama->nama,
-              'gol_darah' => '-',
-              'golongan' => 'Penegak Bantara',
-              'jabatan' => 'Pinru',
-              'kwarcab' => 'Kota&nbsp;Gorontalo',
-              'kwarda' => 'Gorontalo',
-              'nama_ketua' => 'Hj. Jusmiati Kiai Demak',
-              'nta_ketua' => '05.02.00-000.008',
-          ])
-        </div>
-      </div>
     </div>
   </div>
 
-  <div class="table-responsive mb-5">
+  {{-- Kartu Anggota --}}
+  @if ($peserta_didik->verified)
+    <div class="row">
+      <div class="col-md-10">
+        <div class="card overflow-hidden">
+          <div class="card-body">
+            <img class="w-75 d-block m-auto" id="output"></img>
+            @include('dashboard.partials.kta', [
+                'id' => $peserta_didik->id,
+                'foto' => $peserta_didik->foto,
+                'no_anggota' => '05.02.00-000.008',
+                'nama' => $peserta_didik->user->nama,
+                'tempat_lahir' => 'Konoha',
+                'tanggal_lahir' => $peserta_didik->tanggal_lahir,
+                'alamat' => $peserta_didik->alamat,
+                'no_hp' => $peserta_didik->no_hp,
+                'agama' => $peserta_didik->agama ? $peserta_didik->agama->nama : '-',
+                'gol_darah' => '-',
+                'golongan' => 'Penegak Bantara',
+                'jabatan' => 'Pinru',
+                'kwarcab' => 'Kota&nbsp;Gorontalo',
+                'kwarda' => 'Gorontalo',
+                'nama_ketua' => 'Hj. Jusmiati Kiai Demak',
+                'nta_ketua' => '05.02.00-000.008',
+            ])
+            {{-- <iframe src="{{ url("dashboard/peserta_didik/$peserta_didik->id/kartu-anggota") }}" frameborder="0"></iframe> --}}
+          </div>
+          <div class="card-footer text-center">
+            <a class="btn btn-primary" id="download-btn" href=""><i class="bi bi-download"></i> Unduh</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endif
+
+
+  {{-- Tabel Poin Teruji --}}
+  {{-- <div class="table-responsive mb-5">
     <form class="d-inline" action="/dashboard/peserta_didik/{{ $peserta_didik->id }}/teruji" method="post">
       @csrf
       <table class="table table-striped">
@@ -117,5 +157,25 @@
         @endcan
       </div>
     </form>
-  </div>
+  </div> --}}
+@endsection
+
+@section('script')
+  @if ($peserta_didik->verified)
+    <script src="/js/html2canvas.min.js"></script>
+    <script>
+      const kta = document.getElementById('kta-{{ $peserta_didik->id }}');
+      const outputImg = document.getElementById('output');
+      const downloadButton = document.getElementById('download-btn');
+      const anggotaName = '{{ $peserta_didik->user->nama }}'.trim().replace(/\W/gi, '-').toLowerCase();
+
+      html2canvas(kta).then(canvas => {
+        const dataURL = canvas.toDataURL("image/png");
+        outputImg.src = dataURL;
+        downloadButton.href = dataURL;
+        downloadButton.download = `kta-${anggotaName}.png`;
+        kta.style.display = 'none';
+      });
+    </script>
+  @endif
 @endsection

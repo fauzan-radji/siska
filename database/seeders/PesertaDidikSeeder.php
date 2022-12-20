@@ -29,7 +29,8 @@ class PesertaDidikSeeder extends Seeder
       'no_hp' => '089999999999',
       'alamat' => 'Jalan Jeruk, Kecamatan Dungingi, Kelurahan Huangobotu',
       'tanggal_lahir' => '2003-12-08',
-      'foto' => 'https://api.multiavatar.com/shaphire.svg',
+      // 'foto' => 'https://api.multiavatar.com/shaphire.svg',
+      'foto' => '/img/default-profile/user1.png',
       'agama_id' => 1
     ]);
 

@@ -9,15 +9,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AdminFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition()
-    {
-        return [
-            //
-        ];
-    }
+  /**
+   * Define the model's default state.
+   *
+   * @return array<string, mixed>
+   */
+  public function definition()
+  {
+    return [
+      // https://api.multiavatar.com/user + [0-9] + .png
+      // 'foto' => '/img/default-profile/user' . fake()->randomDigit() . '.png',
+    ];
+  }
 }
