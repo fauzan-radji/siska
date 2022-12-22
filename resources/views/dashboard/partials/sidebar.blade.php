@@ -134,12 +134,12 @@
         @endcan
 
         @can('viewAny', \App\Models\Pembina::class)
-          <li class="sidebar-item has-sub {{ Request::is('dashboard/pembina*') ? 'active' : '' }}">
+          <li class="sidebar-item has-sub {{ Request::is('dashboard/pembina*') && !Request::is('dashboard/pembina/' . $id) ? 'active' : '' }}">
             <a class="sidebar-link" href="#">
               <i class="bi bi-people-fill"></i>
               <span>Pembina</span>
             </a>
-            <ul class="submenu {{ Request::is('dashboard/pembina*') ? 'active' : '' }}">
+            <ul class="submenu {{ Request::is('dashboard/pembina*') && !Request::is('dashboard/pembina/' . $id) ? 'active' : '' }}">
               <li class="submenu-item {{ Request::is('dashboard/pembina') ? 'active' : '' }}">
                 <a href="/dashboard/pembina">Daftar Pembina</a>
               </li>
@@ -148,7 +148,7 @@
                   <a href="/dashboard/pembina/create">Tambah Pembina</a>
                 </li>
               @endcan
-              @can('verifyAll', \App\Models\Pembina::class)
+              @can('verifyAny', \App\Models\Pembina::class)
                 <li class="submenu-item {{ Request::is('dashboard/pembina/waitingroom') ? 'active' : '' }}">
                   <a href="/dashboard/pembina/waitingroom">Ruang Tunggu</a>
                 </li>

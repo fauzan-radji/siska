@@ -1,8 +1,6 @@
 @extends('layouts.auth')
 
-@section('title')
-  Register Pangkalan
-@endsection
+@section('title', 'Register Pangkalan')
 
 @section('form')
   <h1 class="h3 mb-3 fw-normal text-center">Register Admin Pangkalan</h1>
@@ -11,10 +9,11 @@
     @csrf
     <input name="nama_pangkalan" type="hidden" value="{{ $nama_pangkalan }}" readonly>
     <input name="kwarran_id" type="hidden" value="{{ $kwarran_id }}" readonly>
-    <input name="no_gudep_putra" type="hidden" value="{{ $no_gudep_putra }}" readonly>
+    <input name="jenjang_pembinaan" type="hidden" value="{{ $jenjang_pembinaan }}" readonly>
+    {{-- <input name="no_gudep_putra" type="hidden" value="{{ $no_gudep_putra }}" readonly>
     <input name="no_gudep_putri" type="hidden" value="{{ $no_gudep_putri }}" readonly>
     <input name="ambalan_putra" type="hidden" value="{{ $ambalan_putra }}" readonly>
-    <input name="ambalan_putri" type="hidden" value="{{ $ambalan_putri }}" readonly>
+    <input name="ambalan_putri" type="hidden" value="{{ $ambalan_putri }}" readonly> --}}
     <input name="alamat_pangkalan" type="hidden" value="{{ $alamat_pangkalan }}" readonly>
 
     <div class="mb-3">

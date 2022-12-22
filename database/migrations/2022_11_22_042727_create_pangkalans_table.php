@@ -15,11 +15,12 @@ return new class extends Migration
   {
     Schema::create('pangkalans', function (Blueprint $table) {
       $table->id();
-      $table->string('nama');
-      $table->string('no_gudep');
-      $table->string('ambalan');
       $table->foreignId('kwarran_id');
+      $table->string('nama');
+      $table->enum('jenjang_pembinaan', ['Siaga', 'Penggalang', 'Penegak', 'Pandega']);
       $table->string('alamat');
+      $table->string('no_gudep')->nullable();
+      $table->string('ambalan')->nullable();
       $table->boolean('verified')->default(false);
       $table->timestamps();
     });

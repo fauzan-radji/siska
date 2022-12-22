@@ -18,8 +18,9 @@ class PangkalanFactory extends Factory
   {
     return [
       'nama' => fake()->unique()->regexify('(SMK|SMA|MA)N \d\d Kota Gorontalo'),
-      'no_gudep' => fake()->regexify('\\d{2}-\\d{3}/\\d{3}'),
-      'ambalan' => fake()->name('male') . '-' . fake()->name('female'),
+      // 'no_gudep' => fake()->regexify('\\d{2}-\\d{3}/\\d{3}'),
+      // 'ambalan' => fake()->name('male') . '-' . fake()->name('female'),
+      'jenjang_pembinaan' => fake()->regexify('(Siaga|Penggalang|Penegak|Pandega)'),
       'kwarran_id' => mt_rand(1, 5), // jumlah kwarran = 5
       'alamat' => fake()->address()
     ];

@@ -31,12 +31,12 @@
             <tr>
               <th>Kamabiran</th>
               <th class="text-center">:</th>
-              <td>{{ $kwarran->kamabiran }}</td>
+              <td>{{ $kwarran->kamabiran ?? '-' }}</td>
             </tr>
             <tr>
               <th>Ketua Kwarran</th>
               <th class="text-center">:</th>
-              <td>{{ $kwarran->ketua }}</td>
+              <td>{{ $kwarran->ketua ?? '-' }}</td>
             </tr>
           </table>
         </div>

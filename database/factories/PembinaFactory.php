@@ -18,9 +18,10 @@ class PembinaFactory extends Factory
    */
   public function definition()
   {
+    $pangkalan_count = Pangkalan::count();
     return [
       'user_id' => User::factory()->create()->id,
-      'pangkalan_id' => mt_rand(1, 25), // jumlah pangkalan = jumlah kwarran (5) * jumlah pangkalan per kwarran (5) = 5 * 5 = 25
+      'pangkalan_id' => mt_rand(1, $pangkalan_count),
       'jabatan' => 'Pembina',
       'gender' => fake()->regexify('(Laki-laki|Perempuan)'),
       'no_hp' => fake()->phoneNumber(),

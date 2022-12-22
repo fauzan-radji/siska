@@ -28,11 +28,11 @@
               <td class="text-center">:</td>
               <td>{{ $pangkalan->no_gudep }}</td>
             </tr>
-            <tr>
+            {{-- <tr>
               <th>Ambalan</th>
               <td class="text-center">:</td>
               <td>{{ $pangkalan->ambalan }}</td>
-            </tr>
+            </tr> --}}
             <tr>
               <th>Alamat</th>
               <td class="text-center">:</td>
@@ -61,7 +61,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col">
       <div class="card">
         <div class="card-header">
           <h4>Pembina</h4>
@@ -71,7 +71,9 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+  </div>
+  <div class="row">
+    <div class="col">
       <div class="card">
         <div class="card-header">
           <h4>Peserta Didik</h4>

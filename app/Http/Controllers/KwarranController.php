@@ -15,7 +15,7 @@ class KwarranController extends Controller
    */
   public function index()
   {
-    $this->authorize('viewAll', Kwarran::class);
+    $this->authorize('viewAny', Kwarran::class);
     return view('dashboard.kwarran.index', [
       'kwarrans' => Kwarran::all()
     ]);

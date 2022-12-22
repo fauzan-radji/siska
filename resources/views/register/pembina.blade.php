@@ -1,8 +1,6 @@
 @extends('layouts.auth')
 
-@section('title')
-  Register Pembina
-@endsection
+@section('title', 'Register Pembina')
 
 @section('form')
   <h1 class="h3 mb-3 fw-normal text-center">Register Pembina</h1>
@@ -31,6 +29,7 @@
           <div class="invalid-feedback">{{ $message }}</div>
         @enderror
       </div>
+      <p class="my-2 text-center text-muted"><small>Pangkalan belum terdaftar? <a href="/register/pangkalan">Daftarkan pangkalan</a></small></p>
     </div>
 
     <div class="group">
@@ -59,7 +58,6 @@
         @enderror
       </div>
     </div>
-    <p class="my-2 text-center text-muted"><small>Pangkalan belum terdaftar? <a href="/register/pangkalan">Daftarkan pangkalan</a></small></p>
 
     <button class="w-100 btn btn-lg btn-primary" type="submit">Daftar</button>
     {{-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p> --}}

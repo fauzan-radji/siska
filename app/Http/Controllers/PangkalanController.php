@@ -171,10 +171,22 @@ class PangkalanController extends Controller
    * @param  \App\Models\Pangkalan  $pangkalan
    * @return \Illuminate\Http\Response
    */
-  public function verify(Pangkalan $pangkalan)
+  public function verify(UpdatePangkalanRequest $request, Pangkalan $pangkalan)
   {
     $this->authorize('verify', $pangkalan);
-    $pangkalan->update(['verified' => !$pangkalan->verified]);
+    $validated = [
+      'no_gudep' => null
+    ];
+
+    if (!$pangkalan->verified) {
+      $validated = $request->validate(['no_gudep' => 'required']);
+    }
+
+    $pangkalan->update([
+      'verified' => !$pangkalan->verified,
+      'no_gudep' => $validated['no_gudep']
+    ]);
+
     $msg = $pangkalan->verified ? 'memverifikasi ' : 'membatalkan verifikasi ';
     return back()->with('success', 'Berhasil ' . $msg . $pangkalan->nama);
   }

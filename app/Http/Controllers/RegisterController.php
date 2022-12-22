@@ -26,10 +26,11 @@ class RegisterController extends Controller
     $validated = $request->validate([
       "nama_pangkalan" => 'required',
       "kwarran_id" => 'required',
-      "no_gudep_putra" => 'required',
-      "no_gudep_putri" => 'required',
-      "ambalan_putra" => 'required',
-      "ambalan_putri" => 'required',
+      "jenjang_pembinaan" => 'required',
+      // "no_gudep_putra" => 'required',
+      // "no_gudep_putri" => 'required',
+      // "ambalan_putra" => 'required',
+      // "ambalan_putri" => 'required',
       "alamat_pangkalan" => 'required'
     ]);
     return view('register.admin_pangkalan', $validated);
@@ -41,10 +42,11 @@ class RegisterController extends Controller
     $validated = $request->validate([
       "nama_pangkalan" => 'required',
       "kwarran_id" => 'required',
-      "no_gudep_putra" => 'required',
-      "no_gudep_putri" => 'required',
-      "ambalan_putra" => 'required',
-      "ambalan_putri" => 'required',
+      // "no_gudep_putra" => 'required',
+      // "no_gudep_putri" => 'required',
+      // "ambalan_putra" => 'required',
+      // "ambalan_putri" => 'required',
+      "jenjang_pembinaan" => 'required',
       "alamat_pangkalan" => 'required',
       "nama_admin" => 'required',
       "username_admin" => 'required',
@@ -54,14 +56,15 @@ class RegisterController extends Controller
 
     // get kwarran data
     $kwarran = Kwarran::find($validated['kwarran_id']);
-    $no_gudep = "{$kwarran->nomor}-{$validated['no_gudep_putra']}/{$validated['no_gudep_putri']}";
-    $ambalan = $validated['ambalan_putra'] . '-' . $validated['ambalan_putri'];
+    // $no_gudep = "{$kwarran->nomor}-{$validated['no_gudep_putra']}/{$validated['no_gudep_putri']}";
+    // $ambalan = $validated['ambalan_putra'] . '-' . $validated['ambalan_putri'];
 
     // create new pangkalan
     $pangkalan = Pangkalan::create([
       'nama' => $validated['nama_pangkalan'],
-      'no_gudep' => $no_gudep,
-      'ambalan' => $ambalan,
+      'jenjang_pembinaan' => $validated['jenjang_pembinaan'],
+      // 'no_gudep' => $no_gudep,
+      // 'ambalan' => $ambalan,
       'kwarran_id' => $kwarran->id,
       'alamat' => $validated['alamat_pangkalan']
     ]);
@@ -75,7 +78,8 @@ class RegisterController extends Controller
         'password' => Hash::make($validated['password_admin']),
       ])->id,
       'pangkalan_id' => $pangkalan->id,
-      'jabatan' => 'Admin Pangkalan'
+      'jabatan' => 'Admin Pangkalan',
+      'verified' => true
     ]);
     return redirect('/login')->with('success', 'Berhasil mendaftarkan pangkalan ' . $pangkalan->nama);
   }

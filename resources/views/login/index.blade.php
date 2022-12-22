@@ -2,82 +2,95 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/login.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/css/login.css" rel="stylesheet" />
 </head>
 
 <body>
-    <section class="login d-flex">
-        <div class="login-left w-50 h-100">
-            <div class="row justify-content-center align-items-center h-100">
-                <div class="col-6">
-                    <div class="header">
-                        <h1>Selamat Datang</h1>
-                        <p>Silahkan lakukan login terlebih dahulu</p>
-                    </div>
-                    <div class="login-form">
-                        <form action="/login" method="post">
-                            @csrf
-                            <label for="username" class="form-label">username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Silahkan masukan username" />
+  <div class="d-flex flex-column flex-md-row overflow-hidden justify-content-center justify-content-md-between align-items-center" style="height: 100vh;">
+    <div class="h-100 row justify-content-center align-items-center" style="min-width: 50vw;">
+      <div class="col-md-10">
+        @if (session()->has('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button class="btn-close" data-bs-dismiss="alert" type="button" aria-label="Close"></button>
+          </div>
+        @endif
 
-                            <label for="password" class="form-label">password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Silahkan masukan password" />
-                            <button type="submit" class="signin">login</button>
-                            <div class="text-center">
-                                <span class="d-inline">belum punya akun?
-                                    <a href="/register/peserta_didik" class="text-decoration-none">Daftar</a>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @if (session()->has('error'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button class="btn-close" data-bs-dismiss="alert" type="button" aria-label="Close"></button>
+          </div>
+        @endif
 
-        <div class="login-right w-50 h-100">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/img/login1.png" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Bina Diri</h5>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/img/login2.png" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Bina Satuan</h5>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/img/login3.png" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Bina Masyarakat</h5>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+        <div class="header">
+          <h1>Selamat Datang</h1>
+          <p>Silahkan lakukan login terlebih dahulu.</p>
         </div>
-    </section>
-    <script src="/js/bootstrap.bundle.min.js"></script>
+        <div>
+          <form action="/login" method="post">
+            @csrf
+            <div class="mb-3">
+              <label class="form-label" for="username">Username</label>
+              <input class="form-control" id="username" name="username" type="text" autofocus placeholder="Silahkan masukan username" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="password">Password</label>
+              <input class="form-control" id="password" name="password" type="password" placeholder="Silahkan masukan password" />
+            </div>
+
+            <button class="btn btn-lg text-light w-100" type="submit" style="background-color: #48403a">Login</button>
+          </form>
+          <p class="text-center mt-3">
+            Belum punya akun? <a class="text-decoration-none" href="/register/peserta_didik">Daftar</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="h-100 d-none d-md-block">
+      <div class="h-100 carousel slide" id="carouselIndicator" data-bs-ride="true">
+        <div class="carousel-indicators">
+          <button class="active" data-bs-target="#carouselIndicator" data-bs-slide-to="0" type="button" aria-current="true" aria-label="Slide 1"></button>
+          <button data-bs-target="#carouselIndicator" data-bs-slide-to="1" type="button" aria-label="Slide 2"></button>
+          <button data-bs-target="#carouselIndicator" data-bs-slide-to="2" type="button" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner h-100">
+          <div class="h-100 carousel-item active">
+            <img class="d-block w-100 h-100" src="/img/login1.png" style="object-fit: cover;" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Bina Diri</h5>
+            </div>
+          </div>
+          <div class="h-100 carousel-item">
+            <img class="d-block w-100 h-100" src="/img/login2.png" style="object-fit: cover;" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Bina Satuan</h5>
+            </div>
+          </div>
+          <div class="h-100 carousel-item">
+            <img class="d-block w-100 h-100" src="/img/login3.png" style="object-fit: cover;" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Bina Masyarakat</h5>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" type="button">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" type="button">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

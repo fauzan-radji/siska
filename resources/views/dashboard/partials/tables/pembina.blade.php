@@ -17,6 +17,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nama</th>
+      <th class="text-center" scope="col">Foto</th>
       <th class="text-center" scope="col">Aksi</th>
     </tr>
   </thead>
@@ -25,6 +26,7 @@
       <tr>
         <td>{{ $loop->iteration }}</td>
         <td>{{ $pembina->user->nama }}</td>
+        <td class="text-center"><img src="{{ $pembina->foto }}" alt="{{ $pembina->nama }}" width="100"></td>
         <td class="text-center">
           @can('view', $pembina)
             <a class="btn icon btn-sm btn-info mb-1" href="/dashboard/pembina/{{ $pembina->id }}" title="Detail"><i class="bi bi-eye"></i></a>
@@ -53,7 +55,7 @@
       </tr>
     @empty
       <tr>
-        <td class="text-center" colspan="3">Data pembina tidak ditemukan</td>
+        <td class="text-center" colspan="4">Data pembina tidak ditemukan</td>
       </tr>
     @endforelse
   </tbody>

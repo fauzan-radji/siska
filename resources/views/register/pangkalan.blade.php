@@ -1,41 +1,37 @@
 @extends('layouts.auth')
 
-@section('title')
-  Register Pangkalan
-@endsection
+@section('title', 'Register Pangkalan')
 
 @section('form')
   <h1 class="h3 mb-3 fw-normal text-center">Register Pangkalan</h1>
 
   <form action="/register/pangkalan" method="post">
     @csrf
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-6">
-        <div class="mb-3">
-          <label class="form-label" for="nama_pangkalan">Nama</label>
-          <input class="form-control @error('nama_pangkalan') is-invalid @enderror" id="nama_pangkalan" name="nama_pangkalan" type="text" value="{{ old('nama_pangkalan') }}" autofocus required>
-          @error('nama_pangkalan')
-            <div class="invalid-feedback">{{ $message }}</div>
-          @enderror
-        </div>
+        <label class="form-label" for="nama_pangkalan">Nama</label>
+        <input class="form-control @error('nama_pangkalan') is-invalid @enderror" id="nama_pangkalan" name="nama_pangkalan" type="text" value="{{ old('nama_pangkalan') }}" placeholder="Nama Sekolah" autofocus required>
+        @error('nama_pangkalan')
+          <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
       </div>
 
       <div class="col-6">
-        <div class="mb-3">
-          <label class="form-label" for="kwarran">Kwartir Ranting</label>
-          <select class="form-select @error('kwarran_id') is-invalid @enderror" id="kwarran" name="kwarran_id">
-            @foreach ($kwarrans as $kwarran)
-              <option value="{{ $kwarran->id }}" @if (old('kwarran_id') == $kwarran->id) selected @endif>{{ $kwarran->nama }}</option>
-            @endforeach
-          </select>
-          @error('kwarran_id')
-            <div class="invalid-feedback">{{ $message }}</div>
-          @enderror
-        </div>
+        <label class="form-label" for="jenjang">Jenjang Pembinaan</label>
+        <select class="form-select @error('jenjang_pembinaan') is-invalid @enderror" id="jenjang" name="jenjang_pembinaan" required>
+          <option value="">Pilih Jenjang Pembinaan</option>
+          <option value="Siaga" @if (old('jenjang_pembinaan') == 'Siaga') selected @endif>Siaga</option>
+          <option value="Penggalang" @if (old('jenjang_pembinaan') == 'Penggalang') selected @endif>Penggalang</option>
+          <option value="Penegak" @if (old('jenjang_pembinaan') == 'Penegak') selected @endif>Penegak</option>
+          <option value="Pandega" @if (old('jenjang_pembinaan') == 'Pandega') selected @endif>Pandega</option>
+        </select>
+        @error('jenjang_pembinaan')
+          <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
       </div>
     </div>
 
-    <div class="mb-3">
+    {{-- <div class="mb-3">
       <label class="form-label" for="">Nomor Gudep</label>
       <div class="d-flex">
         <div class="col-1">
@@ -54,9 +50,9 @@
           @enderror
         </div>
       </div>
-    </div>
+    </div> --}}
 
-    <div class="mb-3">
+    {{-- <div class="mb-3">
       <label class="form-label" for="">Ambalan</label>
       <div class="d-flex">
         <div class="col">
@@ -72,14 +68,29 @@
           @enderror
         </div>
       </div>
-    </div>
+    </div> --}}
 
-    <div class="mb-3">
-      <label class="form-label" for="alamat_pangkalan">Alamat</label>
-      <input class="form-control @error('alamat_pangkalan') is-invalid @enderror" id="alamat_pangkalan" name="alamat_pangkalan" type="text" value="{{ old('alamat_pangkalan') }}" required>
-      @error('alamat_pangkalan')
-        <div class="invalid-feedback">{{ $message }}</div>
-      @enderror
+    <div class="row mb-3">
+      <div class="col-6">
+        <label class="form-label" for="kwarran">Kwartir Ranting</label>
+        <select class="form-select @error('kwarran_id') is-invalid @enderror" id="kwarran" name="kwarran_id" required>
+          <option value="">Pilih Kwartir Ranting</option>
+          @foreach ($kwarrans as $kwarran)
+            <option value="{{ $kwarran->id }}" @if (old('kwarran_id') == $kwarran->id) selected @endif>{{ $kwarran->nomor }} - {{ $kwarran->nama }}</option>
+          @endforeach
+        </select>
+        @error('kwarran_id')
+          <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label" for="alamat_pangkalan">Alamat</label>
+        <input class="form-control @error('alamat_pangkalan') is-invalid @enderror" id="alamat_pangkalan" name="alamat_pangkalan" type="text" value="{{ old('alamat_pangkalan') }}" placeholder="Alamat Sekolah" required>
+        @error('alamat_pangkalan')
+          <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+      </div>
     </div>
 
     <button class="w-100 btn btn-primary" type="submit">Daftar</button>
