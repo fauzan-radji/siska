@@ -23,16 +23,23 @@
               <td class="text-center">:</td>
               <td>{{ $pangkalan->nama }}</td>
             </tr>
-            <tr>
-              <th>Nomor Gudep</th>
-              <td class="text-center">:</td>
-              <td>{{ $pangkalan->no_gudep }}</td>
-            </tr>
+            @if ($pangkalan->verified)
+              <tr>
+                <th>Nomor Gudep</th>
+                <td class="text-center">:</td>
+                <td>{{ $pangkalan->no_gudep }}</td>
+              </tr>
+            @endif
             {{-- <tr>
               <th>Ambalan</th>
               <td class="text-center">:</td>
               <td>{{ $pangkalan->ambalan }}</td>
             </tr> --}}
+            <tr>
+              <th>Jenjang Pembinaan</th>
+              <td class="text-center">:</td>
+              <td>{{ $pangkalan->jenjang_pembinaan }}</td>
+            </tr>
             <tr>
               <th>Alamat</th>
               <td class="text-center">:</td>

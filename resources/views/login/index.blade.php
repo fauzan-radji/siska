@@ -37,11 +37,17 @@
             @csrf
             <div class="mb-3">
               <label class="form-label" for="username">Username</label>
-              <input class="form-control" id="username" name="username" type="text" autofocus placeholder="Silahkan masukan username" />
+              <input class="form-control @error('username') is-invalid @enderror" id="username" name="username" type="text" autofocus placeholder="Silahkan masukan username" />
+              @error('username')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
             </div>
             <div class="mb-3">
               <label class="form-label" for="password">Password</label>
-              <input class="form-control" id="password" name="password" type="password" placeholder="Silahkan masukan password" />
+              <input class="form-control @error('password') is-invalid @enderror" id="password" name="password" type="password" placeholder="Silahkan masukan password" />
+              @error('password')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
             </div>
 
             <button class="btn btn-lg text-light w-100" type="submit" style="background-color: #48403a">Login</button>

@@ -1,24 +1,11 @@
-{{-- @can('verifyAll', \App\Models\Pangkalan::class)
-  @if ($pangkalans->count() > 0)
-    <form class="text-end mb-3" action="/dashboard/pangkalan/verifyall" method="post">
-      @csrf
-      @if ($pangkalans->first()->verified)
-        <button class="btn btn-danger" title="Batal Verifikasi" onclick="return confirm('Yakin ingin membatalkan verifikasi semua pangkalan?')">Batalkan semua verifikasi</button>
-      @else
-        <input name="action" type="hidden" value="verify">
-        <button class="btn btn-success" title="Verifikasi" onclick="return confirm('Yakin ingin memverifikasi semua pangkalan?')">Verifikasi Semua</button>
-      @endif
-    </form>
-  @endif
-@endcan --}}
-
-@if ($pangkalans->some(fn($pangkalan) => !$pangkalan->verified))
-  <link href="/mazer/extensions/sweetalert2/sweetalert2.min.css" rel="stylesheet">
-@endif
-
 @php
+  $isSomeNotVerified = $pangkalans->some(fn($pangkalan) => !$pangkalan->verified);
   $isSomeVerified = $pangkalans->some(fn($pangkalan) => $pangkalan->verified);
 @endphp
+
+@if ($isSomeNotVerified)
+  <link href="/mazer/extensions/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+@endif
 
 <table class="table table-striped" id="tabel-pangkalan">
   <thead>
@@ -74,10 +61,8 @@
   </tbody>
 </table>
 
-
-@if ($pangkalans->some(fn($pangkalan) => !$pangkalan->verified))
-  {{-- Sweet Alert --}}
-  <script src="/mazer/extensions/sweetalert2/sweetalert2.min.js"></script>>
+@if ($isSomeNotVerified)
+  <script src="/mazer/extensions/sweetalert2/sweetalert2.min.js"></script>
   <script>
     async function verify(pangkalan, btn) {
       const {

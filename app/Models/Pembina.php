@@ -40,6 +40,12 @@ class Pembina extends Model
   {
     parent::boot();
 
+    //before create() method call this
+    static::creating(function ($pembina) {
+      $pembina->foto = '/img/default-profile/user' . mt_rand(0, 9) . '.png';
+    });
+
+
     static::deleting(function ($pembina) { // before delete() method call this
       $pembina->user->delete();
 

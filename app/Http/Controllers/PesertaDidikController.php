@@ -158,17 +158,15 @@ class PesertaDidikController extends Controller
       'email' => 'required|email'
     ]);
 
-    $pesertaDidik->user->update([
-      'nama' => $validated['nama'],
-      'username' => $validated['username'],
-      'email' => $validated['email'],
-    ]);
+    $pesertaDidik->user->update($validated);
 
     $pesertaDidik->update([
       'gender' => $request->gender,
       'no_hp' => $request->no_hp,
       'alamat' => $request->alamat,
+      'tempat_lahir' => $request->tempat_lahir,
       'tanggal_lahir' => $request->tanggal_lahir,
+      'gol_darah' => $request->gol_darah,
       'agama_id' => $request->agama_id
     ]);
 
@@ -181,13 +179,22 @@ class PesertaDidikController extends Controller
    * @param  \App\Models\PesertaDidik  $pesertaDidik
    * @return \Illuminate\Http\Response
    */
-  public function verify(PesertaDidik $pesertaDidik)
+  public function verify(UpdatePesertaDidikRequest $request, PesertaDidik $pesertaDidik)
   {
     $this->authorize('verify', $pesertaDidik);
+    $validated = ['no_anggota' => null];
+
+    if (!$pesertaDidik->verified)
+      $validated = $request->validate(['no_anggota' => 'required|unique:peserta_didiks']);
+
     // verify the pangkalan first before verify the peserta didik
     if (!$pesertaDidik->pangkalan->verified) $pesertaDidik->pangkalan->update(['verified' => true]);
 
-    $pesertaDidik->update(['verified' => !$pesertaDidik->verified]);
+    $pesertaDidik->update([
+      'verified' => !$pesertaDidik->verified,
+      'no_anggota' => $validated['no_anggota']
+    ]);
+
     $msg = $pesertaDidik->verified ? 'memverifikasi ' : 'membatalkan verifikasi ';
     return back()->with('success', 'Berhasil ' . $msg . $pesertaDidik->user->nama);
   }
@@ -230,6 +237,24 @@ class PesertaDidikController extends Controller
       $poin->pivot->update(['teruji' => $request->has($poin->id)]);
     });
     return back()->with('success', 'Berhasil mengupdate poin SKU ' . $pesertaDidik->user->nama);
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \App\Http\Requests\UpdatePesertaDidikRequest  $request
+   * @param  \App\Models\PesertaDidik  $pesertaDidik
+   * @return \Illuminate\Http\Response
+   */
+  public function upload(UpdatePesertaDidikRequest $request, PesertaDidik $pesertaDidik)
+  {
+    $this->authorize('update', $pesertaDidik);
+    // Validasi
+    $request->validate(['foto' => 'required|image|file|max:1024']);
+
+    $pesertaDidik->update(['foto' => '/storage/' . $request->file('foto')->store('uploads/profile')]);
+
+    return redirect('/dashboard/peserta_didik/' . $pesertaDidik->id)->with('success', 'Berhasil menyimpan foto ' . $pesertaDidik->nama);
   }
 
   /**

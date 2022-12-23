@@ -1,16 +1,11 @@
-{{-- @can('verifyAll', \App\Models\PesertaDidik::class)
-  @if ($peserta_didiks->count() > 0)
-    <form class="d-inline" action="/dashboard/peserta_didik/verifyall" method="post">
-      @csrf
-      @if ($peserta_didiks->first()->verified)
-        <button class="btn btn-danger border-0" title="Verifikasi" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" onclick="return confirm('Yakin ingin membatalkan verifikasi semua peserta didik?')">Batalkan semua verifikasi</button>
-      @else
-        <input name="action" type="hidden" value="verify">
-        <button class="btn btn-success border-0" title="Verifikasi" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" onclick="return confirm('Yakin ingin memverifikasi semua peserta didik?')">Verifikasi Semua</button>
-      @endif
-    </form>
-  @endif
-@endcan --}}
+@php
+  $isSomeNotVerified = $peserta_didiks->some(fn($peserta_didik) => !$peserta_didik->verified);
+  $isSomeVerified = $peserta_didiks->some(fn($peserta_didik) => $peserta_didik->verified);
+@endphp
+
+@if ($isSomeNotVerified)
+  <link href="/mazer/extensions/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+@endif
 
 <table class="table table-striped" id="tabel-peserta_didik">
   <thead>
@@ -47,7 +42,8 @@
               @if ($peserta_didik->verified)
                 <button class="btn btn-sm icon btn-danger" title="Batal Verifikasi" onclick="return confirm('Yakin ingin membatalkan verifikasi {{ $peserta_didik->user->nama }}?')"><span data-feather="x"></span></button>
               @else
-                <button class="btn btn-sm icon btn-success" onclick="return confirm('Yakin ingin memverifikasi {{ $peserta_didik->user->nama }}?')"><span data-feather="check"></span></button>
+                <input name="no_anggota" type="hidden">
+                <button class="btn btn-sm icon btn-success" onclick="verify('{{ $peserta_didik->user->nama }}', this); return false;"><span data-feather="check"></span></button>
               @endif
             </form>
           @endcan
@@ -60,3 +56,32 @@
     @endforelse
   </tbody>
 </table>
+
+@if ($isSomeNotVerified)
+  <script src="/mazer/extensions/sweetalert2/sweetalert2.min.js"></script>
+  <script>
+    async function verify(peserta_didik, btn) {
+      const {
+        value: text
+      } = await Swal.fire({
+        title: peserta_didik,
+        input: 'text',
+        inputLabel: 'Nomor Tanda Anggota ' + peserta_didik,
+        showCancelButton: true,
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Verifikasi'
+      });
+
+      if (text) {
+        btn.previousElementSibling.value = text;
+        btn.form.submit();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Gagal memverifikasi " + peserta_didik
+        });
+      }
+    }
+  </script>
+@endif

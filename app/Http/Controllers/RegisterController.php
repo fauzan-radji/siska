@@ -132,6 +132,8 @@ class RegisterController extends Controller
       'pangkalan_id' => 'required'
     ]);
 
+    $pangkalan = Pangkalan::find($validated['pangkalan_id']);
+
     // Create Peserta Didik
     PesertaDidik::create([
       'user_id' => User::create([
@@ -140,7 +142,8 @@ class RegisterController extends Controller
         'email' => $validated['email'],
         'password' => Hash::make($validated['password'])
       ])->id,
-      'pangkalan_id' => $validated['pangkalan_id']
+      'pangkalan_id' => $validated['pangkalan_id'],
+      // 'golongan' => $pangkalan->jenjang_pembinaan
     ]);
 
     return redirect('/login')->with('success', 'Berhasil mendaftarkan peserta didik ' . $validated['nama']);;

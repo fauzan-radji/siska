@@ -86,6 +86,7 @@ Route::get('/dashboard/peserta_didik/waitingroom', [PesertaDidikController::clas
 Route::post('/dashboard/peserta_didik/verifyall', [PesertaDidikController::class, 'verifyAll'])->middleware('auth');
 Route::post('/dashboard/peserta_didik/{pesertaDidik}/verify', [PesertaDidikController::class, 'verify'])->middleware('auth');
 Route::post('/dashboard/peserta_didik/{pesertaDidik}/teruji', [PesertaDidikController::class, 'uji'])->middleware('auth');
+Route::post('/dashboard/peserta_didik/{pesertaDidik}/upload', [PesertaDidikController::class, 'upload'])->middleware('auth');
 Route::resource('/dashboard/peserta_didik', PesertaDidikController::class)->middleware('auth');
 
 Route::resource('/dashboard/jadwal', JadwalController::class)->middleware('auth');

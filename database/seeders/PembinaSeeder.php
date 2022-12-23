@@ -30,10 +30,9 @@ class PembinaSeeder extends Seeder
       'alamat' => 'Jalan Jeruk, Kecamatan Dungingi, Kelurahan Huangobotu',
       'tanggal_lahir' => '2003-12-08',
       // 'foto' => 'https://api.multiavatar.com/shaphire.svg',
-      'foto' => '/img/default-profile/user9.png',
       'agama_id' => 1
     ]);
 
-    Pembina::factory(74)->create();
+    Pembina::factory(9)->create();
   }
 }

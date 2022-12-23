@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Pangkalan;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,9 +18,10 @@ class PesertaDidikFactory extends Factory
    */
   public function definition()
   {
+    $pangkalan_count = Pangkalan::count();
     return [
       'user_id' => User::factory()->create()->id,
-      'pangkalan_id' => mt_rand(1, 15), // jumlah pangkalan = jumlah kwarran (5) * jumlah pangkalan per kwarran (5) = 5 * 5 = 25
+      'pangkalan_id' => mt_rand(1, $pangkalan_count),
       'gender' => fake()->regexify('(Laki-laki|Perempuan)'),
       'no_hp' => fake()->phoneNumber(),
       'alamat' => fake()->address(),

@@ -174,13 +174,10 @@ class PangkalanController extends Controller
   public function verify(UpdatePangkalanRequest $request, Pangkalan $pangkalan)
   {
     $this->authorize('verify', $pangkalan);
-    $validated = [
-      'no_gudep' => null
-    ];
+    $validated = ['no_gudep' => null];
 
-    if (!$pangkalan->verified) {
+    if (!$pangkalan->verified)
       $validated = $request->validate(['no_gudep' => 'required']);
-    }
 
     $pangkalan->update([
       'verified' => !$pangkalan->verified,

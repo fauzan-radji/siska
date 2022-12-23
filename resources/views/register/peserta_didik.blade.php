@@ -1,11 +1,10 @@
 @extends('layouts.auth')
 
-@section('title')
-  Register Peserta Didik
-@endsection
+@section('title', 'Register Peserta Didik')
 
 @section('form')
-  <h1 class="h3 mb-3 fw-normal text-center">Register Peserta Didik</h1>
+  <h1 class="h3 mb-3 fw-normal text-center">
+    Register Peserta Didik</h1>
 
   <form action="/register/peserta_didik" method="post">
     {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
@@ -20,8 +19,14 @@
       </div>
       <div class="form-floating">
         <select class="form-select @error('pangkalan_id') is-invalid @enderror" id="pangkalan" name="pangkalan_id">
+          <option value="">Pilih Pangkalan</option>
           @foreach ($pangkalans as $pangkalan)
-            <option value="{{ $pangkalan->id }}" @if (old('pangkalan_id') == $pangkalan->id) selected @endif>{{ $pangkalan->nama }}</option>
+            <option value="{{ $pangkalan->id }}" @if (!$pangkalan->verified) disabled @endif @if (old('pangkalan_id') == $pangkalan->id) selected @endif>
+              {{ $pangkalan->nama }}
+              @if (!$pangkalan->verified)
+                | Belum Terverifikasi
+              @endif
+            </option>
           @endforeach
         </select>
         <label class="form-label" for="pangkalan">Pangkalan</label>
@@ -52,7 +57,7 @@
       <div class="form-floating">
         <input class="form-control @error('password') is-invalid @enderror" id="password" name="password" type="Password" placeholder="Password">
         <label for="Password">Password</label>
-        @error('Email')
+        @error('password')
           <div class="invalid-feedback">{{ $message }}</div>
         @enderror
       </div>

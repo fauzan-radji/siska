@@ -40,10 +40,16 @@ class PesertaDidik extends Model
   {
     parent::boot();
 
+    //before create() method call this
+    static::creating(function ($peserta_didik) {
+      $peserta_didik->foto = '/img/default-profile/user' . mt_rand(0, 9) . '.png';
+    });
+
     //after create() method call this
     static::created(function ($peserta_didik) {
       $poins = Poin::where('agama_id', $peserta_didik->agama_id)->orWhereNull('agama_id')->get();
       $peserta_didik->poins()->attach($poins);
+      $peserta_didik->update(['golongan' => $peserta_didik->pangkalan->jenjang_pembinaan]);
     });
 
     //after update() method call this

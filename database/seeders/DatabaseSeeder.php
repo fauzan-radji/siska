@@ -24,12 +24,12 @@ class DatabaseSeeder extends Seeder
     $this->call([
       AdminSeeder::class,
       AgamaSeeder::class,
-      PoinSeeder::class,
+      // PoinSeeder::class,
       KwarranSeeder::class,
       PangkalanSeeder::class,
       PembinaSeeder::class,
       PesertaDidikSeeder::class,
-      JadwalSeeder::class,
+      // JadwalSeeder::class,
     ]);
   }
 }

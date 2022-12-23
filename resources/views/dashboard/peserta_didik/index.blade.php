@@ -29,4 +29,13 @@
     const dataTables = [new simpleDatatables.DataTable(document.getElementById("tabel-peserta_didik"))];
   </script>
   <script src="/mazer/js/pages/simple-datatables.js"></script>
+
+  @error('no_anggota')
+    <script>
+      Swal.fire({
+        icon: 'error',
+        text: '{{ $message }}'
+      });
+    </script>
+  @enderror
 @endsection

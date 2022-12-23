@@ -18,7 +18,7 @@ class PangkalanSeeder extends Seeder
    */
   public function run()
   {
-    Pangkalan::factory(15)->create()->each(function ($pangkalan) {
+    Pangkalan::factory(4)->create()->each(function ($pangkalan) {
       Pembina::create([
         'user_id' => User::create([
           'nama' => 'Admin Pangkalan ' . $pangkalan->nama,
@@ -32,7 +32,6 @@ class PangkalanSeeder extends Seeder
         'no_hp' => fake()->phoneNumber(),
         'alamat' => fake()->address(),
         'tanggal_lahir' => fake()->date('Y-m-d', '-30 years'),
-        'foto' => 'https://api.multiavatar.com/' . fake()->unique()->userName() . '.svg',
         'agama_id' => mt_rand(1, 5)
       ]);
     });
