@@ -1,4 +1,4 @@
-<div class="kartu-anggota" id="kta-{{ $peserta_didik->id ?? '' }}">
+<div class="kartu-anggota kartu-anggota-{{ $peserta_didik->pangkalan->jenjang_pembinaan }}" id="kta-{{ $peserta_didik->id ?? '' }}" style="--resize: {{ $resize ?? 1 }}em">
   <div class="kartu-anggota__header">
     <div class="kartu-anggota__header-image" style="--url: url('/img/pramuka.png')"></div>
     {{-- <img src="/img/pramuka.png"> --}}
@@ -7,7 +7,7 @@
       <h1>GERAKAN&nbsp;PRAMUKA</h1>
       <hr>
     </div>
-    <div class="kartu-anggota__header-image" style="--url: url('/img/kota-gorontalo.png')"></div>
+    {{-- <div class="kartu-anggota__header-image" style="--url: url('/img/kota-gorontalo.png')"></div> --}}
     {{-- <img src="/img/kota-gorontalo.png"> --}}
   </div>
 
@@ -60,7 +60,7 @@
           <td>Golongan</td>
           <td>:</td>
           <!-- <td colspan="4">Penegak Bantara/Pinru</td> -->
-          <td colspan="4">{{ $peserta_didik->golongan ?? '-' }}</td>
+          <td colspan="4">{{ $peserta_didik->pangkalan->jenjang_pembinaan ?? '-' }}</td>
         </tr>
         <tr>
           <td>Kwarcab</td>

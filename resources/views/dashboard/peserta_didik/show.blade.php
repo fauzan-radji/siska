@@ -100,7 +100,7 @@
           <div class="card-body">
             <img class="w-75 d-block m-auto" id="output"></img>
             <div style="transform: translateX(200%)">
-              @include('dashboard.partials.kta', ['peserta_didik' => $peserta_didik])
+              @include('dashboard.partials.kta', ['peserta_didik' => $peserta_didik, 'resize' => 2])
             </div>
             {{-- <iframe src="{{ url("dashboard/peserta_didik/$peserta_didik->id/kartu-anggota") }}" frameborder="0"></iframe> --}}
           </div>

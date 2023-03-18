@@ -126,6 +126,12 @@ class PesertaDidikController extends Controller
     ]);
   }
 
+  public function loadKTA(PesertaDidik $pesertaDidik)
+  {
+    $this->authorize('view', $pesertaDidik);
+    return view('dashboard.peserta_didik.kta', ['peserta_didik' => $pesertaDidik]);
+  }
+
   /**
    * Show the form for editing the specified resource.
    *

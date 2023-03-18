@@ -7,7 +7,7 @@
   /*   width: 1011px !important; */
   /*   height: 638px !important; */
   /* --width: 1011px !important; */
-  font-size: 2em !important;
+  font-size: var(--resize, 1em) !important;
   width: 30em !important;
   color: black !important;
   aspect-ratio: 8 / 5 !important;

