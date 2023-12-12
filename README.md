@@ -4,6 +4,12 @@
 
 SISKA adalah sebuah sistem informasi kepramukaan yang dibuat untuk memenuhi tugas akhir mata kuliah **Sistem Informasi Manajemen**.
 
+## Requirement
+
+- PHP >= 8.0
+- [Composer](https://getcomposer.org/)
+- MySQL
+
 ## Instalasi
 
 1. Clone repository ini
@@ -16,3 +22,11 @@ SISKA adalah sebuah sistem informasi kepramukaan yang dibuat untuk memenuhi tuga
 8. Jalankan perintah `php artisan migrate --seed`
 9. Jalankan perintah `php artisan serve`
 10. Buka `localhost:8000` di browser
+
+## Login
+
+| Nama                   | Username     | Email                  | Password | Role         |
+| ---------------------- | ------------ | ---------------------- | -------- | ------------ |
+| admin                  | admin        | admin@gmail.com        | 12345678 | admin        |
+| Shafira Thalib Pembina | pembina      | pembina@gmail.com      | 12345678 | pembina      |
+| Shafira Thalib Peserta | pesertadidik | pesertadidik@gmail.com | 12345678 | pesertadidik |
